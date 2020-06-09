@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectCalculator.Domain\ProjectCalculator.Domain.csproj" />
+    <ProjectReference Include="..\ProjectCalculator.Domain\ProjectCalculator.Core.csproj" />
   </ItemGroup>
 
 </Project>

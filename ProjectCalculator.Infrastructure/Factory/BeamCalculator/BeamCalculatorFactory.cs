@@ -15,7 +15,6 @@ namespace ProjectCalculator.Infrastructure.Factory.BeamCalculator
                 case 1:
                     beamCalculator =  new BeamCalculatorType1();
                     break;
-
             }
 
             return beamCalculator;

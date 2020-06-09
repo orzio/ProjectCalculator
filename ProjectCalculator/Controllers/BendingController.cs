@@ -20,15 +20,20 @@ namespace ProjectCalculator.Controllers
         [HttpGet]
         public Task<IActionResult> Get()
         {
-            BendingCommand bendingCommand = new BendingCommand();
+            BendingCommand bendingCommand = new BendingCommand()
+            {
+                BeamType = 1,
+                ShapeType = 1
+            };
             _commandDispatcher.DispatchAsync(bendingCommand);
             return null;
         }
 
-        //[HttpPost]
-        //public IEnumerable<WeatherForecast> Post()
-        //{
-
-        //}
+        [HttpPost]
+        public Task<IActionResult> Post([FromBody] BendingCommand command)
+        {
+            _commandDispatcher.DispatchAsync(command);
+            return null;
+        }
     }
 }

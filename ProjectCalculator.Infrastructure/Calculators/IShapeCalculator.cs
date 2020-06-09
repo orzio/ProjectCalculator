@@ -1,16 +1,19 @@
-﻿using ProjectCalculator.Domain;
-using ProjectCalculator.Domain.Domain;
+﻿using ProjectCalculator.Core.Domain;
+using ProjectCalculator.Infrastructure.Factory.ShapeCalculator;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ProjectCalculator.Infrastructure.Calculators
 {
     public interface IShapeCalculator
     {
-        public ParamFiz Calculate(Shape shape)
-        {
-            throw new NotImplementedException();
-        }
+        IShapeCalculator CalculateCenterOfGravity();
+        IShapeCalculator CalculateCentralMomentOfInteria();
+        IShapeCalculator CalculateDeviantMoment();
+        IShapeCalculator CalculateMainCenteralMomentOfInteria();
+        IShapeCalculator CalculateTgFi();
+        ParamFiz GetParameters();
     }
 }

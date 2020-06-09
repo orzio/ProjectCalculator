@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCalculator.Api", "ProjectCalculator\ProjectCalculator.Api.csproj", "{7EB04C5C-6A02-4FA4-9598-647DE1294839}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCalculator.Domain", "ProjectCalculator.Domain\ProjectCalculator.Domain.csproj", "{06D08D60-8C22-4D43-9C31-A8C3521543E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCalculator.Core", "ProjectCalculator.Domain\ProjectCalculator.Core.csproj", "{06D08D60-8C22-4D43-9C31-A8C3521543E4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCalculator.Infrastructure", "ProjectCalculator.Infrastructure\ProjectCalculator.Infrastructure.csproj", "{CBC09C83-E179-46D8-9BB6-5D1AFBB060A9}"
 	ProjectSection(ProjectDependencies) = postProject

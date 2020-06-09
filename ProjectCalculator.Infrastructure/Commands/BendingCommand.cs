@@ -1,5 +1,4 @@
-﻿using ProjectCalculator.Domain;
-using ProjectCalculator.Domain.Domain;
+﻿using ProjectCalculator.Core.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;

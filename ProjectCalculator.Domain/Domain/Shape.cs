@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProjectCalculator.Domain
+namespace ProjectCalculator.Core.Domain
 {
     public class Shape
     {
