@@ -5,8 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Beam\" />
-    <Folder Include="Commands\Figure\" />
+    <Compile Remove="Commands\Beam\**" />
+    <Compile Remove="Commands\Figure\**" />
+    <EmbeddedResource Remove="Commands\Beam\**" />
+    <EmbeddedResource Remove="Commands\Figure\**" />
+    <None Remove="Commands\Beam\**" />
+    <None Remove="Commands\Figure\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="DTO\" />
     <Folder Include="Handlers\" />
   </ItemGroup>

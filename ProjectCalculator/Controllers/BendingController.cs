@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectCalculator.Core.Domain;
 using ProjectCalculator.Infrastructure.Commands;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,13 @@ namespace ProjectCalculator.Controllers
             BendingCommand bendingCommand = new BendingCommand()
             {
                 BeamType = 1,
+                Beam = new Beam() {
+                        L1 = 2,
+                        L2 = 4,
+                        L3 = 1,
+                        Q1=9,
+                        Q2 = 5,
+                        P = 3},
                 ShapeType = 1
             };
             _commandDispatcher.DispatchAsync(bendingCommand);

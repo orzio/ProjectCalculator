@@ -22,8 +22,12 @@ namespace ProjectCalculator.Infrastructure.Commands
         public Task HandleAsync(BendingCommand command)
         {
             var beamCalculator = new BeamCalculatorFactory()
-                .GetBeamCalculator(command.BeamType);
-            var internalForces = beamCalculator.Calculate(command.Beam);
+                .GetBeamCalculator(command);
+            var internalForces = beamCalculator
+                .CalculateHa()
+                .CalculateVa()
+                .CalculateMa()
+                .GetInternalForces();
 
             var shapeCalculator = new ShapeCalculatorFactory()
                 .GetShapeCalculator(command);

@@ -6,13 +6,13 @@ using System.Text;
 
 namespace ProjectCalculator.Infrastructure.Factory.BeamCalculator
 {
-    public class BeamCalculatorType1:IBeamCalculator
+    public class BeamCalculatorType4 : IBeamCalculator
     {
         private InternalForces _internalForces;
         private FixedSupport _fixedSupport;
         private Beam _beam;
 
-        public BeamCalculatorType1(Beam beam)
+        public BeamCalculatorType4(Beam beam)
         {
             _beam = beam;
             _internalForces = new InternalForces();
@@ -34,7 +34,7 @@ namespace ProjectCalculator.Infrastructure.Factory.BeamCalculator
         public IBeamCalculator CalculateMa()
         {
             //positive - stretches the upper fibers
-            _fixedSupport.M = _beam.P * _beam.L1  + _beam.Q1 * _beam.L2 * (0.5 * _beam.L2 + _beam.L1) + _beam.Q2 * _beam.L3 * (0.5 * _beam.L3 + _beam.L1 + _beam.L2);
+            _fixedSupport.M = _beam.P * (_beam.L1 + _beam.L2 + _beam.L3) + _beam.Q1 * _beam.L2 * (0.5 * _beam.L2 + _beam.L1) + _beam.Q2 * _beam.L1 * 0.5 * _beam.L1;
             _internalForces.Moment = _fixedSupport.M;
             return this;
         }

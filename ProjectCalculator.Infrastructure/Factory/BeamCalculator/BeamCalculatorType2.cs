@@ -6,36 +6,36 @@ using System.Text;
 
 namespace ProjectCalculator.Infrastructure.Factory.BeamCalculator
 {
-    public class BeamCalculatorType1:IBeamCalculator
+    public class BeamCalculatorType2 : IBeamCalculator
     {
         private InternalForces _internalForces;
         private FixedSupport _fixedSupport;
         private Beam _beam;
 
-        public BeamCalculatorType1(Beam beam)
+        public BeamCalculatorType2(Beam beam)
         {
             _beam = beam;
             _internalForces = new InternalForces();
             _fixedSupport = new FixedSupport();
         }
 
-        public IBeamCalculator CalculateVa()
+        public BeamCalculatorType2 CalculateVa()
         {
             _fixedSupport.V = _beam.Q1 * _beam.L2 + _beam.Q2 * _beam.L3 + _beam.P;
             return this;
         }
 
-        public IBeamCalculator CalculateHa()
+        public BeamCalculatorType2 CalculateHa()
         {
             _fixedSupport.H = 0;
             return this;
         }
 
-        public IBeamCalculator CalculateMa()
+        public BeamCalculatorType2 CalculateMa()
         {
             //positive - stretches the upper fibers
-            _fixedSupport.M = _beam.P * _beam.L1  + _beam.Q1 * _beam.L2 * (0.5 * _beam.L2 + _beam.L1) + _beam.Q2 * _beam.L3 * (0.5 * _beam.L3 + _beam.L1 + _beam.L2);
-            _internalForces.Moment = _fixedSupport.M;
+           _fixedSupport.M= _beam.P * (_beam.L1 + _beam.L2) + _beam.Q1 * _beam.L2 * (0.5 * _beam.L2 + _beam.L1) + _beam.Q2 * _beam.L3 * (0.5 * _beam.L3 + _beam.L1 + _beam.L2);
+           _internalForces.Moment = _fixedSupport.M;
             return this;
         }
 
@@ -43,5 +43,9 @@ namespace ProjectCalculator.Infrastructure.Factory.BeamCalculator
         {
             return _internalForces;
         }
+
+
+
+        
     }
 }
