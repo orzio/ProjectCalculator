@@ -19,19 +19,19 @@ namespace ProjectCalculator.Infrastructure.Factory.BeamCalculator
             _fixedSupport = new FixedSupport();
         }
 
-        public BeamCalculatorType2 CalculateVa()
+        public IBeamCalculator CalculateVa()
         {
             _fixedSupport.V = _beam.Q1 * _beam.L2 + _beam.Q2 * _beam.L3 + _beam.P;
             return this;
         }
 
-        public BeamCalculatorType2 CalculateHa()
+        public IBeamCalculator CalculateHa()
         {
             _fixedSupport.H = 0;
             return this;
         }
 
-        public BeamCalculatorType2 CalculateMa()
+        public IBeamCalculator CalculateMa()
         {
             //positive - stretches the upper fibers
            _fixedSupport.M= _beam.P * (_beam.L1 + _beam.L2) + _beam.Q1 * _beam.L2 * (0.5 * _beam.L2 + _beam.L1) + _beam.Q2 * _beam.L3 * (0.5 * _beam.L3 + _beam.L1 + _beam.L2);

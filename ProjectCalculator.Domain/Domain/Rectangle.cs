@@ -29,25 +29,25 @@ namespace ProjectCalculator.Core.Domain
 
         public double GetJzc()
         {
-            return Math.Round(Width*Math.Pow(Height, 3) / 12,3);
+            return Math.Round(Width*Math.Pow(Height, 3) / 12,4);
         }
 
 
         public double GetJyc()
         {
-            return Math.Round(Height * Math.Pow(Width, 3) / 12,3);
+            return Math.Round(Height * Math.Pow(Width, 3) / 12,4);
         }
 
 
         public double GetJz()
         {
-            return Math.Round(Width * Math.Pow(Height, 3) / 3, 3);
+            return Math.Round(Width * Math.Pow(Height, 3) / 3, 4);
         }
 
 
         public double GetJy()
         {
-            return Math.Round(Height * Math.Pow(Width, 3) / 3, 3);
+            return Math.Round(Height * Math.Pow(Width, 3) / 3, 4);
         }
 
         public double GetJzcyz()
@@ -56,7 +56,7 @@ namespace ProjectCalculator.Core.Domain
         }
         public double GetJzy()
         {
-            return Math.Round(Math.Pow(Width, 2) * Math.Pow(Height, 2) / 4, 2);
+            return Math.Round(Math.Pow(Width, 2) * Math.Pow(Height, 2)/ 4, 4);
         }
     }
 }

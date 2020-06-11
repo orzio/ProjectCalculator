@@ -31,7 +31,14 @@ namespace ProjectCalculator.Controllers
                         Q1=9,
                         Q2 = 5,
                         P = 3},
-                ShapeType = 1
+                ShapeType = 1,
+                Shape = new Shape()
+                {
+                    B1 = 3,
+                    B2 = 5,
+                    H1 = 3,
+                    H2 = 3
+                }
             };
             _commandDispatcher.DispatchAsync(bendingCommand);
             return null;

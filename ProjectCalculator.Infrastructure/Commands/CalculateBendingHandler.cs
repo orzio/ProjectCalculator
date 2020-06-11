@@ -12,7 +12,6 @@ namespace ProjectCalculator.Infrastructure.Commands
     public class CalculateBendingHandler : ICommandHandler<BendingCommand>
     {
         private readonly IBendingCalculator _bendingCalculator;
-        private readonly IService _shapeService;
 
         public CalculateBendingHandler()
         {
@@ -35,6 +34,8 @@ namespace ProjectCalculator.Infrastructure.Commands
 
             var paramFiz = shapeCalculator
                 .CalculateCenterOfGravity()
+                .CalculateJz()
+                .CalculateJy()
                 .CalculateCentralMomentOfInteria()
                 .CalculateDeviantMoment()
                 .CalculateMainCenteralMomentOfInteria()

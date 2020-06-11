@@ -16,17 +16,17 @@ namespace ProjectCalculator.Core.Domain
 
         public double GetArea()
         {
-            return 0.5* Height * Width;
+            return Math.Round(0.5* Height * Width,3);
         }
 
         public double GetZCoordinate()
         {
-            return Width * 1.0/3.0;
+            return Math.Round(Width * 1.0/3.0,3);
         }
 
         public double GetYCoordinate()
         {
-            return Height * 1.0 / 3.0;
+            return Math.Round(Height * 1.0 / 3.0,3);
         }
 
         public double GetJzc()

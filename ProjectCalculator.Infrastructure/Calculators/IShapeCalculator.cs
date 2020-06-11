@@ -14,6 +14,8 @@ namespace ProjectCalculator.Infrastructure.Calculators
         IShapeCalculator CalculateDeviantMoment();
         IShapeCalculator CalculateMainCenteralMomentOfInteria();
         IShapeCalculator CalculateTgFi();
+        IShapeCalculator CalculateJz();
+        IShapeCalculator CalculateJy();
         ParamFiz GetParameters();
     }
 }
