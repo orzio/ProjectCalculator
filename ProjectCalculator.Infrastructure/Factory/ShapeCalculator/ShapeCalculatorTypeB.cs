@@ -6,27 +6,27 @@ using System.Text;
 
 namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
 {
-    public class ShapeCalculatorTypeA : IShapeCalculator
+   public class ShapeCalculatorTypeB:IShapeCalculator
     {
         private ParamFiz _paramFiz;
         private Shape _shape;
         private Rectangle _rectangle;
         private Triangle _triangle;
 
-        public ShapeCalculatorTypeA(Shape shape)
+        public ShapeCalculatorTypeB(Shape shape)
         {
             _shape = shape;
             _paramFiz = new ParamFiz();
             _rectangle = new Rectangle()
             {
                 Height = _shape.H1,
-                Width = _shape.B1 + _shape.B2
+                Width = _shape.B2
             };
 
             _triangle = new Triangle()
             {
                 Height = _shape.H2,
-                Width = _shape.B2
+                Width = _shape.B1 + _shape.B2
             };
             _paramFiz.Rectangle = _rectangle;
             _paramFiz.Triangle = _triangle;
@@ -36,7 +36,7 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
         public IShapeCalculator CalculateCenterOfGravity()
         {
             _paramFiz.Sy = Math.Round(_rectangle.GetArea() * _rectangle.GetZCoordinate() + _triangle.GetArea() * _triangle.GetZCoordinate(), 4);
-            _paramFiz.Sz = Math.Round(_rectangle.GetArea() * (-_rectangle.GetYCoordinate()) + _triangle.GetArea() * _triangle.GetYCoordinate(), 4);
+            _paramFiz.Sz = Math.Round(_rectangle.GetArea() * (-_rectangle.GetYCoordinate())+ _triangle.GetArea() * _triangle.GetYCoordinate(), 4);
             _paramFiz.Area = Math.Round(_rectangle.GetArea() + _triangle.GetArea(), 3);
 
             _paramFiz.Zc = Math.Round(_paramFiz.Sy / _paramFiz.Area, 4);

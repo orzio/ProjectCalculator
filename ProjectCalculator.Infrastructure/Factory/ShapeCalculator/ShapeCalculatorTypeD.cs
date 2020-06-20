@@ -2,31 +2,32 @@
 using ProjectCalculator.Infrastructure.Calculators;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
 {
-    public class ShapeCalculatorTypeA : IShapeCalculator
+    public class ShapeCalculatorTypeD : IShapeCalculator
     {
         private ParamFiz _paramFiz;
         private Shape _shape;
         private Rectangle _rectangle;
         private Triangle _triangle;
 
-        public ShapeCalculatorTypeA(Shape shape)
+        public ShapeCalculatorTypeD(Shape shape)
         {
             _shape = shape;
             _paramFiz = new ParamFiz();
             _rectangle = new Rectangle()
             {
-                Height = _shape.H1,
-                Width = _shape.B1 + _shape.B2
+                Height = _shape.H1 + _shape.H2,
+                Width = _shape.B2
             };
 
             _triangle = new Triangle()
             {
-                Height = _shape.H2,
-                Width = _shape.B2
+                Height = _shape.H1,
+                Width = _shape.B1
             };
             _paramFiz.Rectangle = _rectangle;
             _paramFiz.Triangle = _triangle;
@@ -35,8 +36,8 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
 
         public IShapeCalculator CalculateCenterOfGravity()
         {
-            _paramFiz.Sy = Math.Round(_rectangle.GetArea() * _rectangle.GetZCoordinate() + _triangle.GetArea() * _triangle.GetZCoordinate(), 4);
-            _paramFiz.Sz = Math.Round(_rectangle.GetArea() * (-_rectangle.GetYCoordinate()) + _triangle.GetArea() * _triangle.GetYCoordinate(), 4);
+            _paramFiz.Sy = Math.Round(_rectangle.GetArea() * (-_rectangle.GetZCoordinate()) + _triangle.GetArea() * _triangle.GetZCoordinate(), 4);
+            _paramFiz.Sz = Math.Round(_rectangle.GetArea() * _rectangle.GetYCoordinate() + _triangle.GetArea() * _triangle.GetYCoordinate(), 4);
             _paramFiz.Area = Math.Round(_rectangle.GetArea() + _triangle.GetArea(), 3);
 
             _paramFiz.Zc = Math.Round(_paramFiz.Sy / _paramFiz.Area, 4);
@@ -47,27 +48,27 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
 
         public IShapeCalculator CalculateJz()
         {
-            _paramFiz.Jz = Math.Round(_rectangle.GetJz() + _triangle.GetJz(), 4);
+            _paramFiz.Jz = Math.Round(_rectangle.GetJz() + _triangle.GetJz(),4);
             return this;
         }
 
         public IShapeCalculator CalculateJy()
         {
             _paramFiz.Jy = Math.Round(_rectangle.GetJy() + _triangle.GetJy(), 4);
-            return this;
+            return this; 
         }
 
         public IShapeCalculator CalculateCentralMomentOfInteria()
         {
-            _paramFiz.Jzc = Math.Round(_paramFiz.Jz - _paramFiz.Area * Math.Pow(_paramFiz.Yc, 2), 4);
-            _paramFiz.Jyc = Math.Round(_paramFiz.Jy - _paramFiz.Area * Math.Pow(_paramFiz.Zc, 2), 4);
+            _paramFiz.Jzc = Math.Round(_paramFiz.Jz - _paramFiz.Area * Math.Pow(_paramFiz.Yc, 2),4);
+            _paramFiz.Jyc = Math.Round(_paramFiz.Jy- _paramFiz.Area * Math.Pow(_paramFiz.Zc, 2),4);
             return this;
         }
 
         public IShapeCalculator CalculateDeviantMoment()
         {
-            _paramFiz.Jzy = Math.Round(-_rectangle.GetJzy() + _triangle.GetJzy(), 4);
-            _paramFiz.Jzcyc = Math.Round(_paramFiz.Jzy - (_paramFiz.Area * _paramFiz.Yc * _paramFiz.Zc), 4);
+            _paramFiz.Jzy = Math.Round(-_rectangle.GetJzy() + _triangle.GetJzy(),4);
+            _paramFiz.Jzcyc =Math.Round(_paramFiz.Jzy - (_paramFiz.Area * _paramFiz.Yc * _paramFiz.Zc),4);
             return this;
         }
 

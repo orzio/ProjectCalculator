@@ -6,6 +6,8 @@ namespace ProjectCalculator.Core.Domain
 {
     public class ParamFiz
     {
+        public Rectangle Rectangle { get; set; }
+        public Triangle Triangle { get; set; }
         public double Area { get; set; }
         public double Sz { get; set; }
         public double Sy { get; set; }

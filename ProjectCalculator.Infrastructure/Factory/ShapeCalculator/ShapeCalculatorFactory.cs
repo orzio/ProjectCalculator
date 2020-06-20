@@ -16,6 +16,15 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
                 case 1:
                     shapeCalculator = new ShapeCalculatorTypeA(command.Shape);
                     break;
+                case 2:
+                    shapeCalculator = new ShapeCalculatorTypeB(command.Shape);
+                    break;
+                case 3:
+                    shapeCalculator = new ShapeCalculatorTypeC(command.Shape);
+                    break;
+                case 4:
+                    shapeCalculator = new ShapeCalculatorTypeD(command.Shape);
+                    break;
             }
             return shapeCalculator;
         }

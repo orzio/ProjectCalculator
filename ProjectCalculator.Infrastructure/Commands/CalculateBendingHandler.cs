@@ -22,6 +22,7 @@ namespace ProjectCalculator.Infrastructure.Commands
         {
             var beamCalculator = new BeamCalculatorFactory()
                 .GetBeamCalculator(command);
+
             var internalForces = beamCalculator
                 .CalculateHa()
                 .CalculateVa()
@@ -30,6 +31,7 @@ namespace ProjectCalculator.Infrastructure.Commands
 
             var shapeCalculator = new ShapeCalculatorFactory()
                 .GetShapeCalculator(command);
+
 
 
             var paramFiz = shapeCalculator
@@ -41,6 +43,11 @@ namespace ProjectCalculator.Infrastructure.Commands
                 .CalculateMainCenteralMomentOfInteria()
                 .CalculateTgFi()
                 .GetParameters();
+
+
+
+
+
 
             //https://help.syncfusion.com/file-formats/pdf/create-pdf-file-in-asp-net-core pdf creator
             _bendingCalculator.Calculate(paramFiz, internalForces);

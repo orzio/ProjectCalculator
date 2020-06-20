@@ -31,7 +31,7 @@ namespace ProjectCalculator.Controllers
                         Q1=9,
                         Q2 = 5,
                         P = 3},
-                ShapeType = 1,
+                ShapeType = 3,
                 Shape = new Shape()
                 {
                     B1 = 3,

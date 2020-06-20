@@ -9,7 +9,7 @@ namespace ProjectCalculator.Infrastructure.Calculators
     {
         public void Calculate(ParamFiz paramFiz, InternalForces internalForces)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
