@@ -20,7 +20,6 @@ namespace ProjectCalculator.Core.Domain
         public double J1 { get; set; }
         public double J2 { get; set; }
         public double Tg2Fi { get; set; }
-        public double TgFi { get; set; }
         public double TwoFi { get; set; }
         public double Fi { get; set; }
         public double Yc { get; set; }

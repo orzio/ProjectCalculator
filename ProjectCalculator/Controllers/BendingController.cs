@@ -23,7 +23,7 @@ namespace ProjectCalculator.Controllers
         {
             BendingCommand bendingCommand = new BendingCommand()
             {
-                BeamType = 1,
+                BeamType = 2,
                 Beam = new Beam() {
                         L1 = 2,
                         L2 = 4,

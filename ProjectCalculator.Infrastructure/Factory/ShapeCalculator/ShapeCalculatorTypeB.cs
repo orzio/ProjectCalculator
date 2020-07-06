@@ -81,7 +81,7 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
         public IShapeCalculator CalculateTgFi()
         {
             _paramFiz.Tg2Fi = Math.Round(-2 * _paramFiz.Jzcyc / (_paramFiz.Jyc - _paramFiz.Jzc), 4);
-            _paramFiz.TwoFi = Math.Round(Math.Atan(_paramFiz.Tg2Fi), 4);
+            _paramFiz.TwoFi = Math.Round(Math.Atan(_paramFiz.Tg2Fi)*180.0d/Math.PI, 4);
             _paramFiz.Fi = Math.Round(_paramFiz.TwoFi / 2.0, 4);
             return this;
         }

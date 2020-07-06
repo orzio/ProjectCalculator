@@ -7,6 +7,8 @@ namespace ProjectCalculator.Infrastructure.Calculators
 {
     public interface IBendingCalculator
     {
-        public void Calculate(ParamFiz paramFiz, InternalForces internalForces);
+        void Calculate(ParamFiz paramFiz, BendingMoment internalForces);
+        TensionData GetData();
+        void CalculateEthaRate();
     }
 }

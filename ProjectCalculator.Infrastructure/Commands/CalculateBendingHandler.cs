@@ -4,8 +4,10 @@ using ProjectCalculator.Infrastructure.Factory.BeamCalculator;
 using ProjectCalculator.Infrastructure.Factory.ShapeCalculator;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectCalculator.Infrastructure.Writer;
 
 namespace ProjectCalculator.Infrastructure.Commands
 {
@@ -23,16 +25,9 @@ namespace ProjectCalculator.Infrastructure.Commands
             var beamCalculator = new BeamCalculatorFactory()
                 .GetBeamCalculator(command);
 
-            var internalForces = beamCalculator
-                .CalculateHa()
-                .CalculateVa()
-                .CalculateMa()
-                .GetInternalForces();
 
             var shapeCalculator = new ShapeCalculatorFactory()
                 .GetShapeCalculator(command);
-
-
 
             var paramFiz = shapeCalculator
                 .CalculateCenterOfGravity()
@@ -44,13 +39,32 @@ namespace ProjectCalculator.Infrastructure.Commands
                 .CalculateTgFi()
                 .GetParameters();
 
+            var internalForces = beamCalculator
+                .CalculateHa()
+                .CalculateVa()
+                .CalculateMa()
+                .GetInternalForces();
+
+            var bendingMomentCalculator = new BendingMomentsCalculator();
+            var bendingMoment = bendingMomentCalculator
+                .CalculateM1(internalForces.Moment, paramFiz.Fi)
+                .CalculateM2(internalForces.Moment, paramFiz.Fi)
+                .GetBendingMoment();
 
 
 
-
+            _bendingCalculator.Calculate(paramFiz, bendingMoment);
+            _bendingCalculator.CalculateEthaRate();
+            var tensionData = _bendingCalculator.GetData();
+            
+            var writer = new ProjectWriter(paramFiz, bendingMoment, internalForces, tensionData);
+            var path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, $@"../../../Files/index.html"));
+            writer.ReadHtmlTemplate(path);
+            writer.ReplaceHtmlTemplateWithValues();
+            writer.SaveFile(Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, $@"../../../Files/result.html")));
 
             //https://help.syncfusion.com/file-formats/pdf/create-pdf-file-in-asp-net-core pdf creator
-            _bendingCalculator.Calculate(paramFiz, internalForces);
+
             return Task.FromResult(1);
         }
     }
