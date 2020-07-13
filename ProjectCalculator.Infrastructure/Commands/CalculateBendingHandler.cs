@@ -29,8 +29,11 @@ namespace ProjectCalculator.Infrastructure.Commands
             var shapeCalculator = new ShapeCalculatorFactory()
                 .GetShapeCalculator(command);
 
+            
+
             var paramFiz = shapeCalculator
                 .CalculateCenterOfGravity()
+                .CalculateCenterOfGravityInFirstQuarter()
                 .CalculateJz()
                 .CalculateJy()
                 .CalculateCentralMomentOfInteria()
@@ -53,9 +56,13 @@ namespace ProjectCalculator.Infrastructure.Commands
 
 
 
+
             _bendingCalculator.Calculate(paramFiz, bendingMoment);
             _bendingCalculator.CalculateEthaRate();
             var tensionData = _bendingCalculator.GetData();
+
+            var contourPointsCalculator = new ContourPointCalculatorTypeC(command.Shape, paramFiz);
+            var contourPoints = contourPointsCalculator.GetPoints();
             
             var writer = new ProjectWriter(paramFiz, bendingMoment, internalForces, tensionData);
             var path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, $@"../../../Files/index.html"));

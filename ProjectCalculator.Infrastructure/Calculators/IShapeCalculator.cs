@@ -10,6 +10,7 @@ namespace ProjectCalculator.Infrastructure.Calculators
     public interface IShapeCalculator
     {
         IShapeCalculator CalculateCenterOfGravity();
+        IShapeCalculator CalculateCenterOfGravityInFirstQuarter();
         IShapeCalculator CalculateCentralMomentOfInteria();
         IShapeCalculator CalculateDeviantMoment();
         IShapeCalculator CalculateMainCenteralMomentOfInteria();

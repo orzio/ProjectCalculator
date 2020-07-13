@@ -92,5 +92,10 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
         {
             return _paramFiz;
         }
+
+        public IShapeCalculator CalculateCenterOfGravityInFirstQuarter()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

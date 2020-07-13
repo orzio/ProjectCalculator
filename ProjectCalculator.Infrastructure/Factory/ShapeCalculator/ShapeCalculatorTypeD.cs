@@ -46,6 +46,18 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
             return this;
         }
 
+        public IShapeCalculator CalculateCenterOfGravityInFirstQuarter()
+        {
+            var sy = Math.Round(_rectangle.GetArea() * (_rectangle.GetZCoordinate()) + _triangle.GetArea() * (_triangle.GetZCoordinate() + _rectangle.Width), 4);
+            var sz = Math.Round(_rectangle.GetArea() * _rectangle.GetYCoordinate() + _triangle.GetArea() * _triangle.GetYCoordinate(), 4);
+            _paramFiz.Area = Math.Round(_rectangle.GetArea() + _triangle.GetArea(), 3);
+
+            _paramFiz.ZcFirstQuarter = Math.Round(sy / _paramFiz.Area, 4);
+            _paramFiz.YcFirstQuarter = Math.Round(sz / _paramFiz.Area, 4);
+
+            return this;
+        }
+
         public IShapeCalculator CalculateJz()
         {
             _paramFiz.Jz = Math.Round(_rectangle.GetJz() + _triangle.GetJz(),4);
@@ -87,11 +99,10 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
             return this;
         }
 
-
-
         public ParamFiz GetParameters()
         {
             return _paramFiz;
         }
+
     }
 }
