@@ -1,11 +1,12 @@
 ﻿using ProjectCalculator.Core.Domain;
+using ProjectCalculator.Infrastructure.Calculators;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ProjectCalculator.Infrastructure.Factory.ContourPointsCalculator
 {
-    public class ContourPointCalculatorTypeA
+    public class ContourPointCalculatorTypeA: ICoordinateCalculator
     {
         private Dictionary<Char, Point> _contourPoints;
         private readonly Shape _shape;

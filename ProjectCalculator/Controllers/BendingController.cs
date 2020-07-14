@@ -31,13 +31,13 @@ namespace ProjectCalculator.Controllers
                         Q1=9,
                         Q2 = 5,
                         P = 3},
-                ShapeType = 3,
+                ShapeType = 2,
                 Shape = new Shape()
                 {
-                    B1 = 3,
+                    B1 = 2,
                     B2 = 5,
-                    H1 = 3,
-                    H2 = 3
+                    H1 = 5,
+                    H2 = 5
                 }
             };
             _commandDispatcher.DispatchAsync(bendingCommand);

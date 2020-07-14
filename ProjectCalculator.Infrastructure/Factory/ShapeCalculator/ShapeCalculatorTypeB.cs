@@ -95,7 +95,14 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
 
         public IShapeCalculator CalculateCenterOfGravityInFirstQuarter()
         {
-            throw new NotImplementedException();
+            var sy = Math.Round(_rectangle.GetArea() * _rectangle.GetZCoordinate() + _triangle.GetArea() * _triangle.GetZCoordinate(), 4);
+            var sz = Math.Round(_rectangle.GetArea() * _rectangle.GetYCoordinate() + _triangle.GetArea() * (_triangle.GetYCoordinate() + _rectangle.Height), 4);
+            _paramFiz.Area = Math.Round(_rectangle.GetArea() + _triangle.GetArea(), 3);
+
+            _paramFiz.ZcFirstQuarter = Math.Round(sy / _paramFiz.Area, 4);
+            _paramFiz.YcFirstQuarter = Math.Round(sz / _paramFiz.Area, 4);
+
+            return this;
         }
     }
 }

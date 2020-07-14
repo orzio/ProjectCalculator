@@ -8,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectCalculator.Infrastructure.Writer;
+using ProjectCalculator.Infrastructure.Factory.ContourPointsCalculator;
 
 namespace ProjectCalculator.Infrastructure.Commands
 {
@@ -25,12 +26,10 @@ namespace ProjectCalculator.Infrastructure.Commands
             var beamCalculator = new BeamCalculatorFactory()
                 .GetBeamCalculator(command);
 
-
             var shapeCalculator = new ShapeCalculatorFactory()
                 .GetShapeCalculator(command);
 
-            
-
+            #region CALCULATE_PARAMFIZ
             var paramFiz = shapeCalculator
                 .CalculateCenterOfGravity()
                 .CalculateCenterOfGravityInFirstQuarter()
@@ -41,12 +40,15 @@ namespace ProjectCalculator.Infrastructure.Commands
                 .CalculateMainCenteralMomentOfInteria()
                 .CalculateTgFi()
                 .GetParameters();
+            #endregion
 
+            #region CALCULATE_INTERNAL_FORCES
             var internalForces = beamCalculator
                 .CalculateHa()
                 .CalculateVa()
                 .CalculateMa()
                 .GetInternalForces();
+            #endregion
 
             var bendingMomentCalculator = new BendingMomentsCalculator();
             var bendingMoment = bendingMomentCalculator
@@ -54,21 +56,22 @@ namespace ProjectCalculator.Infrastructure.Commands
                 .CalculateM2(internalForces.Moment, paramFiz.Fi)
                 .GetBendingMoment();
 
-
+            var contourPoointsCalculator = new ContourCalculatorFactory()
+                    .GetContourCalculator(command, paramFiz);
+            var contourPoints = contourPoointsCalculator.GetPoints();
 
 
             _bendingCalculator.Calculate(paramFiz, bendingMoment);
             _bendingCalculator.CalculateEthaRate();
             var tensionData = _bendingCalculator.GetData();
 
-            var contourPointsCalculator = new ContourPointCalculatorTypeC(command.Shape, paramFiz);
-            var contourPoints = contourPointsCalculator.GetPoints();
-            
+            #region HTML_OUTPUT
             var writer = new ProjectWriter(paramFiz, bendingMoment, internalForces, tensionData);
             var path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, $@"../../../Files/index.html"));
             writer.ReadHtmlTemplate(path);
             writer.ReplaceHtmlTemplateWithValues();
             writer.SaveFile(Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, $@"../../../Files/result.html")));
+            #endregion
 
             //https://help.syncfusion.com/file-formats/pdf/create-pdf-file-in-asp-net-core pdf creator
 

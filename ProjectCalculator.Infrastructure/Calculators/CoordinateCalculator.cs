@@ -3,11 +3,11 @@ using ProjectCalculator.Core.Domain;
 
 namespace ProjectCalculator.Infrastructure.Calculators
 {
-    public class CoordinateCalculator:ICoordinateCalculator
+    public class CoordinateCalculator
     {
         private Point _rotatedPoint;
 
-        public ICoordinateCalculator CalculateCoordinate(Action<Point> calculator)
+        public CoordinateCalculator CalculateCoordinate(Action<Point> calculator)
         {
             calculator.Invoke(_rotatedPoint);
             return this;
