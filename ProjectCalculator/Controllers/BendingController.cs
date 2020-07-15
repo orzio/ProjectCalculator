@@ -21,6 +21,46 @@ namespace ProjectCalculator.Controllers
         [HttpGet]
         public Task<IActionResult> Get()
         {
+            var shapeB1_2_B2_5_H1_5_H2_5 = new Shape()
+            {
+                B1 = 2,
+                B2 = 5,
+                H1 = 5,
+                H2 = 5
+            };
+
+            var shapeB1_5_B2_2_H1_5_H2_3 = new Shape()
+            {
+                B1 = 5,
+                B2 = 2,
+                H1 = 5,
+                H2 = 3
+            };
+
+            var shapeB1_4_B2_5_H1_5_H2_5 = new Shape()
+            {
+                B1 = 4,
+                B2 = 5,
+                H1 = 5,
+                H2 = 5
+            };
+
+            var shapeB1_3_B2_5_H1_2_H2_2 = new Shape()
+            {
+                B1 = 2,
+                B2 = 3,
+                H1 = 3,
+                H2 = 3
+            };
+
+            var shapeB1_3_B2_5_H1_3_H2_5 = new Shape()
+            {
+                B1 = 3,
+                B2 = 5,
+                H1 = 3,
+                H2 = 5
+            };
+
             BendingCommand bendingCommand = new BendingCommand()
             {
                 BeamType = 2,
@@ -31,14 +71,8 @@ namespace ProjectCalculator.Controllers
                         Q1=9,
                         Q2 = 5,
                         P = 3},
-                ShapeType = 2,
-                Shape = new Shape()
-                {
-                    B1 = 2,
-                    B2 = 5,
-                    H1 = 5,
-                    H2 = 5
-                }
+                ShapeType = 1,
+                Shape = shapeB1_4_B2_5_H1_5_H2_5
             };
             _commandDispatcher.DispatchAsync(bendingCommand);
             return null;

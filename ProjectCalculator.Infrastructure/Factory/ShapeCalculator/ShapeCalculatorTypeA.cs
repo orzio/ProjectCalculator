@@ -20,13 +20,13 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
             _rectangle = new Rectangle()
             {
                 Height = _shape.H1,
-                Width = _shape.B1 + _shape.B2
+                Width = _shape.B2
             };
 
             _triangle = new Triangle()
             {
-                Height = _shape.H2,
-                Width = _shape.B2
+                Height = _shape.H1 + _shape.H2,
+                Width = _shape.B1
             };
             _paramFiz.Rectangle = _rectangle;
             _paramFiz.Triangle = _triangle;
@@ -35,8 +35,8 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
 
         public IShapeCalculator CalculateCenterOfGravity()
         {
-            _paramFiz.Sy = Math.Round(_rectangle.GetArea() * _rectangle.GetZCoordinate() + _triangle.GetArea() * _triangle.GetZCoordinate(), 4);
-            _paramFiz.Sz = Math.Round(_rectangle.GetArea() * (-_rectangle.GetYCoordinate()) + _triangle.GetArea() * _triangle.GetYCoordinate(), 4);
+            _paramFiz.Sy = Math.Round(_rectangle.GetArea() * (-_rectangle.GetZCoordinate()) + _triangle.GetArea() * _triangle.GetZCoordinate(), 4);
+            _paramFiz.Sz = Math.Round(_rectangle.GetArea() * _rectangle.GetYCoordinate() + _triangle.GetArea() * _triangle.GetYCoordinate(), 4);
             _paramFiz.Area = Math.Round(_rectangle.GetArea() + _triangle.GetArea(), 3);
 
             _paramFiz.Zc = Math.Round(_paramFiz.Sy / _paramFiz.Area, 4);
@@ -95,8 +95,8 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
 
         public IShapeCalculator CalculateCenterOfGravityInFirstQuarter()
         {
-            var sy = Math.Round(_rectangle.GetArea() * _rectangle.GetZCoordinate() + _triangle.GetArea() * _triangle.GetZCoordinate(), 4);
-            var sz = Math.Round(_rectangle.GetArea() * _rectangle.GetYCoordinate() + _triangle.GetArea() * (_triangle.GetYCoordinate() + _rectangle.Height), 4);
+            var sy = Math.Round(_rectangle.GetArea() * _rectangle.GetZCoordinate() + _triangle.GetArea() * (_triangle.GetZCoordinate() + _rectangle.Width), 4);
+            var sz = Math.Round(_rectangle.GetArea() * _rectangle.GetYCoordinate() + _triangle.GetArea() * _triangle.GetYCoordinate(), 4);
             _paramFiz.Area = Math.Round(_rectangle.GetArea() + _triangle.GetArea(), 3);
 
             _paramFiz.ZcFirstQuarter = Math.Round(sy / _paramFiz.Area, 4);
