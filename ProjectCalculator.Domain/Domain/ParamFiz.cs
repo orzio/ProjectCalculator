@@ -19,6 +19,8 @@ namespace ProjectCalculator.Core.Domain
         public double Jzcyc { get; set; }
         public double J1 { get; set; }
         public double J2 { get; set; }
+        public double Je { get; set; }
+        public double Jn { get; set; }
         public double Tg2Fi { get; set; }
         public double TwoFi { get; set; }
         public double Fi { get; set; }

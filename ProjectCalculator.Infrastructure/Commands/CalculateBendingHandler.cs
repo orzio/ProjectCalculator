@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectCalculator.Infrastructure.Writer;
 using ProjectCalculator.Infrastructure.Factory.ContourPointsCalculator;
+using ProjectCalculator.Core.Domain;
 
 namespace ProjectCalculator.Infrastructure.Commands
 {
@@ -60,10 +61,12 @@ namespace ProjectCalculator.Infrastructure.Commands
                     .GetContourCalculator(command, paramFiz);
             var contourPoints = contourPoointsCalculator.GetPoints();
 
+
+
             using (StreamWriter file =
              new StreamWriter(@$"E:\Własne\Projekty\testFiles\{command.ShapeType}_B1_{command.Shape.B1}_B2_{command.Shape.B2}_H1_{command.Shape.H1}_H2_{command.Shape.H2}.txt"))
             {
-               file.WriteLine($"B1_{command.Shape.B1}_B2_{command.Shape.B2}_H1_{command.Shape.H1}_H2_{command.Shape.H2}");
+                file.WriteLine($"B1_{command.Shape.B1}_B2_{command.Shape.B2}_H1_{command.Shape.H1}_H2_{command.Shape.H2}");
                 foreach (var item in contourPoints)
                 {
                     {
@@ -75,6 +78,19 @@ namespace ProjectCalculator.Infrastructure.Commands
             _bendingCalculator.Calculate(paramFiz, bendingMoment);
             _bendingCalculator.CalculateEthaRate();
             var tensionData = _bendingCalculator.GetData();
+            var line = new Line
+            {
+                KsiRate = tensionData.KsiRate,
+                EthaRate = -1,
+                Rate = 0
+            };
+
+            var rotatedPoints = new PointRotator(contourPoints,paramFiz.Fi).RotatePoints().GetPoints();
+            var distanceCalculator = new DistanceCalculator(rotatedPoints,line);
+            var furthestsPoints = distanceCalculator.GetFurthestPoints();
+
+
+
 
             #region HTML_OUTPUT
             var writer = new ProjectWriter(paramFiz, bendingMoment, internalForces, tensionData);

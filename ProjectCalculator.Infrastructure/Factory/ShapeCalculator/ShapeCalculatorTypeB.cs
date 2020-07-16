@@ -75,6 +75,8 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
         {
             _paramFiz.J1 = Math.Round(0.5 * (_paramFiz.Jzc + _paramFiz.Jyc) + 0.5 * Math.Sqrt(Math.Pow(_paramFiz.Jyc - _paramFiz.Jzc, 2) + 4 * Math.Pow(_paramFiz.Jzcyc, 2)), 4);
             _paramFiz.J2 = Math.Round(0.5 * (_paramFiz.Jzc + _paramFiz.Jyc) - 0.5 * Math.Sqrt(Math.Pow(_paramFiz.Jyc - _paramFiz.Jzc, 2) + 4 * Math.Pow(_paramFiz.Jzcyc, 2)), 4);
+            _paramFiz.Je = _paramFiz.Jzc > _paramFiz.Jyc ? _paramFiz.J1 : _paramFiz.J2;
+            _paramFiz.Jn = _paramFiz.Jyc > _paramFiz.Jzc ? _paramFiz.J1 : _paramFiz.J2;
             return this;
         }
 

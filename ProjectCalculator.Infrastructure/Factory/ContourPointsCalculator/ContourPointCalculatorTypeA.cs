@@ -33,5 +33,7 @@ namespace ProjectCalculator.Infrastructure.Factory.ContourPointsCalculator
             _contourPoints.Add('D', Point.CreatePoint( _shape.B2 - _paramFiz.ZcFirstQuarter,_shape.H1 - _paramFiz.YcFirstQuarter));
             _contourPoints.Add('E', Point.CreatePoint(_shape.B2 - _paramFiz.ZcFirstQuarter, _shape.H1 + _shape.H2 - _paramFiz.YcFirstQuarter));
         }
+
+
     }
 }

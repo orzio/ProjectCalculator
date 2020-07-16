@@ -2,7 +2,7 @@ namespace ProjectCalculator.Core.Domain
 {
     public class BendingMoment
     {
-        public double M1 { get; set; }
-        public double M2 { get; set; }
+        public double Mn { get; set; }
+        public double Mksi { get; set; }
     }
 }

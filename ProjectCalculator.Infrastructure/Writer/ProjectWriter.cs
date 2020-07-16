@@ -58,12 +58,12 @@ namespace ProjectCalculator.Infrastructure.Writer
             _resultPage = _resultPage.Replace("2FiRes", _paramFiz.TwoFi.ToString());
             _resultPage = _resultPage.Replace("FiRes", _paramFiz.Fi.ToString());
             _resultPage = _resultPage.Replace("JzyRes", _paramFiz.Jzy.ToString());
-            _resultPage = _resultPage.Replace("M1Res", _bendingMoment.M1.ToString());
-            _resultPage = _resultPage.Replace("M2Res", _bendingMoment.M2.ToString());
+            _resultPage = _resultPage.Replace("M1Res", _bendingMoment.Mn.ToString());
+            _resultPage = _resultPage.Replace("M2Res", _bendingMoment.Mksi.ToString());
             _resultPage = _resultPage.Replace("MRes", _internalForces.Moment.ToString());
             _resultPage = _resultPage.Replace("M1J1Rslt", _tensionData.M1J1.ToString());
             _resultPage = _resultPage.Replace("M2J2Rslt", _tensionData.M2J2.ToString());
-            _resultPage = _resultPage.Replace("rateRes", _tensionData.ethaRate.ToString());
+            _resultPage = _resultPage.Replace("rateRes", _tensionData.KsiRate.ToString());
             return _resultPage;
         }
 

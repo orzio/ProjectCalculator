@@ -53,26 +53,26 @@ namespace ProjectCalculator.Controllers
                 H2 = 3
             };
 
-            var shapeB1_3_B2_5_H1_3_H2_5 = new Shape()
+            var shapeB1_3_B2_5_H1_3_H2_3 = new Shape()
             {
                 B1 = 3,
                 B2 = 5,
                 H1 = 3,
-                H2 = 5
+                H2 = 3
             };
 
             BendingCommand bendingCommand = new BendingCommand()
             {
-                BeamType = 2,
+                BeamType = 4,
                 Beam = new Beam() {
                         L1 = 2,
-                        L2 = 4,
+                        L2 = 3,
                         L3 = 1,
-                        Q1=9,
+                        Q1=8,
                         Q2 = 5,
-                        P = 3},
-                ShapeType = 1,
-                Shape = shapeB1_4_B2_5_H1_5_H2_5
+                        P = 9},
+                ShapeType =2,
+                Shape = shapeB1_2_B2_5_H1_5_H2_5
             };
             _commandDispatcher.DispatchAsync(bendingCommand);
             return null;
