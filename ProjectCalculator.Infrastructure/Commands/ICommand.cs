@@ -8,3 +8,4 @@ namespace ProjectCalculator.Infrastructure.Commands
     {
     }
 }
+ 
