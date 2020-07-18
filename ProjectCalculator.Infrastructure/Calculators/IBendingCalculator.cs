@@ -10,5 +10,8 @@ namespace ProjectCalculator.Infrastructure.Calculators
         void Calculate(ParamFiz paramFiz, BendingMoment internalForces);
         TensionData GetData();
         void CalculateEthaRate();
+        void CalculateTensionInFurthestsPoints(Dictionary<Char, Point> furthestsPoints);
+        void ChooseMinMaxTension();
+        void CalculateDimensionA(double kr);
     }
 }

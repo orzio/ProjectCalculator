@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body style="font-size: 25px;">
+<body style="font-size: 25px; background: lightgoldenrodyellow">
 
 <span>y<sub>c</sub> = 
         <math>
@@ -73,11 +73,11 @@
             <math>
              <mrow>
               <mfrac>
-                <mi>rectWidtha * (rectHeighta)<sup>3</sup></mi>
+                <mi>rectHeighta * (rectWidtha)<sup>3</sup></mi>
                 <mi>3</mi>
               </mfrac>+
               <mfrac>
-                <mi>triangleWidtha * (triangleHeighta)<sup>3</sup></mi>
+                <mi>triangleHeighta * (triangleWidtha)<sup>3</sup></mi>
                 <mi>12</mi>
                 </mfrac>
              </mrow>
@@ -89,13 +89,13 @@
 <span>J<sub>zy</sub> = 
    =
    <math>
-    <mrow>
+    <mrow>-
      <mfrac>
-      <mi>rectWidtha * (rectHeighta)<sup>3</sup></mi>
+      <mi>rectWidtha<sup>2</sup> * rectHeighta<sup>2</sup></mi>
       <mi>4</mi>
      </mfrac>+
      <mfrac>
-        <mi>triangleWidtha<sup>2</sup> * (triangleHeighta)<sup>2</sup></mi>
+        <mi>triangleWidtha<sup>2</sup> * triangleHeighta<sup>2</sup></mi>
         <mi>24</mi>
        </mfrac>
     </mrow>
@@ -141,7 +141,7 @@
             =
             <math>
              <mrow>
-                <mfrac><mi>1</mi><mi>2</mi></mfrac><span>(J<sub>yc</sub> + J<sub>zc</sub>) &#177;</span>0.5* <span
+                0.5*<span>(J<sub>yc</sub> + J<sub>zc</sub>) &#177;</span>0.5* <span
                      style="white-space: nowrap; ">
                     &radic;<span style="text-decoration:overline;">&nbsp;(J<sub>yc</sub>-J<sub>zc</sub>)<sup>2</sup>
                           + 4(J<sub>yczc</sub>)<sup>2</sup>&nbsp;</span>
@@ -157,7 +157,7 @@
             =
             <math>
              <mrow>
-                <mfrac><mi>1</mi><mi>2</mi></mfrac>(JycResa<sup>4</sup> + JzcResa<sup>4</sup>) + <mfrac><mi>1</mi><mi>2</mi></mfrac> <span
+                0.5*(JycResa<sup>4</sup> + JzcResa<sup>4</sup>) + 0.5* <span
                      style="white-space: nowrap; ">
                     &radic;<span
                      style="text-decoration:overline;">&nbsp;(JycResa<sup>4</sup>-JzcResa<sup>4</sup>)<sup>2</sup>
@@ -165,7 +165,7 @@
                     </span>
              </mrow>
             </math>
-            =J1Res a<sup>4</sup>
+            =JethaRes a<sup>4</sup>
          </span>
 <br>
 
@@ -173,7 +173,7 @@
             =
             <math>
              <mrow>
-                <mfrac><mi>1</mi><mi>2</mi></mfrac>(JycResa<sup>4</sup> + JzcResa<sup>4</sup>) -  <mfrac><mi>1</mi><mi>2</mi></mfrac> <span
+                0.5*(JycResa<sup>4</sup> + JzcResa<sup>4</sup>) -  0.5*<span
                      style="white-space: nowrap; ">
                     &radic;<span
                      style="text-decoration:overline;">&nbsp;(JycResa<sup>4</sup>-JzcResa<sup>4</sup>)<sup>2</sup>
@@ -181,7 +181,7 @@
                     </span>
              </mrow>
             </math>
-            =J2Resa<sup>4</sup>
+            =JksiResa<sup>4</sup>
          </span>
 <br>
 <br>
@@ -239,7 +239,7 @@
     <math>
         <mrow>
          <mfrac>
-             <mi>M<sub>1</sub></mi>
+             <mi>M<sub>&#958;</sub></mi>
           <mi>M</mi>
          </mfrac>
         </mrow>
@@ -250,7 +250,7 @@
 <span>
     <math>
         <mrow>
-          M<sub>1</sub> = M*cos&#934;
+          M<sub>&#958;</sub> = M*cos&#934;
         </mrow>
        </math>
     </span>
@@ -258,10 +258,10 @@
 <span>
     <math>
         <mrow>
-          M<sub>1</sub> = MResql<sup>2</sup>*cos(FiRes&#176;)
+          M<sub>&#958;</sub> = MResql<sup>2</sup>*cos(FiRes&#176;)
         </mrow>
        </math>
-    =M1Resql<sup>2</sup>
+    =MksiResql<sup>2</sup>
     </span>
 <br>
 <br>
@@ -271,7 +271,7 @@
     <math>
         <mrow>
          <mfrac>
-             <mi>M<sub>2</sub></mi>
+             <mi>M<sub>&#951;</sub></mi>
           <mi>M</mi>
          </mfrac>
         </mrow>
@@ -282,7 +282,7 @@
 <span>
     <math>
         <mrow>
-          M<sub>2</sub> = M*sin&#934;
+          M<sub>&#951;</sub> = M*sin&#934;
         </mrow>
        </math>
     </span>
@@ -290,10 +290,10 @@
 <span>
     <math>
         <mrow>
-          M<sub>2</sub> = MResql<sup>2</sup>*sin(FiRes&#176;)
+          M<sub>&#951;</sub> = MResql<sup>2</sup>*sin(FiRes&#176;)
         </mrow>
        </math>
-    =M2Resql<sup>2</sup>
+    =MethaResql<sup>2</sup>
     </span>
 <br>
 <br>
@@ -303,12 +303,12 @@
         <mrow>
             -
          <mfrac>
-          <mi>M<sub>2</sub></mi>
-          <mi>J<sub>2</sub></mi>
+          <mi>M<sub>&#958;</sub></mi>
+          <mi>J<sub>&#958;</sub></mi>
          </mfrac>&#951;+
          <mfrac>
-          <mi>M<sub>1</sub></mi>
-          <mi>J<sub>1</sub></mi>
+          <mi>M<sub>&#951;</sub></mi>
+          <mi>J<sub>&#951;</sub></mi>
          </mfrac>
             &#958;
         </mrow>
@@ -321,12 +321,12 @@
         <mrow>
             -
          <mfrac>
-          <mi>M2Resql<sup>2</sup></mi>
-          <mi>J2Res<sup>4</sup></mi>
+          <mi>MksiResql<sup>2</sup></mi>
+          <mi>JksiRes<sup>4</sup></mi>
          </mfrac>&#951;+
          <mfrac>
-          <mi>M1Resql<sup>2</sup></mi>
-          <mi>J1Res<sup>4</sup></mi>
+          <mi>MethaResql<sup>2</sup></mi>
+          <mi>JethaRes<sup>4</sup></mi>
          </mfrac>
             &#958;
         </mrow>
@@ -337,13 +337,12 @@
 <span>&#1004;<sub>x</sub> = 
     <math>
         <mrow>
-            -
-            (M2J2Rslt)
+            (MksiJksiRslt)
          <mfrac>
           <mi>ql<sup>2</sup></mi>
           <mi>a<sup>4</sup></mi>
          </mfrac>&#951;+
-            (M1J1Rslt)
+            (MethaJethaRslt)
          <mfrac>
           <mi>ql<sup>2</sup></mi>
           <mi>a<sup>4</sup></mi>
@@ -358,13 +357,13 @@ Oś obojętna: &#1004;<sub>x</sub> = 0
 <br>
 <math>
 <mrow>
-(M2J2Rslt)&#951;
+(MeJeResOpposite)&#951;
 <mfrac>
     <mi>ql<sup>2</sup></mi>
     <mi>a<sup>4</sup></mi>
 </mfrac>
 =
-(M1J1Rslt)&#958;
+(MethaJethaRslt)&#958;
 <mfrac>
     <mi>ql<sup>2</sup></mi>
     <mi>a<sup>4</sup></mi>
@@ -400,45 +399,50 @@ Oś obojętna: &#1004;<sub>x</sub> = 0
 </math>
 </span>
 <br>
-A(APointZCoord,APointYCoord)
+FirstPointName(FPZCoorda; FPYCoorda)
 <br>
-<span>&#958;<sub>A</sub>
-= -(APointYCoord)*sin(FiRes) + (APointZCoord)*cos(FiRes) = AksiCoordinateResa
+<span>&#958;<sub>FirstPointName</sub>
+= -(FPYCoorda)*sin(FiRes&#176;) + (FPZCoorda)*cos(FiRes&#176;) = FirstksiCoordinateResa
 </span>
 <br>
-<span>&#951;<sub>A</sub>
-= (APointYCoord)*cos(FiRes) + (APointZCoord)*sin(FiRes) = AethaCoordinateResa
+<span>&#951;<sub>FirstPointName</sub>
+= (FPYCoorda)*cos(FiRes&#176;) + (FPZCoorda)*sin(FiRes&#176;) = FirstethaCoordinateResa
 </span>
 <!--Point B-->
 <br>
-B(BPointYCoord,BPointZCoord)
+SecondPointName(SPZCoorda; SPYCoorda)
 <br>
-<span>&#958;<sub>B</sub>
-= -(BPointYCoord)*sin(FiRes) + (BPointZCoord)*cos(FiRes) = BksiCoordinateResa
+<span>&#958;<sub>SecondPointName</sub>
+= -(SPYCoorda)*sin(FiRes&#176;) + (SPZCoorda)*cos(FiRes&#176;) = SecondksiCoordinateResa
 </span>
 <br>
-<span>&#951;<sub>B</sub>
-= (BPointYCoord)*cos(FiRes) + (BPointZCoord)*sin(FiRes) = BethaCoordinateResa
+<span>&#951;<sub>SecondPointName</sub>
+= (SPYCoorda)*cos(FiRes&#176;) + (SPZCoorda)*sin(FiRes&#176;) = SecondethaCoordinateResa
 </span>
 
 <br>
 
 <span>
-        &#1004;<sub>x</sub><sup>A</sup>(AksiCoordinateResa,AethaCoordinateResa) =-(M2J2Rslt)
+        &#1004;<sub>x</sub><sup>FirstPointName</sup>(FirstksiCoordinateResa,FirstethaCoordinateResa) =(MksiJksiRslt)
     <math>
     <mrow>    
     <mfrac>
             <mi>ql<sup>2</sup></mi>
             <mi>a<sup>4</sup></mi>
     </mfrac>
-        *(AksiCoordinateResa)
+        *(FirstethaCoordinateResa)
         +
-        (M1J1Rslt)
+        (MethaJethaRslt)
          <mfrac>
             <mi>ql<sup>2</sup></mi>
             <mi>a<sup>4</sup></mi>
         </mfrac>
-        *(AethaCoordinateResa)
+        *(FirstksiCoordinateResa )
+        = FirstPSigmaResult
+        <mfrac>
+            <mi>ql<sup>2</sup></mi>
+            <mi>a<sup>3</sup></mi>
+    </mfrac>
     </mrow>
 </math>
 </span>
@@ -446,21 +450,26 @@ B(BPointYCoord,BPointZCoord)
 <br>
 
 <span>
-        &#1004;<sub>x</sub><sup>B</sup>(BksiCoordinateResa,BethaCoordinateResa) =-(M2J2Rslt)
+        &#1004;<sub>x</sub><sup>SecondPointName</sup>(SecondksiCoordinateResa,SecondethaCoordinateResa) =(MksiJksiRslt)
     <math>
     <mrow>    
     <mfrac>
             <mi>ql<sup>2</sup></mi>
             <mi>a<sup>4</sup></mi>
     </mfrac>
-        *(BksiCoordinateResa)
+        *(SecondethaCoordinateResa)
         +
-        (M1J1Rslt)
+        (MethaJethaRslt)
          <mfrac>
             <mi>ql<sup>2</sup></mi>
             <mi>a<sup>4</sup></mi>
         </mfrac>
-        *(BethaCoordinateResa)
+        *(SecondksiCoordinateResa)
+                = SecondPSigmaResult
+                <mfrac>
+            <mi>ql<sup>2</sup></mi>
+            <mi>a<sup>3</sup></mi>
+    </mfrac>
     </mrow>
 </math>
 </span>
@@ -486,7 +495,7 @@ B(BPointYCoord,BPointZCoord)
     </mrow>
 </math>
          &#8804;
-    krReskc
+    krReskckc
 </span>
 <br>
 <span>SigmaMinRes
@@ -507,7 +516,7 @@ B(BPointYCoord,BPointZCoord)
     <mrow>    
         <mfrac>
                 <mi>ql<sup>2</sup></mi>
-                <mi> krReskckc</mi>
+                <mi>krReskckc</mi>
         </mfrac>
     </mrow>
 </math>
@@ -531,11 +540,14 @@ B(BPointYCoord,BPointZCoord)
 <br>
 <span>a&#8805;
 <math>
-    <mrow>SMaxRes    
+    <mrow style="white-space: nowrap; ">SMaxRes  
+        &#x221B;
+        <span style="text-decoration:overline;">
         <mfrac>
                 <mi>ql<sup>2</sup></mi>
-                <mi>kc</mi>
+                <mi>/kc</mi>
         </mfrac>
+             </span>
     </mrow>
 </math>
 </span>
@@ -543,11 +555,15 @@ B(BPointYCoord,BPointZCoord)
 <br>
 <span>a&#8805;
 <math>
-    <mrow>SMinRes    
+    <mrow style="white-space: nowrap; ">SMinRes   
+            	&#x221B;
+        <span style="text-decoration:overline;">
+ 
         <mfrac>
                 <mi>ql<sup>2</sup></mi>
-                <mi>kc</mi>
+                <mi>/kc</mi>
         </mfrac>
+            </span>
     </mrow>
 </math>
 </span>
@@ -556,18 +572,18 @@ B(BPointYCoord,BPointZCoord)
 <br>
 <span>a&#8805;
 <math>
-    <mrow>ADimRes    
-        <mfrac>
+    <mrow style="white-space: nowrap; "> ADimRes
+            	&#x221B;
+        <span style="text-decoration:overline;">
+<mfrac>
                 <mi>ql<sup>2</sup></mi>
-                <mi>kc</mi>
+                <mi>/kc</mi>
         </mfrac>
+</span>
+     
     </mrow>
 </math>
 </span>
-
-
-
-
 
 
 </body>

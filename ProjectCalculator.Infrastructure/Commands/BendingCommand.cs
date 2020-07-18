@@ -11,5 +11,6 @@ namespace ProjectCalculator.Infrastructure.Commands
         public int ShapeType { get; set; }
         public Beam Beam { get; set; }
         public Shape Shape { get; set; }
+        public YieldPoint YieldPoint { get; set; } 
     }
 }

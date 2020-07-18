@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace ProjectCalculator.Infrastructure.Writer
@@ -12,14 +13,22 @@ namespace ProjectCalculator.Infrastructure.Writer
         private BendingMoment _bendingMoment;
         private InternalForces _internalForces;
         private TensionData _tensionData;
+        private Dictionary<Char, Point> _furthestsPoints;
+        private Dictionary<Char, Point> _contourPoints;
         private string _resultPage;
+        private YieldPoint _yieldPoint;
 
-        public ProjectWriter(ParamFiz paramFiz, BendingMoment bendingMoment, InternalForces internalForces, TensionData tensionData)
+        public ProjectWriter(ParamFiz paramFiz, BendingMoment bendingMoment, InternalForces internalForces, 
+            TensionData tensionData, Dictionary<Char,Point> furthestsPoints,Dictionary<Char,Point> contourPoints,
+            YieldPoint yieldPoint)
         {
             _paramFiz = paramFiz;
             _bendingMoment = bendingMoment;
             _internalForces = internalForces;
             _tensionData = tensionData;
+            _furthestsPoints = furthestsPoints;
+            _contourPoints = contourPoints;
+            _yieldPoint = yieldPoint;
         }
 
         public bool ReadHtmlTemplate(string path)
@@ -52,18 +61,47 @@ namespace ProjectCalculator.Infrastructure.Writer
             _resultPage = _resultPage.Replace("JzcRes", _paramFiz.Jzc.ToString());
             _resultPage = _resultPage.Replace("JycRes", _paramFiz.Jyc.ToString());
             _resultPage = _resultPage.Replace("JyczcRes", _paramFiz.Jzcyc .ToString());
-            _resultPage = _resultPage.Replace("J1Res", _paramFiz.J1.ToString());
-            _resultPage = _resultPage.Replace("J2Res", _paramFiz.J2.ToString());
+            _resultPage = _resultPage.Replace("JksiRes", _paramFiz.Je.ToString());
+            _resultPage = _resultPage.Replace("JethaRes", _paramFiz.Jn.ToString());
             _resultPage = _resultPage.Replace("tg2FiRes", _paramFiz.Tg2Fi.ToString());
             _resultPage = _resultPage.Replace("2FiRes", _paramFiz.TwoFi.ToString());
             _resultPage = _resultPage.Replace("FiRes", _paramFiz.Fi.ToString());
             _resultPage = _resultPage.Replace("JzyRes", _paramFiz.Jzy.ToString());
-            _resultPage = _resultPage.Replace("M1Res", _bendingMoment.Mn.ToString());
-            _resultPage = _resultPage.Replace("M2Res", _bendingMoment.Mksi.ToString());
+            _resultPage = _resultPage.Replace("MethaRes", _bendingMoment.Mn.ToString());
+            _resultPage = _resultPage.Replace("MksiRes", _bendingMoment.Me.ToString());
             _resultPage = _resultPage.Replace("MRes", _internalForces.Moment.ToString());
-            _resultPage = _resultPage.Replace("M1J1Rslt", _tensionData.M1J1.ToString());
-            _resultPage = _resultPage.Replace("M2J2Rslt", _tensionData.M2J2.ToString());
+            _resultPage = _resultPage.Replace("MethaJethaRslt", _tensionData.MnJn.ToString());
+            _resultPage = _resultPage.Replace("MksiJksiRslt", _tensionData.MeJe.ToString());
+            _resultPage = _resultPage.Replace("MeJeResOpposite", _tensionData.MeJeOpposite.ToString());
             _resultPage = _resultPage.Replace("rateRes", _tensionData.KsiRate.ToString());
+            _resultPage = _resultPage.Replace("FirstPointName", _furthestsPoints.First().Key.ToString());
+            _resultPage = _resultPage
+                .Replace("FPZCoord", 
+                    _contourPoints.FirstOrDefault(point => point.Key.ToString()
+                                                           == _furthestsPoints.First().Key.ToString())
+                .Value.HorizontalCoord.ToString());
+            _resultPage = _resultPage.Replace("FPYCoord", _contourPoints.FirstOrDefault(point => point.Key.ToString()
+                                                                                                 == _furthestsPoints.First().Key.ToString())
+                .Value.VerticalCoord.ToString());
+            _resultPage = _resultPage.Replace("SecondPointName", _furthestsPoints.Last().Key.ToString());
+            _resultPage = _resultPage.Replace("SPZCoord", _contourPoints.FirstOrDefault(point => point.Key.ToString()
+                                                                                                 == _furthestsPoints.Last().Key.ToString())
+                .Value.HorizontalCoord.ToString());
+            _resultPage = _resultPage.Replace("SPYCoord", _contourPoints.FirstOrDefault(point => point.Key.ToString()
+                                                                                                 == _furthestsPoints.Last().Key.ToString())
+                .Value.VerticalCoord.ToString());
+            _resultPage = _resultPage.Replace("FirstksiCoordinateRes", _furthestsPoints.First().Value.HorizontalCoord.ToString());
+            _resultPage = _resultPage.Replace("FirstethaCoordinateRes", _furthestsPoints.First().Value.VerticalCoord.ToString());
+            _resultPage = _resultPage.Replace("SecondksiCoordinateRes", _furthestsPoints.Last().Value.HorizontalCoord.ToString());
+            _resultPage = _resultPage.Replace("SecondethaCoordinateRes", _furthestsPoints.Last().Value.VerticalCoord.ToString());
+            _resultPage = _resultPage.Replace("FirstPSigmaResult", _tensionData.FirstPointTension.ToString());
+            _resultPage = _resultPage.Replace("SecondPSigmaResult", _tensionData.SecondPointTension.ToString());
+            _resultPage = _resultPage.Replace("SigmaMaxRes", _tensionData.SigmaMax.ToString());
+            _resultPage = _resultPage.Replace("SigmaMinRes", _tensionData.AbsSigmMin.ToString());
+            _resultPage = _resultPage.Replace("krReskc", _yieldPoint.Kr.ToString());
+            _resultPage = _resultPage.Replace("SMaxRes", _tensionData.ASigmaMax.ToString());
+            _resultPage = _resultPage.Replace("SMinRes", _tensionData.ASigmaMin.ToString());
+            _resultPage = _resultPage.Replace("ADimRes", _tensionData.CrossDimention.ToString());
             return _resultPage;
         }
 

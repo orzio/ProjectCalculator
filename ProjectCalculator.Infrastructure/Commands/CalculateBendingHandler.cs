@@ -5,6 +5,7 @@ using ProjectCalculator.Infrastructure.Factory.ShapeCalculator;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectCalculator.Infrastructure.Writer;
@@ -84,16 +85,18 @@ namespace ProjectCalculator.Infrastructure.Commands
                 EthaRate = -1,
                 Rate = 0
             };
-
             var rotatedPoints = new PointRotator(contourPoints,paramFiz.Fi).RotatePoints().GetPoints();
-            var distanceCalculator = new DistanceCalculator(rotatedPoints,line);
-            var furthestsPoints = distanceCalculator.GetFurthestPoints();
+            var furthestPoints = new DistanceCalculator(rotatedPoints,line).GetFurthestPoints();
+            _bendingCalculator.CalculateTensionInFurthestsPoints(furthestPoints);
+            _bendingCalculator.ChooseMinMaxTension();
+            _bendingCalculator.CalculateDimensionA(command.YieldPoint.Kr);
 
 
 
 
             #region HTML_OUTPUT
-            var writer = new ProjectWriter(paramFiz, bendingMoment, internalForces, tensionData);
+            var writer = new ProjectWriter(paramFiz, bendingMoment, internalForces, 
+                tensionData, furthestPoints, contourPoints,command.YieldPoint);
             var path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, $@"../../../Files/index.html"));
             writer.ReadHtmlTemplate(path);
             writer.ReplaceHtmlTemplateWithValues();
