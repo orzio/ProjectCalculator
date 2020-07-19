@@ -52,10 +52,10 @@ namespace ProjectCalculator.Infrastructure.Commands
                 .GetInternalForces();
             #endregion
 
-            var bendingMomentCalculator = new BendingMomentsCalculator();
+            var bendingMomentCalculator = new BendingMomentsCalculator(internalForces.Moment);
             var bendingMoment = bendingMomentCalculator
-                .CalculateM1(internalForces.Moment, paramFiz.Fi)
-                .CalculateM2(internalForces.Moment, paramFiz.Fi)
+                .CalculateM1(paramFiz.Fi)
+                .CalculateM2(paramFiz.Fi)
                 .GetBendingMoment();
 
             var contourPoointsCalculator = new ContourCalculatorFactory()

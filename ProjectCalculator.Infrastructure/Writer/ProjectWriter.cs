@@ -60,41 +60,55 @@ namespace ProjectCalculator.Infrastructure.Writer
                 "ctx.moveTo(rWidth,0);" +
                 "ctx.lineTo(rWidth+tWidth,0);" +
                 "ctx.lineTo(rWidth,tHigh);" +
-                
+
                 //draw y axis
                 "ctx.moveTo(rWidth,0);" +
                 "ctx.lineTo(rWidth,rHigh*1.5);" +
                 "ctx.lineTo(rWidth-10,rHigh*1.5-10);" +
                 "ctx.moveTo(rWidth,rHigh*1.5);" +
                 "ctx.lineTo(rWidth+10,rHigh*1.5-10);" +
-                "ctx.strokeText('y',rWidth+10,rHigh*1.5);" +
-                
-                
+                "ctx.font = '25px serif';" +
+                "ctx.fillText('y',rWidth+10,rHigh*1.5);" +
+
+
                 //draw z axis
                 "ctx.moveTo(0,0);" +
                 "ctx.lineTo(totalWidth+rHigh*0.5,0);" +
                 "ctx.lineTo(totalWidth+rHigh*0.5-10,-10);" +
                 "ctx.moveTo(totalWidth+rHigh*0.5,0);" +
                 "ctx.lineTo(totalWidth+rHigh*0.5-10,10);" +
-                "ctx.strokeText('z',totalWidth+rHigh*0.5,-10);" +
-                
+                "ctx.font = '25px serif';" +
+                "ctx.fillText('z',totalWidth+rHigh*0.5,-10);" +
+
                 //draw yc axis
                 $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale,0);" +
                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale,rHigh*1.5);" +
                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale-10,rHigh*1.5-10);" +
                 $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale,rHigh*1.5);" +
                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale+10,rHigh*1.5-10);" +
-                $"ctx.strokeText('yc',{_paramFiz.ZcFirstQuarter}*scale+10,rHigh*1.5);" +
-                
+                "ctx.font = '25px serif';" +
+                $"ctx.fillText('yc',{_paramFiz.ZcFirstQuarter}*scale+10,rHigh*1.5);" +
+
                 //draw zc axis
                 $"ctx.moveTo(0,{_paramFiz.YcFirstQuarter}*scale);" +
                 $"ctx.lineTo(rHigh*1.5,{_paramFiz.YcFirstQuarter}*scale);" +
                 $"ctx.lineTo(rHigh*1.5-10,{_paramFiz.YcFirstQuarter}*scale-10);" +
                 $"ctx.moveTo(rHigh*1.5,{_paramFiz.YcFirstQuarter}*scale);" +
                 $"ctx.lineTo(rHigh*1.5-10,{_paramFiz.YcFirstQuarter}*scale+10);" +
-                $"ctx.strokeText('zc',rHigh*1.5,{_paramFiz.YcFirstQuarter}*scale-10);" +
-               
-                
+                $"ctx.fillText('zc',rHigh*1.5,{_paramFiz.YcFirstQuarter}*scale-10);" +
+                //draw M
+                $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale,{_paramFiz.YcFirstQuarter}*scale);" +
+                $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale);" +
+                $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-10,{_paramFiz.YcFirstQuarter}*scale-10);" +
+                $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale);" +
+                $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-10,{_paramFiz.YcFirstQuarter}*scale+10);" +
+                $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-10,{_paramFiz.YcFirstQuarter}*scale);" +
+                $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-20,{_paramFiz.YcFirstQuarter}*scale-10);" +
+                $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-10,{_paramFiz.YcFirstQuarter}*scale);" +
+                $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-20,{_paramFiz.YcFirstQuarter}*scale+10);" +
+                $"ctx.fillText('M',{_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale-10);" +
+
+
                 //draw ksi
                 $"ctx.translate({_paramFiz.ZcFirstQuarter}*scale,{_paramFiz.YcFirstQuarter}*scale);" +
                 $"ctx.rotate({-_paramFiz.Fi} * Math.PI / 180);" +
@@ -103,8 +117,21 @@ namespace ProjectCalculator.Infrastructure.Writer
                 $"ctx.lineTo(totalWidth-10,-10);" +
                 $"ctx.moveTo(totalWidth,0);" +
                 $"ctx.lineTo(totalWidth-10,10);" +
+                $"ctx.fillText('ξ',totalWidth,-10);" +
+                //draw arrow
+                $"ctx.moveTo(0,0);" +
+                $"ctx.lineTo({_bendingMoment.Me},0);" +
+                $"ctx.lineTo({_bendingMoment.Me}-10,-10);" +
+                $"ctx.moveTo({_bendingMoment.Me},0);" +
+                $"ctx.lineTo({_bendingMoment.Me}-10,10);" +
+                $"ctx.moveTo({_bendingMoment.Me}-10,0);" +
+                $"ctx.lineTo({_bendingMoment.Me}-20,-10);" +
+                $"ctx.moveTo({_bendingMoment.Me}-10,0);" +
+                $"ctx.lineTo({_bendingMoment.Me}-20,10);" +
+                 $"ctx.fillText('Mξ',{_bendingMoment.Me}-50,30);" +
                 $"ctx.translate({-_paramFiz.ZcFirstQuarter},{-_paramFiz.YcFirstQuarter});" +
                 $"ctx.setTransform(1,0,0,1,0,0);" +
+
 
                 //drow etha
                 $"ctx.translate(scale,scale);" +
@@ -115,13 +142,26 @@ namespace ProjectCalculator.Infrastructure.Writer
                 $"ctx.lineTo(-10,rHigh-10);" +
                 $"ctx.moveTo(0,rHigh);" +
                 $"ctx.lineTo(10,rHigh-10);" +
+                $"ctx.fillText('η',10,rHigh-10);" +
+                //draw arrow
+                $"ctx.moveTo(0,0);" +
+                $"ctx.lineTo(0,{_bendingMoment.Mn});" +
+                $"ctx.lineTo(-10,{_bendingMoment.Mn}+10);" + 
+                $"ctx.moveTo(0,{_bendingMoment.Mn});" +
+                $"ctx.lineTo(10,{_bendingMoment.Mn}+10);" +
+                $"ctx.moveTo(0,{_bendingMoment.Mn}+10);" +
+                $"ctx.lineTo(-10,{_bendingMoment.Mn}+20);" + 
+                $"ctx.moveTo(0,{_bendingMoment.Mn}+10);" +
+                $"ctx.lineTo(10,{_bendingMoment.Mn}+20);" +
+                 $"ctx.fillText('Mη',-50,{_bendingMoment.Mn});" +
+
                 $"ctx.translate({-_paramFiz.ZcFirstQuarter},{-_paramFiz.YcFirstQuarter});" +
                 $"ctx.setTransform(1,0,0,1,0,0);" +
-                
+
 
 
                 "ctx.stroke();" +
-                "</scr" + "ipt>") +";";
+                "</scr" + "ipt>") + ";";
             _resultPage = _resultPage.Replace("rectArea", _paramFiz.Rectangle.GetArea().ToString());
             _resultPage = _resultPage.Replace("triangleArea", _paramFiz.Triangle.GetArea().ToString());
             _resultPage = _resultPage.Replace("YCoordinate", _paramFiz.Yc.ToString());
