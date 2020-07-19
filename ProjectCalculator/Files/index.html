@@ -7,11 +7,16 @@
 </head>
 <body style="font-size: 25px; background: lightgoldenrodyellow">
 
-<span>y<sub>c</sub> = 
+
+    <canvas id="myCanvas" width="2000" height="2000" style="border:1px solid #000000;">
+        </canvas>
+    <br>
+
+<span>z<sub>c</sub> = 
         <math>
             <mrow>
              <mfrac>
-              <mi>S<sub>z</sub></mi>
+              <mi>S<sub>y</sub></mi>
               <mi>A</mi>
              </mfrac>
             </mrow>
@@ -25,15 +30,15 @@
              </mfrac>
             </mrow>
            </math>
-           =YCoordinatea
+           =ZCoordinatea
         </span>
 <br>
 
-<span>z<sub>c</sub> = 
+<span>y<sub>c</sub> = 
     <math>
         <mrow>
          <mfrac>
-          <mi>S<sub>y</sub></mi>
+          <mi>S<sub>z</sub></mi>
           <mi>A</mi>
          </mfrac>
         </mrow>
@@ -47,7 +52,7 @@
          </mfrac>
         </mrow>
        </math>
-       =ZCoordinate a
+       =YCoordinatea
     </span>
 <br>
 <br>
@@ -584,6 +589,27 @@ SecondPointName(SPZCoorda; SPYCoorda)
     </mrow>
 </math>
 </span>
+
+    scriptPlace
+<!--<script>-->
+<!--    var width = rectWidth;-->
+<!--    var high = rectHeight;-->
+<!--    var c = document.getElementById("myCanvas");-->
+<!--    var ctx = c.getContext("2d");-->
+<!--    ctx.beginPath();    -->
+<!--    ctx.rect(0,0,width,high);-->
+<!--    ctx.moveTo(50,0);-->
+<!--    ctx.lineTo(70,0);-->
+<!--    ctx.moveTo(70,0);-->
+<!--    ctx.lineTo(50,50);-->
+<!--    ctx.moveTo(50,0);-->
+<!--    ctx.lineTo(50,150);-->
+<!--    ctx.moveTo(0,155/33);-->
+<!--    ctx.lineTo(150,155/33);-->
+<!--    ctx.stroke();-->
+<!--    // c.rect(100, 20, 150, 100)-->
+<!--    // ctx.stroke();-->
+<!--</script>-->
 
 
 </body>
