@@ -35,8 +35,12 @@ namespace ProjectCalculator.Infrastructure.Factory.ShapeCalculator
 
         public IShapeCalculator CalculateCenterOfGravity()
         {
-            _paramFiz.Sy = Math.Round(_rectangle.GetArea() * (_rectangle.GetZCoordinate()) + _triangle.GetArea() * _triangle.GetZCoordinate(), 4);
-            _paramFiz.Sz = Math.Round(_rectangle.GetArea() * (-_rectangle.GetYCoordinate()) + _triangle.GetArea() * _triangle.GetYCoordinate(), 4);
+            _paramFiz.RectangleCoordY = -_rectangle.GetYCoordinate();
+            _paramFiz.RectangleCoordZ = _rectangle.GetZCoordinate();
+            _paramFiz.TriangleCoordY = _triangle.GetYCoordinate();
+            _paramFiz.TriangleCoordZ =_triangle.GetZCoordinate();
+            _paramFiz.Sy = Math.Round(_rectangle.GetArea() * _paramFiz.RectangleCoordZ + _triangle.GetArea() * _paramFiz.TriangleCoordZ, 4);
+            _paramFiz.Sz = Math.Round(_rectangle.GetArea() * _paramFiz.RectangleCoordY + _triangle.GetArea() * _paramFiz.TriangleCoordY, 4);
             _paramFiz.Area = Math.Round(_rectangle.GetArea() + _triangle.GetArea(), 3);
 
             _paramFiz.Zc = Math.Round(_paramFiz.Sy / _paramFiz.Area, 4);

@@ -28,5 +28,9 @@ namespace ProjectCalculator.Core.Domain
         public double Zc { get; set; }
         public double YcFirstQuarter { get; set; }
         public double ZcFirstQuarter { get; set; }
+        public double RectangleCoordZ { get; set; }
+        public double RectangleCoordY { get; set; }
+        public double TriangleCoordZ { get; set; }
+        public double TriangleCoordY { get; set; }
     }
 }

@@ -47,10 +47,10 @@ namespace ProjectCalculator.Infrastructure.Writer
             _resultPage = _resultPage.Replace("triangleArea", _paramFiz.Triangle.GetArea().ToString());
             _resultPage = _resultPage.Replace("YCoordinate", _paramFiz.Yc.ToString());
             _resultPage = _resultPage.Replace("ZCoordinate", _paramFiz.Zc.ToString());
-            _resultPage = _resultPage.Replace("rectZCoord", _paramFiz.Rectangle.GetZCoordinate().ToString());
-            _resultPage = _resultPage.Replace("rectYCoord", _paramFiz.Rectangle.GetYCoordinate().ToString());
-            _resultPage = _resultPage.Replace("triangleZCoord", _paramFiz.Triangle.GetZCoordinate().ToString());
-            _resultPage = _resultPage.Replace("triangleYCoord", _paramFiz.Triangle.GetYCoordinate().ToString());
+            _resultPage = _resultPage.Replace("rectZCoord", _paramFiz.RectangleCoordZ.ToString());
+            _resultPage = _resultPage.Replace("rectYCoord", _paramFiz.RectangleCoordY.ToString());
+            _resultPage = _resultPage.Replace("triangleZCoord", _paramFiz.TriangleCoordZ.ToString());
+            _resultPage = _resultPage.Replace("triangleYCoord", _paramFiz.TriangleCoordY.ToString());
             _resultPage = _resultPage.Replace("rectWidth", _paramFiz.Rectangle.Width.ToString());
             _resultPage = _resultPage.Replace("rectHeight", _paramFiz.Rectangle.Height.ToString());
             _resultPage = _resultPage.Replace("triangleWidth", _paramFiz.Triangle.Width.ToString());
