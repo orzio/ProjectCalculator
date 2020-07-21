@@ -72,7 +72,8 @@ namespace ProjectCalculator.Controllers
                         Q2 = 12,
                         P = 0},
                 ShapeType =4,
-                Shape = shapeB1_2_B2_5_H1_5_H2_5,
+                //Shape = shapeB1_2_B2_5_H1_5_H2_5,
+                Shape = shapeB1_3_B2_5_H1_3_H2_3,
                 YieldPoint = new YieldPoint(){Kr = 0.35}
             };
             _commandDispatcher.DispatchAsync(bendingCommand);

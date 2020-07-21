@@ -14,12 +14,12 @@ namespace ProjectCalculator.Infrastructure.Writer
         private InternalForces _internalForces;
         private TensionData _tensionData;
         private Dictionary<Char, Point> _furthestsPoints;
-        private Dictionary<Char, Point> _contourPoints;
+        private Contour _contour;
         private string _resultPage;
         private YieldPoint _yieldPoint;
 
         public ProjectWriter(ParamFiz paramFiz, BendingMoment bendingMoment, InternalForces internalForces,
-            TensionData tensionData, Dictionary<Char, Point> furthestsPoints, Dictionary<Char, Point> contourPoints,
+            TensionData tensionData, Dictionary<Char, Point> furthestsPoints, Contour contour,
             YieldPoint yieldPoint)
         {
             _paramFiz = paramFiz;
@@ -27,7 +27,7 @@ namespace ProjectCalculator.Infrastructure.Writer
             _internalForces = internalForces;
             _tensionData = tensionData;
             _furthestsPoints = furthestsPoints;
-            _contourPoints = contourPoints;
+            _contour = contour;
             _yieldPoint = yieldPoint;
         }
 
@@ -46,21 +46,119 @@ namespace ProjectCalculator.Infrastructure.Writer
         {
             _resultPage = _resultPage.Replace("scriptPlace",
                 "<scr" + "ipt>" +
-                "var scale = 50;" +
+                "var scale = 80;" +
+                "var offset = 150;" +
+
                 "var rWidth = rectWidth*scale;" +
                 "var rHigh = rectHeight*scale;" +
                 "var tWidth = triangleWidth*scale;" +
                 "var tHigh = triangleHeight*scale;" +
                 "var totalWidth = rWidth + tWidth;" +
                 "var c = document.getElementById(\"myCanvas\");" +
+
                 "var ctx = c.getContext(\"2d\");" +
+
+                //draw vertical dimentions
                 "ctx.beginPath();   " +
-                $"ctx.translate(scale,scale);" +
+                 $"ctx.translate(totalWidth*1.65,scale);" +
+                 "ctx.moveTo(-5,0);" +
+                 "ctx.lineTo(5,0);" +
+                 "ctx.moveTo(0,0);" +
+
+                 "ctx.lineTo(0,tHigh);" +
+                 "ctx.font = '15px Arial';" +
+                 $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,tHigh/2);" +
+
+                 "ctx.moveTo(-5,tHigh);" +
+                 "ctx.lineTo(5,tHigh);" +
+                 "ctx.moveTo(0,tHigh);" +
+
+                 "ctx.lineTo(0,rHigh);" +
+
+                  "ctx.moveTo(-5,rHigh);" +
+                 "ctx.lineTo(5,rHigh);" +
+                 "ctx.moveTo(0,rHigh);" +
+                  $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,rHigh*0.75);" +
+                  "ctx.stroke();" +
+
+                  "ctx.beginPath();" +
+
+                  $"ctx.translate(-totalWidth*1.65,-scale);" +
+
+                  $"ctx.translate(scale,rHigh + tHigh+2*scale);" +
+
+                  //draw horizontal dimentions
+                  "ctx.moveTo(0,0);" +
+                  "ctx.moveTo(0,-5);" +
+                 "ctx.lineTo(0,5);" +
+                 "ctx.moveTo(0,0);" +
+                 "ctx.lineTo(rWidth,0);" +
+                  "ctx.moveTo(rWidth,-5);" +
+                 "ctx.lineTo(rWidth,5);" +
+                 "ctx.moveTo(rWidth,0);" +
+                 "ctx.lineTo(rWidth +tWidth,0);" +
+                  "ctx.moveTo(rWidth +tWidth,0);" +
+                  "ctx.moveTo(rWidth +tWidth,-5);" +
+                 "ctx.lineTo(rWidth +tWidth,5);" +
+                  $"ctx.fillText('{_paramFiz.Rectangle.Width}a',rWidth/2,-10);" +
+                  $"ctx.fillText('{_paramFiz.Triangle.Width}a',(rWidth) +tWidth*0.5,-10);" +
+                  "ctx.stroke();" +
+                  $"ctx.translate(-scale,-(rHigh + tHigh+2*scale));" +
+
+                   //draw gravity center dimentions
+                   $"ctx.translate(scale,(rHigh + tHigh+1.2*scale));" +
+                    "ctx.beginPath();" +
+
+                    $"ctx.moveTo({_paramFiz.Rectangle.Width}*scale,0);" +
+                     $"ctx.moveTo({_paramFiz.Rectangle.Width}*scale,-5);" +
+                 $"ctx.lineTo({_paramFiz.Rectangle.Width}*scale,5);" +
+                  $"ctx.moveTo({_paramFiz.Rectangle.Width}*scale,0);" +
+                    $"ctx.lineTo(({_paramFiz.Rectangle.Width} + {_paramFiz.Zc})*scale,0);" +
+                     $"ctx.moveTo(({_paramFiz.Rectangle.Width} + {_paramFiz.Zc})*scale,-5);" +
+                 $"ctx.lineTo(({_paramFiz.Rectangle.Width} + {_paramFiz.Zc})*scale,5);" +
+                    $"ctx.fillText('{_paramFiz.Zc}a',scale*({_paramFiz.Rectangle.Width + _paramFiz.Zc / 2}) ,-10);" +
+                    "ctx.stroke();" +
+
+                  $"ctx.translate(-scale,-(rHigh + tHigh+1.2*scale));" +
+
+                //draw gravity vertival
+                "ctx.beginPath();" +
+                 $"ctx.translate(totalWidth*1.2,scale);" +
+                 "ctx.moveTo(-5,0);" +
+                 "ctx.lineTo(5,0);" +
+                 "ctx.moveTo(0,0);" +
+
+                 $"ctx.lineTo(0,{_paramFiz.Yc}*scale);" +
+                 $"ctx.moveTo(-5,{_paramFiz.Yc}*scale);" +
+                 $"ctx.lineTo(5,{_paramFiz.Yc}*scale);" +
+                 $"ctx.moveTo(0,{_paramFiz.Yc}*scale);" +
+                 $"ctx.fillText('{_paramFiz.Yc}a',5,{_paramFiz.Yc/2}*scale);" +
+
+
+
+                  "ctx.stroke();" +
+                  $"ctx.translate(-totalWidth*1.2,-scale);" +
+
+                //"ctx.beginPath();" +
+
+                //$"ctx.translate(-totalWidth*1.65,-scale);" +
+
+                //$"ctx.translate(scale,rHigh + tHigh+2*scale);" +
+                //
+
+                "ctx.beginPath();" +
+                  $"ctx.translate(scale,scale);" +
                 "ctx.rect(0,0,rWidth,rHigh);" +
                 "ctx.moveTo(rWidth,0);" +
                 "ctx.lineTo(rWidth+tWidth,0);" +
                 "ctx.lineTo(rWidth,tHigh);" +
+                "ctx.lineWidth = 2.5;" +
 
+                 "ctx.stroke();" +
+
+
+                "ctx.beginPath();" +
+                "ctx.lineWidth = 1;" +
                 //draw y axis
                 "ctx.moveTo(rWidth,0);" +
                 "ctx.lineTo(rWidth,rHigh*1.5);" +
@@ -79,8 +177,10 @@ namespace ProjectCalculator.Infrastructure.Writer
                 "ctx.lineTo(totalWidth+rHigh*0.5-10,10);" +
                 "ctx.font = '25px serif';" +
                 "ctx.fillText('z',totalWidth+rHigh*0.5,-10);" +
+                "ctx.stroke();" +
 
-                //draw yc axis
+                 //draw yc axis
+                 "ctx.beginPath();" +
                 $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale,0);" +
                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale,rHigh*1.5);" +
                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale-10,rHigh*1.5-10);" +
@@ -96,7 +196,12 @@ namespace ProjectCalculator.Infrastructure.Writer
                 $"ctx.moveTo(rHigh*1.5,{_paramFiz.YcFirstQuarter}*scale);" +
                 $"ctx.lineTo(rHigh*1.5-10,{_paramFiz.YcFirstQuarter}*scale+10);" +
                 $"ctx.fillText('zc',rHigh*1.5,{_paramFiz.YcFirstQuarter}*scale-10);" +
+                 "ctx.strokeStyle='green';" +
+                 "ctx.stroke();" +
                 //draw M
+                "ctx.beginPath();" +
+                 "ctx.lineWidth = 1.5;" +
+                 "ctx.strokeStyle='blue';" +
                 $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale,{_paramFiz.YcFirstQuarter}*scale);" +
                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale);" +
                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-10,{_paramFiz.YcFirstQuarter}*scale-10);" +
@@ -107,9 +212,13 @@ namespace ProjectCalculator.Infrastructure.Writer
                 $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-10,{_paramFiz.YcFirstQuarter}*scale);" +
                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-20,{_paramFiz.YcFirstQuarter}*scale+10);" +
                 $"ctx.fillText('M',{_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale-10);" +
+                "ctx.stroke();" +
+
 
 
                 //draw ksi
+                "ctx.beginPath();" +
+                 "ctx.strokeStyle='red';" +
                 $"ctx.translate({_paramFiz.ZcFirstQuarter}*scale,{_paramFiz.YcFirstQuarter}*scale);" +
                 $"ctx.rotate({-_paramFiz.Fi} * Math.PI / 180);" +
                 $"ctx.moveTo(-rWidth,0);" +
@@ -118,7 +227,11 @@ namespace ProjectCalculator.Infrastructure.Writer
                 $"ctx.moveTo(totalWidth,0);" +
                 $"ctx.lineTo(totalWidth-10,10);" +
                 $"ctx.fillText('ξ',totalWidth,-10);" +
-                //draw arrow
+                "ctx.stroke();" +
+                 //draw arrow
+                 "ctx.beginPath();" +
+                 "ctx.lineWidth = 1.5;" +
+                 "ctx.strokeStyle='blue';" +
                 $"ctx.moveTo(0,0);" +
                 $"ctx.lineTo({_bendingMoment.Me},0);" +
                 $"ctx.lineTo({_bendingMoment.Me}-10,-10);" +
@@ -128,12 +241,14 @@ namespace ProjectCalculator.Infrastructure.Writer
                 $"ctx.lineTo({_bendingMoment.Me}-20,-10);" +
                 $"ctx.moveTo({_bendingMoment.Me}-10,0);" +
                 $"ctx.lineTo({_bendingMoment.Me}-20,10);" +
-                 $"ctx.fillText('Mξ',{_bendingMoment.Me}-50,30);" +
-                $"ctx.translate({-_paramFiz.ZcFirstQuarter},{-_paramFiz.YcFirstQuarter});" +
+                $"ctx.fillText('Mξ',{_bendingMoment.Me}-50,30);" +
+                $"ctx.translate({-_paramFiz.ZcFirstQuarter}*scale,{-_paramFiz.YcFirstQuarter}*scale);" +
                 $"ctx.setTransform(1,0,0,1,0,0);" +
+                "ctx.stroke();" +
 
-
-                //drow etha
+                 //drow etha
+                 "ctx.beginPath();" +
+                 "ctx.strokeStyle='red';" +
                 $"ctx.translate(scale,scale);" +
                 $"ctx.translate({_paramFiz.ZcFirstQuarter}*scale,{_paramFiz.YcFirstQuarter}*scale);" +
                 $"ctx.rotate({-_paramFiz.Fi} * Math.PI / 180);" +
@@ -143,25 +258,50 @@ namespace ProjectCalculator.Infrastructure.Writer
                 $"ctx.moveTo(0,rHigh);" +
                 $"ctx.lineTo(10,rHigh-10);" +
                 $"ctx.fillText('η',10,rHigh-10);" +
+                "ctx.stroke();" +
                 //draw arrow
+                "ctx.beginPath();" +
+                "ctx.lineWidth = 1.5;" +
+                 "ctx.strokeStyle='blue';" +
                 $"ctx.moveTo(0,0);" +
                 $"ctx.lineTo(0,{_bendingMoment.Mn});" +
-                $"ctx.lineTo(-10,{_bendingMoment.Mn}+10);" + 
+                $"ctx.lineTo(-10,{_bendingMoment.Mn}+10);" +
                 $"ctx.moveTo(0,{_bendingMoment.Mn});" +
                 $"ctx.lineTo(10,{_bendingMoment.Mn}+10);" +
                 $"ctx.moveTo(0,{_bendingMoment.Mn}+10);" +
-                $"ctx.lineTo(-10,{_bendingMoment.Mn}+20);" + 
+                $"ctx.lineTo(-10,{_bendingMoment.Mn}+20);" +
                 $"ctx.moveTo(0,{_bendingMoment.Mn}+10);" +
                 $"ctx.lineTo(10,{_bendingMoment.Mn}+20);" +
-                 $"ctx.fillText('Mη',-50,{_bendingMoment.Mn});" +
+                $"ctx.fillText('Mη',-50,{_bendingMoment.Mn});" +
+                "ctx.stroke();" +
 
-                $"ctx.translate({-_paramFiz.ZcFirstQuarter},{-_paramFiz.YcFirstQuarter});" +
-                $"ctx.setTransform(1,0,0,1,0,0);" +
+                //draw gravitycenter
+                "ctx.beginPath();" +
+                $"ctx.rotate({_paramFiz.Fi} * Math.PI / 180);" +
+                $"ctx.moveTo(0,0);" +
+                $"ctx.arc(0, 0, 5, 0, Math.PI * 2, true);" +
+                $"ctx.fillText('C',5,20);" +
+                "ctx.stroke();" +
 
+
+                //draw last point
+                "ctx.beginPath();" +
+                 "ctx.strokeStyle='black';" +
+                $"ctx.translate({_contour.FurthestsPointsFirstQuarter.Last().Value.HorizontalCoord}*scale,{_contour.FurthestsPointsFirstQuarter.Last().Value.VerticalCoord}*scale);" +
+                $"ctx.arc(0, 0, 5, 0, Math.PI * 2, false);" +
+                $"ctx.fillText('{_contour.FurthestsPointsFirstQuarter.Last().Key} ({_contour.FurthestsPointsFirstQuarter.Last().Value.HorizontalCoord}a; {_contour.FurthestsPointsFirstQuarter.Last().Value.VerticalCoord}a)',5,20);" +
+                "ctx.stroke();" +
+
+                //draw first point
+                "ctx.beginPath();" +
+                $"ctx.translate(-{_contour.FurthestsPointsFirstQuarter.Last().Value.HorizontalCoord}*scale,-{_contour.FurthestsPointsFirstQuarter.Last().Value.VerticalCoord}*scale);" +
+                $"ctx.translate({_contour.FurthestsPointsFirstQuarter.First().Value.HorizontalCoord}*scale,{_contour.FurthestsPointsFirstQuarter.First().Value.VerticalCoord}*scale);" +
+                $"ctx.arc(0, 0, 5, 0, Math.PI * 2, false);" +
+                $"ctx.fillText('{_contour.FurthestsPointsFirstQuarter.First().Key} ({_contour.FurthestsPointsFirstQuarter.First().Value.HorizontalCoord}a; {_contour.FurthestsPointsFirstQuarter.First().Value.VerticalCoord}a)',5,-20);" +
 
 
                 "ctx.stroke();" +
-                "</scr" + "ipt>") + ";";
+                "</scr" + "ipt>");
             _resultPage = _resultPage.Replace("rectArea", _paramFiz.Rectangle.GetArea().ToString());
             _resultPage = _resultPage.Replace("triangleArea", _paramFiz.Triangle.GetArea().ToString());
             _resultPage = _resultPage.Replace("YCoordinate", _paramFiz.Yc.ToString());
@@ -207,21 +347,21 @@ namespace ProjectCalculator.Infrastructure.Writer
             _resultPage = _resultPage.Replace("FirstPointName", _furthestsPoints.First().Key.ToString());
             _resultPage = _resultPage
                 .Replace("FPZCoord",
-                    _contourPoints.FirstOrDefault(point => point.Key.ToString()
+                    _contour.ContourPoints.FirstOrDefault(point => point.Key.ToString()
                                                            == _furthestsPoints.First().Key.ToString())
                         .Value.HorizontalCoord.ToString());
-            _resultPage = _resultPage.Replace("FPYCoord", _contourPoints.FirstOrDefault(point => point.Key.ToString()
+            _resultPage = _resultPage.Replace("FPYCoord", _contour.ContourPoints.FirstOrDefault(point => point.Key.ToString()
                                                                                                  == _furthestsPoints
                                                                                                      .First().Key
                                                                                                      .ToString())
                 .Value.VerticalCoord.ToString());
             _resultPage = _resultPage.Replace("SecondPointName", _furthestsPoints.Last().Key.ToString());
-            _resultPage = _resultPage.Replace("SPZCoord", _contourPoints.FirstOrDefault(point => point.Key.ToString()
+            _resultPage = _resultPage.Replace("SPZCoord", _contour.ContourPoints.FirstOrDefault(point => point.Key.ToString()
                                                                                                  == _furthestsPoints
                                                                                                      .Last().Key
                                                                                                      .ToString())
                 .Value.HorizontalCoord.ToString());
-            _resultPage = _resultPage.Replace("SPYCoord", _contourPoints.FirstOrDefault(point => point.Key.ToString()
+            _resultPage = _resultPage.Replace("SPYCoord", _contour.ContourPoints.FirstOrDefault(point => point.Key.ToString()
                                                                                                  == _furthestsPoints
                                                                                                      .Last().Key
                                                                                                      .ToString())

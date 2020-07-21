@@ -60,7 +60,8 @@ namespace ProjectCalculator.Infrastructure.Commands
 
             var contourPoointsCalculator = new ContourCalculatorFactory()
                     .GetContourCalculator(command, paramFiz);
-            var contourPoints = contourPoointsCalculator.GetPoints();
+            var contour = new Contour();
+            contour.ContourPoints = contourPoointsCalculator.GetPoints();
 
 
 
@@ -68,7 +69,7 @@ namespace ProjectCalculator.Infrastructure.Commands
              new StreamWriter(@$"E:\Własne\Projekty\testFiles\{command.ShapeType}_B1_{command.Shape.B1}_B2_{command.Shape.B2}_H1_{command.Shape.H1}_H2_{command.Shape.H2}.txt"))
             {
                 file.WriteLine($"B1_{command.Shape.B1}_B2_{command.Shape.B2}_H1_{command.Shape.H1}_H2_{command.Shape.H2}");
-                foreach (var item in contourPoints)
+                foreach (var item in contour.ContourPoints)
                 {
                     {
                         file.WriteLine($"{item.Key}, {item.Value.HorizontalCoord}, {item.Value.VerticalCoord}");
@@ -85,9 +86,11 @@ namespace ProjectCalculator.Infrastructure.Commands
                 EthaRate = -1,
                 Rate = 0
             };
-            var rotatedPoints = new PointRotator(contourPoints,paramFiz.Fi).RotatePoints().GetPoints();
-            var furthestPoints = new DistanceCalculator(rotatedPoints,line).GetFurthestPoints();
-            _bendingCalculator.CalculateTensionInFurthestsPoints(furthestPoints);
+
+            contour.RotatedPoints = new PointRotator(contour.ContourPoints, paramFiz.Fi).RotatePoints().GetPoints();
+            contour.FurthestsPoints = new DistanceCalculator(contour.RotatedPoints, line).GetFurthestPoints();
+            contour.FurthestsPointsFirstQuarter = contour.ContourPoints.Where(x => contour.FurthestsPoints.Any(p => p.Key == x.Key)).ToDictionary(x => x.Key, y => y.Value);
+            _bendingCalculator.CalculateTensionInFurthestsPoints(contour.FurthestsPoints);
             _bendingCalculator.ChooseMinMaxTension();
             _bendingCalculator.CalculateDimensionA(command.YieldPoint.Kr);
 
@@ -96,7 +99,7 @@ namespace ProjectCalculator.Infrastructure.Commands
 
             #region HTML_OUTPUT
             var writer = new ProjectWriter(paramFiz, bendingMoment, internalForces, 
-                tensionData, furthestPoints, contourPoints,command.YieldPoint);
+                tensionData, contour.FurthestsPoints, contour, command.YieldPoint);
             var path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, $@"../../../Files/index.html"));
             writer.ReadHtmlTemplate(path);
             writer.ReplaceHtmlTemplateWithValues();
