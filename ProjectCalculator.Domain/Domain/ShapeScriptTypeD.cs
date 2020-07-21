@@ -184,26 +184,9 @@ namespace ProjectCalculator.Core.Domain
                  $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale,{_paramFiz.YcFirstQuarter}*scale);" +
                  $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale);" +
                  GetMomentArrows() +
-                 //$"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-10,{_paramFiz.YcFirstQuarter}*scale-10);" +
-                 //$"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale);" +
-                 //$"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-10,{_paramFiz.YcFirstQuarter}*scale+10);" +
-                 //$"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-10,{_paramFiz.YcFirstQuarter}*scale);" +
-                 //$"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-20,{_paramFiz.YcFirstQuarter}*scale-10);" +
-                 //$"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-10,{_paramFiz.YcFirstQuarter}*scale);" +
-                 //$"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-20,{_paramFiz.YcFirstQuarter}*scale+10);" +
-                 /**/
-                 //$"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}+10,{_paramFiz.YcFirstQuarter}*scale+10);" +
-                 //$"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale);" +
-                 //$"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}+10,{_paramFiz.YcFirstQuarter}*scale-10);" +
-                 //$"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}+10,{_paramFiz.YcFirstQuarter}*scale);" +
-                 //$"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}+20,{_paramFiz.YcFirstQuarter}*scale+10);" +
-                 //$"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}+10,{_paramFiz.YcFirstQuarter}*scale);" +
-                 //$"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}+20,{_paramFiz.YcFirstQuarter}*scale-10);" +
 
                  $"ctx.fillText('M',{_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale-10);" +
                  "ctx.stroke();" +
-
-
 
                  //draw ksi
                  "ctx.beginPath();" +
@@ -223,14 +206,6 @@ namespace ProjectCalculator.Core.Domain
                   "ctx.strokeStyle='blue';" +
                  $"ctx.moveTo(0,0);" + GetKsiArrows() +
 
-                 //$"ctx.lineTo({_bendingMoment.Me},0);" +
-                 //$"ctx.lineTo({_bendingMoment.Me}-10,-10);" +
-                 //$"ctx.moveTo({_bendingMoment.Me},0);" +
-                 //$"ctx.lineTo({_bendingMoment.Me}-10,10);" +
-                 //$"ctx.moveTo({_bendingMoment.Me}-10,0);" +
-                 //$"ctx.lineTo({_bendingMoment.Me}-20,-10);" +
-                 //$"ctx.moveTo({_bendingMoment.Me}-10,0);" +
-                 //$"ctx.lineTo({_bendingMoment.Me}-20,10);" +
 
                  $"ctx.fillText('Mξ',{_bendingMoment.Me}-50,30);" +
                  $"ctx.translate({-_paramFiz.ZcFirstQuarter}*scale,{-_paramFiz.YcFirstQuarter}*scale);" +
@@ -257,14 +232,6 @@ namespace ProjectCalculator.Core.Domain
                  $"ctx.moveTo(0,0);" +
 
                  GetEthaArrows() +
-                 //$"ctx.lineTo(0,{_bendingMoment.Mn});" +
-                 //$"ctx.lineTo(-10,{_bendingMoment.Mn}+10);" +
-                 //$"ctx.moveTo(0,{_bendingMoment.Mn});" +
-                 //$"ctx.lineTo(10,{_bendingMoment.Mn}+10);" +
-                 //$"ctx.moveTo(0,{_bendingMoment.Mn}+10);" +
-                 //$"ctx.lineTo(-10,{_bendingMoment.Mn}+20);" +
-                 //$"ctx.moveTo(0,{_bendingMoment.Mn}+10);" +
-                 //$"ctx.lineTo(10,{_bendingMoment.Mn}+20);" +
 
                  $"ctx.fillText('Mη',-50,{_bendingMoment.Mn});" +
                  "ctx.stroke();" +
