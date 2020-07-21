@@ -61,6 +61,14 @@ namespace ProjectCalculator.Controllers
                 H2 = 3
             };
 
+            var shapeB1_1_B2_1_H1_1_H2_1 = new Shape()
+            {
+                B1 = 1,
+                B2 = 1,
+                H1 = 1,
+                H2 = 1
+            };
+
             BendingCommand bendingCommand = new BendingCommand()
             {
                 BeamType = 1,
@@ -70,10 +78,14 @@ namespace ProjectCalculator.Controllers
                         L3 = 2,
                         Q1 = 15,
                         Q2 = 12,
-                        P = 0},
+                        P = -700},
                 ShapeType =4,
+                //Shape = shapeB1_1_B2_1_H1_1_H2_1,
+                Shape = shapeB1_3_B2_5_H1_2_H2_2,
+                //Shape = shapeB1_4_B2_5_H1_5_H2_5,
                 //Shape = shapeB1_2_B2_5_H1_5_H2_5,
-                Shape = shapeB1_3_B2_5_H1_3_H2_3,
+                //Shape = shapeB1_2_B2_5_H1_5_H2_5,
+                //Shape = shapeB1_3_B2_5_H1_3_H2_3,
                 YieldPoint = new YieldPoint(){Kr = 0.35}
             };
             _commandDispatcher.DispatchAsync(bendingCommand);
