@@ -33,7 +33,7 @@ namespace ProjectCalculator.Core.Domain
             var script =
               "<scr" + "ipt>" +
                  "var scale = 80;" +
-                 "var offset = 300;" +
+                 "var offset = 500;" +
 
                  "var rWidth = rectWidth*scale;" +
                  "var rHigh = rectHeight*scale;" +
@@ -52,7 +52,7 @@ namespace ProjectCalculator.Core.Domain
                   "ctx.moveTo(0,0);" +
 
                   "ctx.lineTo(0,tHigh);" +
-                  "ctx.font = '15px Arial';" +
+                  "ctx.font = '20px Arial';" +
                   $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,tHigh/2);" +
 
                   "ctx.moveTo(-5,tHigh);" +
@@ -65,13 +65,14 @@ namespace ProjectCalculator.Core.Domain
                   "ctx.lineTo(5,rHigh);" +
                   "ctx.moveTo(0,rHigh);" +
                    $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,rHigh*0.75);" +
+                   "ctx.lineWidth = 1.5;" +
                    "ctx.stroke();" +
 
                    "ctx.beginPath();" +
 
                    $"ctx.translate(-totalWidth*1.65 -offset,-offset);" +
 
-                   $"ctx.translate(offset,rHigh + tHigh+2*offset);" +
+                   $"ctx.translate(offset,rHigh*1.5+offset*1.2);" +
 
                    //draw horizontal dimentions
                    "ctx.moveTo(0,0);" +
@@ -88,11 +89,12 @@ namespace ProjectCalculator.Core.Domain
                   "ctx.lineTo(rWidth +tWidth,5);" +
                    $"ctx.fillText('{_paramFiz.Rectangle.Width}a',rWidth/2,-10);" +
                    $"ctx.fillText('{_paramFiz.Triangle.Width}a',(rWidth) +tWidth*0.5,-10);" +
+                   
                    "ctx.stroke();" +
-                   $"ctx.translate(-offset,-(rHigh + tHigh+2*offset));" +
+                   $"ctx.translate(-offset,-(rHigh*1.5+offset*1.2));" +
 
                     //draw gravity center dimentions
-                    $"ctx.translate(offset,(rHigh + tHigh+1.2*offset));" +
+                    $"ctx.translate(offset,(rHigh*1.3+offset));" +
                      "ctx.beginPath();" +
 
                      $"ctx.moveTo({_paramFiz.Rectangle.Width}*scale,0);" +
@@ -102,14 +104,15 @@ namespace ProjectCalculator.Core.Domain
                      $"ctx.lineTo(({_paramFiz.Rectangle.Width} + {_paramFiz.Zc})*scale,0);" +
                       $"ctx.moveTo(({_paramFiz.Rectangle.Width} + {_paramFiz.Zc})*scale,-5);" +
                   $"ctx.lineTo(({_paramFiz.Rectangle.Width} + {_paramFiz.Zc})*scale,5);" +
-                     $"ctx.fillText('{Math.Abs(_paramFiz.Zc)}a',scale*({_paramFiz.Rectangle.Width + _paramFiz.Zc / 2}) ,-10);" +
+                     $"ctx.fillText('{Math.Abs(_paramFiz.Zc)}a',scale*{_paramFiz.Rectangle.Width + _paramFiz.Zc*0.85} ,-10);" +
+                     "ctx.lineWidth = 1.5;" +
                      "ctx.stroke();" +
 
-                   $"ctx.translate(-offset,-(rHigh + tHigh+1.2*offset));" +
+                   $"ctx.translate(-offset,-(rHigh*1.3+offset));" +
 
                  //draw gravity vertival
                  "ctx.beginPath();" +
-                  $"ctx.translate(totalWidth*1.2 + offset,offset);" +
+                  $"ctx.translate(totalWidth*1.3 + offset,offset);" +
                   "ctx.moveTo(-5,0);" +
                   "ctx.lineTo(5,0);" +
                   "ctx.moveTo(0,0);" +
@@ -119,11 +122,9 @@ namespace ProjectCalculator.Core.Domain
                   $"ctx.lineTo(5,{_paramFiz.Yc}*scale);" +
                   $"ctx.moveTo(0,{_paramFiz.Yc}*scale);" +
                   $"ctx.fillText('{_paramFiz.Yc}a',5,{_paramFiz.Yc / 2}*scale);" +
-
-
-
+                  
                    "ctx.stroke();" +
-                   $"ctx.translate(-totalWidth*1.2 - offset,-offset);" +
+                   $"ctx.translate(-totalWidth*1.3 - offset,-offset);" +
 
                  "ctx.beginPath();" +
                    $"ctx.translate(offset,offset);" +
@@ -134,7 +135,7 @@ namespace ProjectCalculator.Core.Domain
                  "ctx.lineWidth = 2.5;" +
 
                   "ctx.stroke();" +
-
+                  "ctx.lineWidth = 1;" +
 
                  "ctx.beginPath();" +
                  "ctx.lineWidth = 1;" +
@@ -185,8 +186,25 @@ namespace ProjectCalculator.Core.Domain
                  $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale);" +
                  GetMomentArrows() +
 
-                 $"ctx.fillText('M',{_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale-10);" +
+                 $"ctx.fillText('M',{_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M} -10,{_paramFiz.YcFirstQuarter}*scale-10);" +
                  "ctx.stroke();" +
+
+                 //draw os obojetna
+                 "ctx.beginPath();" +
+                  "ctx.strokeStyle='orange';" +
+                   $"ctx.translate({_paramFiz.ZcFirstQuarter}*scale,{_paramFiz.YcFirstQuarter}*scale);" +
+                 $"ctx.rotate({-_paramFiz.Fi} * Math.PI / 180);" +
+                  $"ctx.moveTo(-totalWidth,{-_tensionData.KsiRate}*totalWidth);" +
+                  $"ctx.lineTo(totalWidth,{_tensionData.KsiRate}*totalWidth);" +
+
+
+                  $"ctx.fillStyle = 'black';"+
+                  $"ctx.fillText('oś obojętna',-totalWidth,{-_tensionData.KsiRate}*totalWidth+20);" +
+
+                  "ctx.stroke();" +
+                    $"ctx.rotate({_paramFiz.Fi} * Math.PI / 180);" +
+                   $"ctx.translate({-_paramFiz.ZcFirstQuarter}*scale,{-_paramFiz.YcFirstQuarter}*scale);" +
+                   $"ctx.fillStyle = 'black';" +
 
                  //draw ksi
                  "ctx.beginPath();" +
