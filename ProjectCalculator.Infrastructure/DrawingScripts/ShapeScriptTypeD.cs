@@ -35,6 +35,9 @@ namespace ProjectCalculator.Core.Domain
                  "var scale = 80;" +
                  "var offset = 500;" +
 
+                 $"var dimensionOffset = {Math.Max(_paramFiz.Triangle.Height, _paramFiz.Rectangle.Height)} * scale;" +
+                 $"var axisLength = {Math.Max(_paramFiz.Triangle.Height, _paramFiz.Rectangle.Height)} * scale;" +
+
                  "var rWidth = rectWidth*scale;" +
                  "var rHigh = rectHeight*scale;" +
                  "var tWidth = triangleWidth*scale;" +
@@ -45,34 +48,35 @@ namespace ProjectCalculator.Core.Domain
                  "var ctx = c.getContext(\"2d\");" +
 
                  //draw vertical dimentions
-                 "ctx.beginPath();   " +
-                  $"ctx.translate(totalWidth*1.65 + offset,offset);" +
-                  "ctx.moveTo(-5,0);" +
-                  "ctx.lineTo(5,0);" +
-                  "ctx.moveTo(0,0);" +
+                 //"ctx.beginPath();   " +
+                 // $"ctx.translate(totalWidth*1.65 + offset,offset);" +
+                 // "ctx.moveTo(-5,0);" +
+                 // "ctx.lineTo(5,0);" +
+                 // "ctx.moveTo(0,0);" +
 
-                  "ctx.lineTo(0,tHigh);" +
-                  "ctx.font = '20px Arial';" +
-                  $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,tHigh/2);" +
+                 // "ctx.lineTo(0,tHigh);" +
+                 // "ctx.font = '20px Arial';" +
+                 // $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,tHigh/2);" +
 
-                  "ctx.moveTo(-5,tHigh);" +
-                  "ctx.lineTo(5,tHigh);" +
-                  "ctx.moveTo(0,tHigh);" +
+                 // "ctx.moveTo(-5,tHigh);" +
+                 // "ctx.lineTo(5,tHigh);" +
+                 // "ctx.moveTo(0,tHigh);" +
 
-                  "ctx.lineTo(0,rHigh);" +
+                 // "ctx.lineTo(0,rHigh);" +
 
-                   "ctx.moveTo(-5,rHigh);" +
-                  "ctx.lineTo(5,rHigh);" +
-                  "ctx.moveTo(0,rHigh);" +
-                   $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,rHigh*0.75);" +
-                   "ctx.lineWidth = 1.5;" +
-                   "ctx.stroke();" +
+                 //  "ctx.moveTo(-5,rHigh);" +
+                 // "ctx.lineTo(5,rHigh);" +
+                 // "ctx.moveTo(0,rHigh);" +
+                 //  $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,rHigh*0.75);" +
+                 //  "ctx.lineWidth = 1.5;" +
+                 //  "ctx.stroke();" +
 
+                 GetVerticalDimensions() +
                    "ctx.beginPath();" +
 
                    $"ctx.translate(-totalWidth*1.65 -offset,-offset);" +
 
-                   $"ctx.translate(offset,rHigh*1.5+offset*1.2);" +
+                   $"ctx.translate(offset,dimensionOffset+offset*1.2);" +
 
                    //draw horizontal dimentions
                    "ctx.moveTo(0,0);" +
@@ -89,9 +93,9 @@ namespace ProjectCalculator.Core.Domain
                   "ctx.lineTo(rWidth +tWidth,5);" +
                    $"ctx.fillText('{_paramFiz.Rectangle.Width}a',rWidth/2,-10);" +
                    $"ctx.fillText('{_paramFiz.Triangle.Width}a',(rWidth) +tWidth*0.5,-10);" +
-                   
+
                    "ctx.stroke();" +
-                   $"ctx.translate(-offset,-(rHigh*1.5+offset*1.2));" +
+                   $"ctx.translate(-offset,-(dimensionOffset+offset*1.2));" +
 
                     //draw gravity center dimentions
                     $"ctx.translate(offset,(rHigh*1.3+offset));" +
@@ -104,7 +108,7 @@ namespace ProjectCalculator.Core.Domain
                      $"ctx.lineTo(({_paramFiz.Rectangle.Width} + {_paramFiz.Zc})*scale,0);" +
                       $"ctx.moveTo(({_paramFiz.Rectangle.Width} + {_paramFiz.Zc})*scale,-5);" +
                   $"ctx.lineTo(({_paramFiz.Rectangle.Width} + {_paramFiz.Zc})*scale,5);" +
-                     $"ctx.fillText('{Math.Abs(_paramFiz.Zc)}a',scale*{_paramFiz.Rectangle.Width + _paramFiz.Zc*0.85} ,-10);" +
+                     $"ctx.fillText('{Math.Abs(_paramFiz.Zc)}a',scale*{_paramFiz.Rectangle.Width + _paramFiz.Zc * 0.85} ,-10);" +
                      "ctx.lineWidth = 1.5;" +
                      "ctx.stroke();" +
 
@@ -122,16 +126,18 @@ namespace ProjectCalculator.Core.Domain
                   $"ctx.lineTo(5,{_paramFiz.Yc}*scale);" +
                   $"ctx.moveTo(0,{_paramFiz.Yc}*scale);" +
                   $"ctx.fillText('{_paramFiz.Yc}a',5,{_paramFiz.Yc / 2}*scale);" +
-                  
+
                    "ctx.stroke();" +
                    $"ctx.translate(-totalWidth*1.3 - offset,-offset);" +
 
+                 //draw shape
                  "ctx.beginPath();" +
-                   $"ctx.translate(offset,offset);" +
+                  $"ctx.translate(offset,offset);" +
                  "ctx.rect(0,0,rWidth,rHigh);" +
                  "ctx.moveTo(rWidth,0);" +
                  "ctx.lineTo(rWidth+tWidth,0);" +
                  "ctx.lineTo(rWidth,tHigh);" +
+                 "ctx.lineTo(rWidth,0);" +
                  "ctx.lineWidth = 2.5;" +
 
                   "ctx.stroke();" +
@@ -141,12 +147,12 @@ namespace ProjectCalculator.Core.Domain
                  "ctx.lineWidth = 1;" +
                  //draw y axis
                  "ctx.moveTo(rWidth,0);" +
-                 "ctx.lineTo(rWidth,rHigh*1.5);" +
-                 "ctx.lineTo(rWidth-10,rHigh*1.5-10);" +
-                 "ctx.moveTo(rWidth,rHigh*1.5);" +
-                 "ctx.lineTo(rWidth+10,rHigh*1.5-10);" +
+                 "ctx.lineTo(rWidth,axisLength*1.5);" +
+                 "ctx.lineTo(rWidth-10,axisLength*1.5-10);" +
+                 "ctx.moveTo(rWidth,axisLength*1.5);" +
+                 "ctx.lineTo(rWidth+10,axisLength*1.5-10);" +
                  "ctx.font = '25px serif';" +
-                 "ctx.fillText('y',rWidth+10,rHigh*1.5);" +
+                 "ctx.fillText('y',rWidth+10,axisLength*1.5);" +
 
 
                  //draw z axis
@@ -162,20 +168,20 @@ namespace ProjectCalculator.Core.Domain
                   //draw yc axis
                   "ctx.beginPath();" +
                  $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale,0);" +
-                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale,rHigh*1.5);" +
-                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale-10,rHigh*1.5-10);" +
-                 $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale,rHigh*1.5);" +
-                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale+10,rHigh*1.5-10);" +
+                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale,axisLength*1.5);" +
+                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale-10,axisLength*1.5-10);" +
+                 $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale,axisLength*1.5);" +
+                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale+10,axisLength*1.5-10);" +
                  "ctx.font = '25px serif';" +
-                 $"ctx.fillText('yc',{_paramFiz.ZcFirstQuarter}*scale+10,rHigh*1.5);" +
+                 $"ctx.fillText('yc',{_paramFiz.ZcFirstQuarter}*scale+10,axisLength*1.5);" +
 
                  //draw zc axis
                  $"ctx.moveTo(0,{_paramFiz.YcFirstQuarter}*scale);" +
-                 $"ctx.lineTo(rHigh*1.5,{_paramFiz.YcFirstQuarter}*scale);" +
-                 $"ctx.lineTo(rHigh*1.5-10,{_paramFiz.YcFirstQuarter}*scale-10);" +
-                 $"ctx.moveTo(rHigh*1.5,{_paramFiz.YcFirstQuarter}*scale);" +
-                 $"ctx.lineTo(rHigh*1.5-10,{_paramFiz.YcFirstQuarter}*scale+10);" +
-                 $"ctx.fillText('zc',rHigh*1.5,{_paramFiz.YcFirstQuarter}*scale-10);" +
+                 $"ctx.lineTo(axisLength*1.85,{_paramFiz.YcFirstQuarter}*scale);" +
+                 $"ctx.lineTo(axisLength*1.85-10,{_paramFiz.YcFirstQuarter}*scale-10);" +
+                 $"ctx.moveTo(axisLength*1.85,{_paramFiz.YcFirstQuarter}*scale);" +
+                 $"ctx.lineTo(axisLength*1.85-10,{_paramFiz.YcFirstQuarter}*scale+10);" +
+                 $"ctx.fillText('zc',axisLength*1.85,{_paramFiz.YcFirstQuarter}*scale-10);" +
                   "ctx.strokeStyle='green';" +
                   "ctx.stroke();" +
                  //draw M
@@ -198,7 +204,7 @@ namespace ProjectCalculator.Core.Domain
                   $"ctx.lineTo(totalWidth,{_tensionData.KsiRate}*totalWidth);" +
 
 
-                  $"ctx.fillStyle = 'black';"+
+                  $"ctx.fillStyle = 'black';" +
                   $"ctx.fillText('oś obojętna',-totalWidth,{-_tensionData.KsiRate}*totalWidth+20);" +
 
                   "ctx.stroke();" +
@@ -211,12 +217,12 @@ namespace ProjectCalculator.Core.Domain
                   "ctx.strokeStyle='red';" +
                  $"ctx.translate({_paramFiz.ZcFirstQuarter}*scale,{_paramFiz.YcFirstQuarter}*scale);" +
                  $"ctx.rotate({-_paramFiz.Fi} * Math.PI / 180);" +
-                 $"ctx.moveTo(-rWidth,0);" +
-                 $"ctx.lineTo(totalWidth,0);" +
-                 $"ctx.lineTo(totalWidth-10,-10);" +
-                 $"ctx.moveTo(totalWidth,0);" +
-                 $"ctx.lineTo(totalWidth-10,10);" +
-                 $"ctx.fillText('ξ',totalWidth,-10);" +
+                 $"ctx.moveTo(-axisLength,0);" +
+                 $"ctx.lineTo(axisLength,0);" +
+                 $"ctx.lineTo(axisLength-10,-10);" +
+                 $"ctx.moveTo(axisLength,0);" +
+                 $"ctx.lineTo(axisLength-10,10);" +
+                 $"ctx.fillText('ξ',axisLength,-10);" +
                  "ctx.stroke();" +
                   //draw arrow
                   "ctx.beginPath();" +
@@ -236,12 +242,12 @@ namespace ProjectCalculator.Core.Domain
                  $"ctx.translate(offset,offset);" +
                  $"ctx.translate({_paramFiz.ZcFirstQuarter}*scale,{_paramFiz.YcFirstQuarter}*scale);" +
                  $"ctx.rotate({-_paramFiz.Fi} * Math.PI / 180);" +
-                 $"ctx.moveTo(0,-rHigh);" +
-                 $"ctx.lineTo(0,rHigh);" +
-                 $"ctx.lineTo(-10,rHigh-10);" +
-                 $"ctx.moveTo(0,rHigh);" +
-                 $"ctx.lineTo(10,rHigh-10);" +
-                 $"ctx.fillText('η',10,rHigh-10);" +
+                 $"ctx.moveTo(0,-axisLength);" +
+                 $"ctx.lineTo(0,axisLength);" +
+                 $"ctx.lineTo(-10,axisLength-10);" +
+                 $"ctx.moveTo(0,axisLength);" +
+                 $"ctx.lineTo(10,axisLength-10);" +
+                 $"ctx.fillText('η',10,axisLength-10);" +
                  "ctx.stroke();" +
                  //draw arrow
                  "ctx.beginPath();" +
@@ -319,8 +325,6 @@ namespace ProjectCalculator.Core.Domain
                $"ctx.lineTo(10,{_bendingMoment.Mn}+20);"; ;
         }
 
-
-
         private string GetKsiArrows()
         {
             if (_bendingMoment.Me > 0)
@@ -360,12 +364,12 @@ namespace ProjectCalculator.Core.Domain
 
         private string GetMomentArrows()
         {
-            if (_bendingMoment.Mn > 0)
+            if (_bendingMoment.M > 0)
                 return GetPositiveMoment();
             return GetNegativeMoment();
         }
 
-        private string GetNegativeMoment()
+        private string GetPositiveMoment()
         {
             return $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-10,{_paramFiz.YcFirstQuarter}*scale-10);" +
                   $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale);" +
@@ -376,8 +380,8 @@ namespace ProjectCalculator.Core.Domain
                   $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-20,{_paramFiz.YcFirstQuarter}*scale+10);";
         }
 
-
-        private string GetPositiveMoment()
+        
+        private string GetNegativeMoment()
         {
             return $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}+10,{_paramFiz.YcFirstQuarter}*scale+10);" +
                $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M},{_paramFiz.YcFirstQuarter}*scale);" +
@@ -386,6 +390,69 @@ namespace ProjectCalculator.Core.Domain
                $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}+20,{_paramFiz.YcFirstQuarter}*scale+10);" +
                $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}+10,{_paramFiz.YcFirstQuarter}*scale);" +
                $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}+20,{_paramFiz.YcFirstQuarter}*scale-10);";
+
+        }
+
+        private string GetVerticalDimensions()
+        {
+            if (_paramFiz.Triangle.Height > _paramFiz.Rectangle.Height)
+                return TriangleHigherThanRect();
+            return RectHigherThanTriangle();
+        }
+
+        private string TriangleHigherThanRect()
+        {
+            return "ctx.beginPath();   " +
+                 $"ctx.translate(totalWidth*1.65 + offset,offset);" +
+
+                 "ctx.moveTo(-5,0);" +
+                 "ctx.lineTo(5,0);" +
+                 "ctx.moveTo(0,0);" +
+
+                 "ctx.lineTo(0,rHigh);" +
+
+                  "ctx.moveTo(-5,rHigh);" +
+                 "ctx.lineTo(5,rHigh);" +
+                 "ctx.moveTo(0,rHigh);" +
+                 "ctx.lineTo(0,tHigh);" +
+                 "ctx.font = '20px Arial';" +
+                  $"ctx.fillText('{_paramFiz.Rectangle.Height}a',5,rHigh*0.5);" +
+
+                 "ctx.moveTo(-5,tHigh);" +
+                 "ctx.lineTo(5,tHigh);" +
+                 "ctx.moveTo(0,tHigh);" +
+
+                 
+                 $"ctx.fillText('{_paramFiz.Triangle.Height - _paramFiz.Rectangle.Height}a',5,rHigh+tHigh/4);" +
+                  "ctx.lineWidth = 1.5;" +
+                  "ctx.stroke();";
+        }
+
+        private string RectHigherThanTriangle()
+        {
+            return
+                "ctx.beginPath();   " +
+                 $"ctx.translate(totalWidth*1.65 + offset,offset);" +
+                 "ctx.moveTo(-5,0);" +
+                 "ctx.lineTo(5,0);" +
+                 "ctx.moveTo(0,0);" +
+
+                 "ctx.lineTo(0,tHigh);" +
+                 "ctx.font = '20px Arial';" +
+                 $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,tHigh/2);" +
+
+                 "ctx.moveTo(-5,tHigh);" +
+                 "ctx.lineTo(5,tHigh);" +
+                 "ctx.moveTo(0,tHigh);" +
+
+                 "ctx.lineTo(0,rHigh);" +
+
+                  "ctx.moveTo(-5,rHigh);" +
+                 "ctx.lineTo(5,rHigh);" +
+                 "ctx.moveTo(0,rHigh);" +
+                  $"ctx.fillText('{_paramFiz.Rectangle.Height - _paramFiz.Triangle.Height}a',5,rHigh*0.75);" +
+                  "ctx.lineWidth = 1.5;" +
+                  "ctx.stroke();";
 
         }
     }
