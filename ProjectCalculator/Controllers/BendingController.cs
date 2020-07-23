@@ -79,13 +79,13 @@ namespace ProjectCalculator.Controllers
                         Q1 = 15,
                         Q2 = 12,
                         P = 0},
-                ShapeType =4,
+                ShapeType =3,
                 //Shape = shapeB1_1_B2_1_H1_1_H2_1,
-                Shape = shapeB1_3_B2_5_H1_2_H2_2,
+                //Shape = shapeB1_3_B2_5_H1_2_H2_2,
                 //Shape = shapeB1_4_B2_5_H1_5_H2_5,
                 //Shape = shapeB1_2_B2_5_H1_5_H2_5,
                 //Shape = shapeB1_2_B2_5_H1_5_H2_5,
-                //Shape = shapeB1_3_B2_5_H1_3_H2_3,
+                Shape = shapeB1_3_B2_5_H1_3_H2_3,
                 YieldPoint = new YieldPoint(){Kr = 0.35}
             };
             _commandDispatcher.DispatchAsync(bendingCommand);
