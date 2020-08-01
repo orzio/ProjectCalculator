@@ -65,17 +65,17 @@ namespace ProjectCalculator.Infrastructure.Commands
 
 
 
-            using (StreamWriter file =
-             new StreamWriter(@$"E:\Własne\Projekty\testFiles\{command.ShapeType}_B1_{command.Shape.B1}_B2_{command.Shape.B2}_H1_{command.Shape.H1}_H2_{command.Shape.H2}.txt"))
-            {
-                file.WriteLine($"B1_{command.Shape.B1}_B2_{command.Shape.B2}_H1_{command.Shape.H1}_H2_{command.Shape.H2}");
-                foreach (var item in contour.ContourPoints)
-                {
-                    {
-                        file.WriteLine($"{item.Key}, {item.Value.HorizontalCoord}, {item.Value.VerticalCoord}");
-                    }
-                }
-            }
+            //using (StreamWriter file =
+            // new StreamWriter(@$"E:\Własne\Projekty\testFiles\{command.ShapeType}_B1_{command.Shape.B1}_B2_{command.Shape.B2}_H1_{command.Shape.H1}_H2_{command.Shape.H2}.txt"))
+            //{
+            //    file.WriteLine($"B1_{command.Shape.B1}_B2_{command.Shape.B2}_H1_{command.Shape.H1}_H2_{command.Shape.H2}");
+            //    foreach (var item in contour.ContourPoints)
+            //    {
+            //        {
+            //            file.WriteLine($"{item.Key}, {item.Value.HorizontalCoord}, {item.Value.VerticalCoord}");
+            //        }
+            //    }
+            //}
 
             _bendingCalculator.Calculate(paramFiz, bendingMoment);
             _bendingCalculator.CalculateEthaRate();
