@@ -1,4 +1,5 @@
 ﻿using ProjectCalculator.Core.Domain;
+using ProjectCalculator.Infrastructure.DrawingScripts;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,7 +45,7 @@ namespace ProjectCalculator.Infrastructure.Writer
 
         public string ReplaceHtmlTemplateWithValues()
         {
-            _resultPage = _resultPage.Replace("scriptPlace", new ShapeScriptTypeD( _paramFiz,  _bendingMoment,  _internalForces,
+            _resultPage = _resultPage.Replace("scriptPlace", new ShapeScriptTypeA( _paramFiz,  _bendingMoment,  _internalForces,
              _tensionData, _furthestsPoints,  _contour).GetScript());
                
             _resultPage = _resultPage.Replace("rectArea", _paramFiz.Rectangle.GetArea().ToString());

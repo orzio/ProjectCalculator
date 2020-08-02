@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ProjectCalculator.Core.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProjectCalculator.Core.Domain
+namespace ProjectCalculator.Infrastructure.DrawingScripts
 {
-    public class ShapeScriptTypeD : IShapeScript
+    public class ShapeScriptTypeA : IShapeScript
     {
 
         private ParamFiz _paramFiz;
@@ -17,7 +18,7 @@ namespace ProjectCalculator.Core.Domain
         private string _resultPage;
         private YieldPoint _yieldPoint;
 
-        public ShapeScriptTypeD(ParamFiz paramFiz, BendingMoment bendingMoment, InternalForces internalForces,
+        public ShapeScriptTypeA(ParamFiz paramFiz, BendingMoment bendingMoment, InternalForces internalForces,
             TensionData tensionData, Dictionary<Char, Point> furthestsPoints, Contour contour)
         {
             _paramFiz = paramFiz;
@@ -212,7 +213,7 @@ namespace ProjectCalculator.Core.Domain
                    $"ctx.translate({-_paramFiz.ZcFirstQuarter}*scale,{-_paramFiz.YcFirstQuarter}*scale);" +
                    $"ctx.fillStyle = 'black';" +
 
-                 //draw ksi
+                 ////draw ksi
                  "ctx.beginPath();" +
                   "ctx.strokeStyle='red';" +
                  $"ctx.translate({_paramFiz.ZcFirstQuarter}*scale,{_paramFiz.YcFirstQuarter}*scale);" +
@@ -236,7 +237,7 @@ namespace ProjectCalculator.Core.Domain
                  $"ctx.setTransform(1,0,0,1,0,0);" +
                  "ctx.stroke();" +
 
-                  //drow etha
+                  // //drow etha
                   "ctx.beginPath();" +
                   "ctx.strokeStyle='red';" +
                  $"ctx.translate(offset,offset);" +
@@ -271,20 +272,18 @@ namespace ProjectCalculator.Core.Domain
 
                  //draw last point
                  "ctx.beginPath();" +
-                  "ctx.strokeStyle='black';" +
+                 "ctx.strokeStyle='black';" +
                  $"ctx.translate({_contour.FurthestsPointsFirstQuarter.Last().Value.HorizontalCoord}*scale,{_contour.FurthestsPointsFirstQuarter.Last().Value.VerticalCoord}*scale);" +
                  $"ctx.arc(0, 0, 5, 0, Math.PI * 2, false);" +
                  $"ctx.fillText('{_contour.FurthestsPointsFirstQuarter.Last().Key} ({_contour.FurthestsPointsFirstQuarter.Last().Value.HorizontalCoord}a; {_contour.FurthestsPointsFirstQuarter.Last().Value.VerticalCoord}a)',5,20);" +
                  "ctx.stroke();" +
 
-                 //draw first point
+                 ////draw first point
                  "ctx.beginPath();" +
                  $"ctx.translate({-_contour.FurthestsPointsFirstQuarter.Last().Value.HorizontalCoord}*scale,{-_contour.FurthestsPointsFirstQuarter.Last().Value.VerticalCoord}*scale);" +
                  $"ctx.translate({_contour.FurthestsPointsFirstQuarter.First().Value.HorizontalCoord}*scale,{_contour.FurthestsPointsFirstQuarter.First().Value.VerticalCoord}*scale);" +
                  $"ctx.arc(0, 0, 5, 0, Math.PI * 2, false);" +
                  $"ctx.fillText('{_contour.FurthestsPointsFirstQuarter.First().Key} ({_contour.FurthestsPointsFirstQuarter.First().Value.HorizontalCoord}a; {_contour.FurthestsPointsFirstQuarter.First().Value.VerticalCoord}a)',5,-20);" +
-
-
                  "ctx.stroke();" +
                  "</scr" + "ipt>";
 
@@ -380,7 +379,7 @@ namespace ProjectCalculator.Core.Domain
                   $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}-20,{_paramFiz.YcFirstQuarter}*scale+10);";
         }
 
-        
+
         private string GetNegativeMoment()
         {
             return $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale + {_bendingMoment.M}+10,{_paramFiz.YcFirstQuarter}*scale+10);" +
@@ -422,7 +421,7 @@ namespace ProjectCalculator.Core.Domain
                  "ctx.lineTo(5,tHigh);" +
                  "ctx.moveTo(0,tHigh);" +
 
-                 
+
                  $"ctx.fillText('{_paramFiz.Triangle.Height - _paramFiz.Rectangle.Height}a',5,rHigh+tHigh/4);" +
                   "ctx.lineWidth = 1.5;" +
                   "ctx.stroke();";

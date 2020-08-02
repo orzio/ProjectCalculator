@@ -79,7 +79,7 @@ namespace ProjectCalculator.Controllers
                         Q1 = 15,
                         Q2 = 12,
                         P = 0},
-                ShapeType =3,
+                ShapeType =1,
                 //Shape = shapeB1_1_B2_1_H1_1_H2_1,
                 //Shape = shapeB1_3_B2_5_H1_2_H2_2,
                 //Shape = shapeB1_4_B2_5_H1_5_H2_5,
