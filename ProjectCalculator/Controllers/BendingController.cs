@@ -71,22 +71,22 @@ namespace ProjectCalculator.Controllers
 
             BendingCommand bendingCommand = new BendingCommand()
             {
-                BeamType = 1,
+                BeamType = 4,
                 Beam = new Beam() {
-                        L1 = 1,
-                        L2 = 4,
-                        L3 = 2,
-                        Q1 = 15,
-                        Q2 = 12,
-                        P = 0},
-                ShapeType =1,
+                        L1 = 2,
+                        L2 = 3,
+                        L3 = 1,
+                        Q1 = 8,
+                        Q2 = 5,
+                        P = 9},
+                ShapeType =2,
                 //Shape = shapeB1_1_B2_1_H1_1_H2_1,
                 //Shape = shapeB1_3_B2_5_H1_2_H2_2,
                 //Shape = shapeB1_4_B2_5_H1_5_H2_5,
                 //Shape = shapeB1_2_B2_5_H1_5_H2_5,
-                //Shape = shapeB1_2_B2_5_H1_5_H2_5,
-                Shape = shapeB1_3_B2_5_H1_3_H2_3,
-                YieldPoint = new YieldPoint(){Kr = 0.35}
+                Shape = shapeB1_2_B2_5_H1_5_H2_5,
+                //Shape = shapeB1_3_B2_5_H1_3_H2_3,
+                YieldPoint = new YieldPoint(){Kr = 0.4}
             };
             _commandDispatcher.DispatchAsync(bendingCommand);
             return null;

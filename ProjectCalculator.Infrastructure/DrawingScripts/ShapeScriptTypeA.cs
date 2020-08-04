@@ -37,108 +37,48 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
                  "var offset = 500;" +
 
                  $"var dimensionOffset = {Math.Max(_paramFiz.Triangle.Height, _paramFiz.Rectangle.Height)} * scale;" +
-                 $"var axisLength = {Math.Max(_paramFiz.Triangle.Height, _paramFiz.Rectangle.Height)} * scale;" +
+                 $"var axisLength = {Math.Max(_paramFiz.Triangle.Width, _paramFiz.Rectangle.Width)} * scale;" +
 
                  "var rWidth = rectWidth*scale;" +
                  "var rHigh = rectHeight*scale;" +
                  "var tWidth = triangleWidth*scale;" +
                  "var tHigh = triangleHeight*scale;" +
-                 "var totalWidth = rWidth + tWidth;" +
+                 "var totalWidth = rWidth*scale;" +
+                 "var totalHeight = rHigh + tHigh ;" +
                  "var c = document.getElementById(\"myCanvas\");" +
 
                  "var ctx = c.getContext(\"2d\");" +
 
-                 //draw vertical dimentions
-                 //"ctx.beginPath();   " +
-                 // $"ctx.translate(totalWidth*1.65 + offset,offset);" +
-                 // "ctx.moveTo(-5,0);" +
-                 // "ctx.lineTo(5,0);" +
-                 // "ctx.moveTo(0,0);" +
-
-                 // "ctx.lineTo(0,tHigh);" +
-                 // "ctx.font = '20px Arial';" +
-                 // $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,tHigh/2);" +
-
-                 // "ctx.moveTo(-5,tHigh);" +
-                 // "ctx.lineTo(5,tHigh);" +
-                 // "ctx.moveTo(0,tHigh);" +
-
-                 // "ctx.lineTo(0,rHigh);" +
-
-                 //  "ctx.moveTo(-5,rHigh);" +
-                 // "ctx.lineTo(5,rHigh);" +
-                 // "ctx.moveTo(0,rHigh);" +
-                 //  $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,rHigh*0.75);" +
-                 //  "ctx.lineWidth = 1.5;" +
-                 //  "ctx.stroke();" +
-
                  GetVerticalDimensions() +
-                   "ctx.beginPath();" +
-
-                   $"ctx.translate(-totalWidth*1.65 -offset,-offset);" +
-
-                   $"ctx.translate(offset,dimensionOffset+offset*1.2);" +
-
-                   //draw horizontal dimentions
-                   "ctx.moveTo(0,0);" +
-                   "ctx.moveTo(0,-5);" +
-                  "ctx.lineTo(0,5);" +
-                  "ctx.moveTo(0,0);" +
-                  "ctx.lineTo(rWidth,0);" +
-                   "ctx.moveTo(rWidth,-5);" +
-                  "ctx.lineTo(rWidth,5);" +
-                  "ctx.moveTo(rWidth,0);" +
-                  "ctx.lineTo(rWidth +tWidth,0);" +
-                   "ctx.moveTo(rWidth +tWidth,0);" +
-                   "ctx.moveTo(rWidth +tWidth,-5);" +
-                  "ctx.lineTo(rWidth +tWidth,5);" +
-                   $"ctx.fillText('{_paramFiz.Rectangle.Width}a',rWidth/2,-10);" +
-                   $"ctx.fillText('{_paramFiz.Triangle.Width}a',(rWidth) +tWidth*0.5,-10);" +
-
-                   "ctx.stroke();" +
-                   $"ctx.translate(-offset,-(dimensionOffset+offset*1.2));" +
-
+                 GetHorizontalDimension()+
                     //draw gravity center dimentions
-                    $"ctx.translate(offset,(rHigh*1.3+offset));" +
+                    $"ctx.translate(offset,(totalHeight*1.2+offset));" +
                      "ctx.beginPath();" +
 
-                     $"ctx.moveTo({_paramFiz.Rectangle.Width}*scale,0);" +
-                      $"ctx.moveTo({_paramFiz.Rectangle.Width}*scale,-5);" +
-                  $"ctx.lineTo({_paramFiz.Rectangle.Width}*scale,5);" +
-                   $"ctx.moveTo({_paramFiz.Rectangle.Width}*scale,0);" +
-                     $"ctx.lineTo(({_paramFiz.Rectangle.Width} + {_paramFiz.Zc})*scale,0);" +
-                      $"ctx.moveTo(({_paramFiz.Rectangle.Width} + {_paramFiz.Zc})*scale,-5);" +
-                  $"ctx.lineTo(({_paramFiz.Rectangle.Width} + {_paramFiz.Zc})*scale,5);" +
-                     $"ctx.fillText('{Math.Abs(_paramFiz.Zc)}a',scale*{_paramFiz.Rectangle.Width + _paramFiz.Zc * 0.85} ,-10);" +
+                     $"ctx.moveTo(0,0);" +
+                      $"ctx.moveTo(0,-5);" +
+                  $"ctx.lineTo(0,5);" +
+                   $"ctx.moveTo(0,0);" +
+                     $"ctx.lineTo({_paramFiz.Zc}*scale,0);" +
+                      $"ctx.moveTo({_paramFiz.Zc}*scale,-5);" +
+                  $"ctx.lineTo({_paramFiz.Zc}*scale,5);" +
+                     $"ctx.fillText('{Math.Abs(_paramFiz.Zc)}a',scale*{_paramFiz.Zc * 0.4} ,-10);" +
                      "ctx.lineWidth = 1.5;" +
                      "ctx.stroke();" +
-
-                   $"ctx.translate(-offset,-(rHigh*1.3+offset));" +
+                   $"ctx.translate(-offset,-(totalHeight*1.2+offset));" +
 
                  //draw gravity vertival
-                 "ctx.beginPath();" +
-                  $"ctx.translate(totalWidth*1.3 + offset,offset);" +
-                  "ctx.moveTo(-5,0);" +
-                  "ctx.lineTo(5,0);" +
-                  "ctx.moveTo(0,0);" +
-
-                  $"ctx.lineTo(0,{_paramFiz.Yc}*scale);" +
-                  $"ctx.moveTo(-5,{_paramFiz.Yc}*scale);" +
-                  $"ctx.lineTo(5,{_paramFiz.Yc}*scale);" +
-                  $"ctx.moveTo(0,{_paramFiz.Yc}*scale);" +
-                  $"ctx.fillText('{_paramFiz.Yc}a',5,{_paramFiz.Yc / 2}*scale);" +
-
-                   "ctx.stroke();" +
-                   $"ctx.translate(-totalWidth*1.3 - offset,-offset);" +
+                 GetGravityVerticatDimension()+
+                
 
                  //draw shape
                  "ctx.beginPath();" +
                   $"ctx.translate(offset,offset);" +
                  "ctx.rect(0,0,rWidth,rHigh);" +
-                 "ctx.moveTo(rWidth,0);" +
-                 "ctx.lineTo(rWidth+tWidth,0);" +
-                 "ctx.lineTo(rWidth,tHigh);" +
-                 "ctx.lineTo(rWidth,0);" +
+                 "ctx.moveTo(0,rHigh);" +
+                 "ctx.lineTo(tWidth,rHigh);" +
+                 "ctx.lineTo(0,rHigh+tHigh);" +
+                 "ctx.lineTo(0,rHigh);" +
                  "ctx.lineWidth = 2.5;" +
 
                   "ctx.stroke();" +
@@ -148,33 +88,33 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
                  "ctx.lineWidth = 1;" +
                  //draw y axis
                  "ctx.moveTo(rWidth,0);" +
-                 "ctx.lineTo(rWidth,axisLength*1.5);" +
-                 "ctx.lineTo(rWidth-10,axisLength*1.5-10);" +
-                 "ctx.moveTo(rWidth,axisLength*1.5);" +
-                 "ctx.lineTo(rWidth+10,axisLength*1.5-10);" +
+                 "ctx.lineTo(rWidth,axisLength*1.25);" +
+                 "ctx.lineTo(rWidth-10,axisLength*1.25-10);" +
+                 "ctx.moveTo(rWidth,axisLength*1.25);" +
+                 "ctx.lineTo(rWidth+10,axisLength*1.25-10);" +
                  "ctx.font = '25px serif';" +
-                 "ctx.fillText('y',rWidth+10,axisLength*1.5);" +
+                 "ctx.fillText('y',rWidth+10,axisLength*1.25);" +
 
 
                  //draw z axis
-                 "ctx.moveTo(0,0);" +
-                 "ctx.lineTo(totalWidth+rHigh*0.5,0);" +
-                 "ctx.lineTo(totalWidth+rHigh*0.5-10,-10);" +
-                 "ctx.moveTo(totalWidth+rHigh*0.5,0);" +
-                 "ctx.lineTo(totalWidth+rHigh*0.5-10,10);" +
+                 "ctx.moveTo(rWidth,0);" +
+                 "ctx.lineTo(axisLength*1.85,0);" +
+                 "ctx.lineTo(axisLength*1.85-10,-10);" +
+                 "ctx.moveTo(axisLength*1.85,0);" +
+                 "ctx.lineTo(axisLength*1.85-10,10);" +
                  "ctx.font = '25px serif';" +
-                 "ctx.fillText('z',totalWidth+rHigh*0.5,-10);" +
+                 "ctx.fillText('z',axisLength*1.85,-10);" +
                  "ctx.stroke();" +
 
                   //draw yc axis
                   "ctx.beginPath();" +
                  $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale,0);" +
-                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale,axisLength*1.5);" +
-                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale-10,axisLength*1.5-10);" +
-                 $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale,axisLength*1.5);" +
-                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale+10,axisLength*1.5-10);" +
+                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale,axisLength*1.25);" +
+                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale-10,axisLength*1.25-10);" +
+                 $"ctx.moveTo({_paramFiz.ZcFirstQuarter}*scale,axisLength*1.25);" +
+                 $"ctx.lineTo({_paramFiz.ZcFirstQuarter}*scale+10,axisLength*1.25-10);" +
                  "ctx.font = '25px serif';" +
-                 $"ctx.fillText('yc',{_paramFiz.ZcFirstQuarter}*scale+10,axisLength*1.5);" +
+                 $"ctx.fillText('yc',{_paramFiz.ZcFirstQuarter}*scale+10,axisLength*1.25);" +
 
                  //draw zc axis
                  $"ctx.moveTo(0,{_paramFiz.YcFirstQuarter}*scale);" +
@@ -201,12 +141,12 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
                   "ctx.strokeStyle='orange';" +
                    $"ctx.translate({_paramFiz.ZcFirstQuarter}*scale,{_paramFiz.YcFirstQuarter}*scale);" +
                  $"ctx.rotate({-_paramFiz.Fi} * Math.PI / 180);" +
-                  $"ctx.moveTo(-totalWidth,{-_tensionData.KsiRate}*totalWidth);" +
-                  $"ctx.lineTo(totalWidth,{_tensionData.KsiRate}*totalWidth);" +
+                  $"ctx.moveTo(-rWidth,{-_tensionData.KsiRate}*rWidth);" +
+                  $"ctx.lineTo(rWidth,{_tensionData.KsiRate}*rWidth);" +
 
 
                   $"ctx.fillStyle = 'black';" +
-                  $"ctx.fillText('oś obojętna',-totalWidth,{-_tensionData.KsiRate}*totalWidth+20);" +
+                  $"ctx.fillText('oś obojętna',-rWidth,{-_tensionData.KsiRate}*rWidth+20);" +
 
                   "ctx.stroke();" +
                     $"ctx.rotate({_paramFiz.Fi} * Math.PI / 180);" +
@@ -237,7 +177,7 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
                  $"ctx.setTransform(1,0,0,1,0,0);" +
                  "ctx.stroke();" +
 
-                  // //drow etha
+                  //draw etha
                   "ctx.beginPath();" +
                   "ctx.strokeStyle='red';" +
                  $"ctx.translate(offset,offset);" +
@@ -288,6 +228,109 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
                  "</scr" + "ipt>";
 
             return script;
+        }
+
+
+
+
+        private string GetGravityDimensionSmootherTriangle()
+        {
+            return "ctx.beginPath();" +
+                  $"ctx.translate(rWidth*1.3 + offset,offset+rHigh);" +
+                  "ctx.moveTo(-5,0);" +
+                  "ctx.lineTo(5,0);" +
+                  "ctx.moveTo(0,0);" +
+
+                  $"ctx.lineTo(0,{_paramFiz.Yc}*scale);" +
+                  $"ctx.moveTo(-5,{_paramFiz.Yc}*scale);" +
+                  $"ctx.lineTo(5,{_paramFiz.Yc}*scale);" +
+                  $"ctx.moveTo(0,{_paramFiz.Yc}*scale);" +
+                  $"ctx.fillText('{Math.Abs(_paramFiz.Yc)}a',5,{_paramFiz.Yc / 2}*scale);" +
+
+                   "ctx.stroke();" +
+                   $"ctx.translate(-rWidth*1.3 - offset,-offset-rHigh);";
+        }
+
+        private string GetGravityDimensionWiderTriangle()
+        {
+            return "ctx.beginPath();" +
+                  $"ctx.translate(tWidth*1.3 + offset,offset+rHigh);" +
+                  "ctx.moveTo(-5,0);" +
+                  "ctx.lineTo(5,0);" +
+                  "ctx.moveTo(0,0);" +
+
+                  $"ctx.lineTo(0,{_paramFiz.Yc}*scale);" +
+                  $"ctx.moveTo(-5,{_paramFiz.Yc}*scale);" +
+                  $"ctx.lineTo(5,{_paramFiz.Yc}*scale);" +
+                  $"ctx.moveTo(0,{_paramFiz.Yc}*scale);" +
+                  $"ctx.fillText('{Math.Abs(_paramFiz.Yc)}a',5,{_paramFiz.Yc / 2}*scale);" +
+
+                   "ctx.stroke();" +
+                   $"ctx.translate(-tWidth*1.3 - offset,-offset-rHigh);";
+        }
+
+        private string GetGravityVerticatDimension()
+        {
+            if (_paramFiz.Triangle.Width > _paramFiz.Rectangle.Width)
+                return GetGravityDimensionWiderTriangle();
+            return GetGravityDimensionSmootherTriangle();
+        }
+
+        private string GetHorizontalDimension()
+        {
+            if (_paramFiz.Triangle.Width> _paramFiz.Rectangle.Width)
+                return WiderTriangle();
+            return SmootherTriangle();
+        }
+
+        private string SmootherTriangle()
+        {
+            return
+            "ctx.beginPath();" +
+                    $"ctx.translate(offset,totalHeight*1.35+offset);" +
+                    //draw horizontal dimentions
+                    "ctx.moveTo(0,0);" +
+                    "ctx.moveTo(0,-5);" +
+                   "ctx.lineTo(0,5);" +
+                   "ctx.moveTo(0,0);" +
+                   "ctx.lineTo(tWidth,0);" +
+                    "ctx.moveTo(tWidth,-5);" +
+                   "ctx.lineTo(tWidth,5);" +
+                   "ctx.moveTo(tWidth,0);" +
+                   "ctx.lineTo(rWidth,0);" +
+                    "ctx.moveTo(rWidth,0);" +
+                    "ctx.moveTo(rWidth,-5);" +
+                   "ctx.lineTo(rWidth,5);" +
+                    $"ctx.fillText('{_paramFiz.Triangle.Width}a',tWidth/2,-10);" +
+                    $"ctx.fillText('{_paramFiz.Rectangle.Width - _paramFiz.Triangle.Width}a',tWidth + (rWidth - tWidth)/2,-10);" +
+
+                    "ctx.stroke();" +
+                    $"ctx.translate(-offset,-(totalHeight*1.35+offset));";
+        }
+
+        private string WiderTriangle()
+        {
+            return
+            "ctx.beginPath();" +
+                   $"ctx.translate(offset,totalHeight*1.35+offset);" +
+                   //draw horizontal dimentions
+                   "ctx.moveTo(0,0);" +
+                   "ctx.moveTo(0,-5);" +
+                  "ctx.lineTo(0,5);" +
+                  "ctx.moveTo(0,0);" +
+                  "ctx.lineTo(rWidth,0);" +
+                   "ctx.moveTo(rWidth,-5);" +
+                  "ctx.lineTo(rWidth,5);" +
+                  "ctx.moveTo(rWidth,0);" +
+                  "ctx.lineTo(tWidth,0);" +
+                   "ctx.moveTo(tWidth,0);" +
+                   "ctx.moveTo(tWidth,-5);" +
+                  "ctx.lineTo(tWidth,5);" +
+                   $"ctx.fillText('{_paramFiz.Rectangle.Width}a',rWidth/2,-10);" +
+                   $"ctx.fillText('{_paramFiz.Triangle.Width - _paramFiz.Rectangle.Width}a',(tWidth-rWidth)/2+rWidth,-10);" +
+
+                   "ctx.stroke();" +
+                   $"ctx.translate(-offset,-(totalHeight*1.35+offset));";
         }
 
         private string GetEthaArrows()
@@ -394,65 +437,30 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
 
         private string GetVerticalDimensions()
         {
-            if (_paramFiz.Triangle.Height > _paramFiz.Rectangle.Height)
-                return TriangleHigherThanRect();
-            return RectHigherThanTriangle();
-        }
-
-        private string TriangleHigherThanRect()
-        {
-            return "ctx.beginPath();   " +
-                 $"ctx.translate(totalWidth*1.65 + offset,offset);" +
-
-                 "ctx.moveTo(-5,0);" +
-                 "ctx.lineTo(5,0);" +
-                 "ctx.moveTo(0,0);" +
-
-                 "ctx.lineTo(0,rHigh);" +
-
-                  "ctx.moveTo(-5,rHigh);" +
-                 "ctx.lineTo(5,rHigh);" +
-                 "ctx.moveTo(0,rHigh);" +
-                 "ctx.lineTo(0,tHigh);" +
-                 "ctx.font = '20px Arial';" +
-                  $"ctx.fillText('{_paramFiz.Rectangle.Height}a',5,rHigh*0.5);" +
-
-                 "ctx.moveTo(-5,tHigh);" +
-                 "ctx.lineTo(5,tHigh);" +
-                 "ctx.moveTo(0,tHigh);" +
-
-
-                 $"ctx.fillText('{_paramFiz.Triangle.Height - _paramFiz.Rectangle.Height}a',5,rHigh+tHigh/4);" +
-                  "ctx.lineWidth = 1.5;" +
-                  "ctx.stroke();";
-        }
-
-        private string RectHigherThanTriangle()
-        {
             return
-                "ctx.beginPath();   " +
-                 $"ctx.translate(totalWidth*1.65 + offset,offset);" +
-                 "ctx.moveTo(-5,0);" +
-                 "ctx.lineTo(5,0);" +
-                 "ctx.moveTo(0,0);" +
+                 "ctx.beginPath();   " +
+                  $"ctx.translate(rWidth*1.65 + offset,offset);" +
+                  "ctx.moveTo(-5,0);" +
+                  "ctx.lineTo(5,0);" +
+                  "ctx.moveTo(0,0);" +
 
-                 "ctx.lineTo(0,tHigh);" +
-                 "ctx.font = '20px Arial';" +
-                 $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,tHigh/2);" +
-
-                 "ctx.moveTo(-5,tHigh);" +
-                 "ctx.lineTo(5,tHigh);" +
-                 "ctx.moveTo(0,tHigh);" +
-
-                 "ctx.lineTo(0,rHigh);" +
+                  "ctx.lineTo(0,rHigh);" +
+                  "ctx.font = '20px Arial';" +
+                  $"ctx.fillText('{_paramFiz.Rectangle.Height}a',5,rHigh/2);" +
 
                   "ctx.moveTo(-5,rHigh);" +
-                 "ctx.lineTo(5,rHigh);" +
-                 "ctx.moveTo(0,rHigh);" +
-                  $"ctx.fillText('{_paramFiz.Rectangle.Height - _paramFiz.Triangle.Height}a',5,rHigh*0.75);" +
-                  "ctx.lineWidth = 1.5;" +
-                  "ctx.stroke();";
+                  "ctx.lineTo(5,rHigh);" +
+                  "ctx.moveTo(0,rHigh);" +
 
+                  "ctx.lineTo(0,rHigh + tHigh);" +
+
+                   "ctx.moveTo(-5,rHigh + tHigh);" +
+                  "ctx.lineTo(5,rHigh + tHigh);" +
+                  "ctx.moveTo(0,rHigh + tHigh);" +
+                   $"ctx.fillText('{_paramFiz.Triangle.Height}a',5,(rHigh) + tHigh/2);" +
+                   "ctx.lineWidth = 1.5;" +
+                   "ctx.stroke();" +
+             $"ctx.translate(-rWidth*1.65 -offset,-offset);";
         }
     }
 }
