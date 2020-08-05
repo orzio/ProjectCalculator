@@ -9,607 +9,628 @@
 
 
     <canvas id="myCanvas" width="2000" height="2000" style="border:1px solid #000000;">
-        </canvas>
+    </canvas>
     <br>
 
-<span>z<sub>c</sub> = 
+
+    <canvas id="myBeam" width="2000" height="2000" style="border:1px solid #000000;">
+    </canvas>
+    <br>
+
+    <span>
+        z<sub>c</sub> =
         <math>
             <mrow>
-             <mfrac>
-              <mi>S<sub>y</sub></mi>
-              <mi>A</mi>
-             </mfrac>
-            </mrow>
-           </math>
-           =
-           <math>
-            <mrow>
-             <mfrac>
-              <mi>25a<sup>2</sup> * 2.5a + 17.5a<sup>2</sup> * 2.333a</mi>
-              <mi>25a<sup>2</sup> + 17.5a<sup>2</sup></mi>
-             </mfrac>
-            </mrow>
-           </math>
-           =2.4312a
-        </span>
-<br>
-
-<span>y<sub>c</sub> = 
-    <math>
-        <mrow>
-         <mfrac>
-          <mi>S<sub>z</sub></mi>
-          <mi>A</mi>
-         </mfrac>
-        </mrow>
-       </math>
-       =
-       <math>
-        <mrow>
-         <mfrac>
-          <mi>25a<sup>2</sup> * (-2.5a) + 17.5a<sup>2</sup> * 1.667a</mi>
-          <mi>25a<sup>2</sup> + 17.5a<sup>2</sup></mi>
-         </mfrac>
-        </mrow>
-       </math>
-       =-0.7842a
-    </span>
-<br>
-<br>
-<span>J<sub>z</sub> = 
-           =
-           <math>
-            <mrow>
-             <mfrac>
-              <mi>5a * (5a)<sup>3</sup></mi>
-              <mi>3</mi>
-             </mfrac>+
-             <mfrac>
-                <mi>7a * (5a)<sup>3</sup></mi>
-                <mi>12</mi>
-               </mfrac>
-            </mrow>
-           </math>
-           =281.2503a<sup>4</sup>
-        </span>
-<br>
-<span>J<sub>y</sub>
-            =
-            <math>
-             <mrow>
-              <mfrac>
-                <mi>5a * (5a)<sup>3</sup></mi>
-                <mi>3</mi>
-              </mfrac>+
-              <mfrac>
-                <mi>5a * (7a)<sup>3</sup></mi>
-                <mi>12</mi>
-                </mfrac>
-             </mrow>
-            </math>
-            =351.2503a<sup>4</sup>
-         </span>
-<br>
-
-<span>J<sub>zy</sub> = 
-   =
-   <math>
-    <mrow>-
-     <mfrac>
-      <mi>5a<sup>2</sup> * 5a<sup>2</sup></mi>
-      <mi>4</mi>
-     </mfrac>+
-     <mfrac>
-        <mi>7a<sup>2</sup> * 5a<sup>2</sup></mi>
-        <mi>24</mi>
-       </mfrac>
-    </mrow>
-   </math>
-   =-105.21a<sup>4</sup>
-</span>
-<br>
-
-<span>J<sub>zcyc</sub> = 
-   =
-   <math>
-    <mrow>
-      <mi>-105.21a<sup>4</sup> - 42.5a<sup>2</sup> * (2.4312a)*(-0.7842a)</mi>
-    </mrow>
-   </math>
-   =-24.1818a<sup>4</sup>
-</span>
-<br>
-
-<span>J<sub>zc</sub>
-            =
-            <math>
-             <mrow>
-                281.2503a<sup>4</sup> - 42.5a<sup>2</sup> * (-0.7842a)<sup>2</sup>
-             </mrow>
-            </math>
-            =255.1141a<sup>4</sup>
-         </span>
-<br>
-
-<span>J<sub>yc</sub>
-            =
-            <math>
-             <mrow>
-                351.2503a<sup>4</sup> - 42.5a<sup>2</sup> * (2.4312a)<sup>2</sup>
-             </mrow>
-            </math>
-            =100.0441a<sup>4</sup>
-         </span>
-<br>
-<br>
-<span>J<sub>1,2</sub>
-            =
-            <math>
-             <mrow>
-                0.5*<span>(J<sub>yc</sub> + J<sub>zc</sub>) &#177;</span>0.5* <span
-                     style="white-space: nowrap; ">
-                    &radic;<span style="text-decoration:overline;">&nbsp;(J<sub>yc</sub>-J<sub>zc</sub>)<sup>2</sup>
-                          + 4(J<sub>yczc</sub>)<sup>2</sup>&nbsp;</span>
-                    </span>
-             </mrow>
-            </math>
-         </span>
-
-<br>
-
-
-<span>J<sub>1</sub>
-            =
-            <math>
-             <mrow>
-                0.5*(100.0441a<sup>4</sup> + 255.1141a<sup>4</sup>) + 0.5* <span
-                     style="white-space: nowrap; ">
-                    &radic;<span
-                     style="text-decoration:overline;">&nbsp;(100.0441a<sup>4</sup>-255.1141a<sup>4</sup>)<sup>2</sup>
-                          + 4*(-24.1818a<sup>4</sup>)<sup>2</sup>&nbsp;</span>
-                    </span>
-             </mrow>
-            </math>
-            =96.3607 a<sup>4</sup>
-         </span>
-<br>
-
-<span>J<sub>2</sub>
-            =
-            <math>
-             <mrow>
-                0.5*(100.0441a<sup>4</sup> + 255.1141a<sup>4</sup>) -  0.5*<span
-                     style="white-space: nowrap; ">
-                    &radic;<span
-                     style="text-decoration:overline;">&nbsp;(100.0441a<sup>4</sup>-255.1141a<sup>4</sup>)<sup>2</sup>
-                          + 4*(-24.1818a<sup>4</sup>)<sup>2</sup>&nbsp;</span>
-                    </span>
-             </mrow>
-            </math>
-            =258.7975a<sup>4</sup>
-         </span>
-<br>
-<br>
-
-<span>tg2&#934; = 
-            <math>
-                <mrow>
-                 <mfrac>
-                  <mi>-2J<sub>yczc</sub></mi>
-                  <mi>J<sub>yc</sub> - J<sub>zc</sub></mi>
-                 </mfrac>
-                </mrow>
-               </math>
-            </span>
-<br>
-
-<span>tg2&#934; = 
-            <math>
-                <mrow>
-                 <mfrac>
-                  <mi>-2-24.1818a<sup>4</sup></mi>
-                  <mi>100.0441a<sup>4</sup> - 255.1141a<sup>4</sup></mi>
-                 </mfrac>
-                </mrow>
-               </math>
-            </span>
-=-0.3119
-<br>
-
-<span>
-         <math>
-             <mrow>
-         <sub>2&#934;</sub>=
-    -17.3227
-    &#176;
-                 </mrow>
-              </math>
-    </span>
-<br>
-
-<span>
-         <math>
-             <mrow>
-         <sub>&#934;</sub>=
-    -8.6614
-    &#176;
-                 </mrow>
-              </math>
-    </span>
-<br>
-<br>
-
-
-<span>
-    <math>
-        <mrow>
-         <mfrac>
-             <mi>M<sub>&#958;</sub></mi>
-          <mi>M</mi>
-         </mfrac>
-        </mrow>
-       </math>
-       = cos&#934;
-    </span>
-<br>
-<span>
-    <math>
-        <mrow>
-          M<sub>&#958;</sub> = M*cos&#934;
-        </mrow>
-       </math>
-    </span>
-<br>
-<span>
-    <math>
-        <mrow>
-          M<sub>&#958;</sub> = 148ql<sup>2</sup>*cos(-8.6614&#176;)
-        </mrow>
-       </math>
-    =146.3121ql<sup>2</sup>
-    </span>
-<br>
-<br>
-
-
-<span>
-    <math>
-        <mrow>
-         <mfrac>
-             <mi>M<sub>&#951;</sub></mi>
-          <mi>M</mi>
-         </mfrac>
-        </mrow>
-       </math>
-       = sin&#934;
-    </span>
-<br>
-<span>
-    <math>
-        <mrow>
-          M<sub>&#951;</sub> = M*sin&#934;
-        </mrow>
-       </math>
-    </span>
-<br>
-<span>
-    <math>
-        <mrow>
-          M<sub>&#951;</sub> = 148ql<sup>2</sup>*sin(-8.6614&#176;)
-        </mrow>
-       </math>
-    =-22.288ql<sup>2</sup>
-    </span>
-<br>
-<br>
-
-<span>&#1004;<sub>x</sub> = 
-    <math>
-        <mrow>
-            -
-         <mfrac>
-          <mi>M<sub>&#958;</sub></mi>
-          <mi>J<sub>&#958;</sub></mi>
-         </mfrac>&#951;+
-         <mfrac>
-          <mi>M<sub>&#951;</sub></mi>
-          <mi>J<sub>&#951;</sub></mi>
-         </mfrac>
-            &#958;
-        </mrow>
-       </math>
-    </span>
-
-<br>
-<span>&#1004;<sub>x</sub> = 
-    <math>
-        <mrow>
-            -
-         <mfrac>
-          <mi>146.3121ql<sup>2</sup></mi>
-          <mi>258.7975<sup>4</sup></mi>
-         </mfrac>&#951;+
-         <mfrac>
-          <mi>-22.288ql<sup>2</sup></mi>
-          <mi>96.3607<sup>4</sup></mi>
-         </mfrac>
-            &#958;
-        </mrow>
-       </math>
-    </span>
-
-<br>
-<span>&#1004;<sub>x</sub> = 
-    <math>
-        <mrow>
-            (-0.5654)
-         <mfrac>
-          <mi>ql<sup>2</sup></mi>
-          <mi>a<sup>4</sup></mi>
-         </mfrac>&#951;+
-            (-0.2313)
-         <mfrac>
-          <mi>ql<sup>2</sup></mi>
-          <mi>a<sup>4</sup></mi>
-         </mfrac>
-            &#958;
-        </mrow>
-       </math>
-</span>
-<br>
-<span>
-Oś obojętna: &#1004;<sub>x</sub> = 0
-<br>
-<math>
-<mrow>
-(0.5654)&#951;
-<mfrac>
-    <mi>ql<sup>2</sup></mi>
-    <mi>a<sup>4</sup></mi>
-</mfrac>
-=
-(-0.2313)&#958;
-<mfrac>
-    <mi>ql<sup>2</sup></mi>
-    <mi>a<sup>4</sup></mi>
-</mfrac>
-</mrow>
-</math>
-</span>
-<br>
-<span>
-<math>
-    <mrow>
-        &#951;
-        =
-        -0.4091&#958;
-    </mrow>
-</math>
-</span>
-<br>
-
-<span>
-<math>
-    <mrow>
-&#958; = -y<sub>c</sub> * sin&#934; + z<sub>c</sub> * cos&#934;
-    </mrow>
-</math>
-</span>
-
-<br>
-
-<span>
-<math>
-        &#951; = y<sub>c</sub> * cos&#934; + z<sub>c</sub> * sin&#934;
-</math>
-</span>
-<br>
-A(-2.4312a; -4.2158a)
-<br>
-<span>&#958;<sub>A</sub>
-= -(-4.2158a)*sin(-8.6614&#176;) + (-2.4312a)*cos(-8.6614&#176;) = -3.0384a
-</span>
-<br>
-<span>&#951;<sub>A</sub>
-= (-4.2158a)*cos(-8.6614&#176;) + (-2.4312a)*sin(-8.6614&#176;) = -3.8016a
-</span>
-<!--Point B-->
-<br>
-C(-2.4312a; 5.7842a)
-<br>
-<span>&#958;<sub>C</sub>
-= -(5.7842a)*sin(-8.6614&#176;) + (-2.4312a)*cos(-8.6614&#176;) = -1.5324a
-</span>
-<br>
-<span>&#951;<sub>C</sub>
-= (5.7842a)*cos(-8.6614&#176;) + (-2.4312a)*sin(-8.6614&#176;) = 6.0844a
-</span>
-
-<br>
-
-<span>
-        &#1004;<sub>x</sub><sup>A</sup>(-3.0384a,-3.8016a) =(-0.5654)
-    <math>
-    <mrow>    
-    <mfrac>
-            <mi>ql<sup>2</sup></mi>
-            <mi>a<sup>4</sup></mi>
-    </mfrac>
-        *(-3.8016a)
-        +
-        (-0.2313)
-         <mfrac>
-            <mi>ql<sup>2</sup></mi>
-            <mi>a<sup>4</sup></mi>
-        </mfrac>
-        *(-3.0384a )
-        = 2.8522
-        <mfrac>
-            <mi>ql<sup>2</sup></mi>
-            <mi>a<sup>3</sup></mi>
-    </mfrac>
-    </mrow>
-</math>
-</span>
-
-<br>
-
-<span>
-        &#1004;<sub>x</sub><sup>C</sup>(-1.5324a,6.0844a) =(-0.5654)
-    <math>
-    <mrow>    
-    <mfrac>
-            <mi>ql<sup>2</sup></mi>
-            <mi>a<sup>4</sup></mi>
-    </mfrac>
-        *(6.0844a)
-        +
-        (-0.2313)
-         <mfrac>
-            <mi>ql<sup>2</sup></mi>
-            <mi>a<sup>4</sup></mi>
-        </mfrac>
-        *(-1.5324a)
-                = -3.0857
                 <mfrac>
-            <mi>ql<sup>2</sup></mi>
-            <mi>a<sup>3</sup></mi>
-    </mfrac>
-    </mrow>
-</math>
-</span>
+                    <mi>S<sub>y</sub></mi>
+                    <mi>A</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>50a<sup>2</sup> * (-2.5a) + 5a<sup>2</sup> * 0.667a</mi>
+                    <mi>50a<sup>2</sup> + 5a<sup>2</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =-2.2121a
+    </span>
+    <br>
 
-<br>
-<span>
-    &#1004;<sub>max</sub>&#8804;kr
-</span>
-<br>
-<span>
-    |&#1004;<sub>min</sub>|&#8804;kc
-</span>
-<br>
+    <span>
+        y<sub>c</sub> =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>S<sub>z</sub></mi>
+                    <mi>A</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>50a<sup>2</sup> * 5a + 5a<sup>2</sup> * 1.667a</mi>
+                    <mi>50a<sup>2</sup> + 5a<sup>2</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =4.697a
+    </span>
+    <br>
+    <br>
+    <span>
+        J<sub>z</sub> =
+        =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>5a * (10a)<sup>3</sup></mi>
+                    <mi>3</mi>
+                </mfrac>+
+                <mfrac>
+                    <mi>2a * (5a)<sup>3</sup></mi>
+                    <mi>12</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =1687.4997a<sup>4</sup>
+    </span>
+    <br>
+    <span>
+        J<sub>y</sub>
+        =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>10a * (5a)<sup>3</sup></mi>
+                    <mi>3</mi>
+                </mfrac>+
+                <mfrac>
+                    <mi>5a * (2a)<sup>3</sup></mi>
+                    <mi>12</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =419.9997a<sup>4</sup>
+    </span>
+    <br>
+
+    <span>
+        J<sub>zy</sub> =
+        =
+        <math>
+            <mrow>
+                -
+                <mfrac>
+                    <mi>5a<sup>2</sup> * 10a<sup>2</sup></mi>
+                    <mi>4</mi>
+                </mfrac>+
+                <mfrac>
+                    <mi>2a<sup>2</sup> * 5a<sup>2</sup></mi>
+                    <mi>24</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =-620.83a<sup>4</sup>
+    </span>
+    <br>
+
+    <span>
+        J<sub>zcyc</sub> =
+        =
+        <math>
+            <mrow>
+                <mi>-620.83a<sup>4</sup> - 55a<sup>2</sup> * (-2.2121a)*(4.697a)</mi>
+            </mrow>
+        </math>
+        =-49.3671a<sup>4</sup>
+    </span>
+    <br>
+
+    <span>
+        J<sub>zc</sub>
+        =
+        <math>
+            <mrow>
+                1687.4997a<sup>4</sup> - 55a<sup>2</sup> * (4.697a)<sup>2</sup>
+            </mrow>
+        </math>
+        =474.1002a<sup>4</sup>
+    </span>
+    <br>
+
+    <span>
+        J<sub>yc</sub>
+        =
+        <math>
+            <mrow>
+                419.9997a<sup>4</sup> - 55a<sup>2</sup> * (-2.2121a)<sup>2</sup>
+            </mrow>
+        </math>
+        =150.8634a<sup>4</sup>
+    </span>
+    <br>
+    <br>
+    <span>
+        J<sub>1,2</sub>
+        =
+        <math>
+            <mrow>
+                0.5*<span>(J<sub>yc</sub> + J<sub>zc</sub>) &#177;</span>0.5* <span style="white-space: nowrap; ">
+                    &radic;<span style="text-decoration:overline;">
+                        &nbsp;(J<sub>yc</sub>-J<sub>zc</sub>)<sup>2</sup>
+                        + 4(J<sub>yczc</sub>)<sup>2</sup>&nbsp;
+                    </span>
+                </span>
+            </mrow>
+        </math>
+    </span>
+
+    <br>
 
 
-<span>2.8522
-<math>
-    <mrow>    
-        <mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>a<sup>3</sup></mi>
-        </mfrac>
-    </mrow>
-</math>
-         &#8804;
-    0.4kc
-</span>
-<br>
-<span>3.0857
-<math>
-    <mrow>    
-        <mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>a<sup>3</sup></mi>
-        </mfrac>
-    </mrow>
-</math>
-         &#8804;
-    kc
-</span>
-<br>
-<span>2.8522
-<math>
-    <mrow>    
-        <mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>0.4kc</mi>
-        </mfrac>
-    </mrow>
-</math>
-         &#8804;
-    a<sup>3</sup>
-</span>
-<br>
-<span>3.0857
-<math>
-    <mrow>    
-        <mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>kc</mi>
-        </mfrac>
-    </mrow>
-</math>
-         &#8804;
-    a<sup>3</sup>
-</span>
+    <span>
+        J<sub>1</sub>
+        =
+        <math>
+            <mrow>
+                0.5*(150.8634a<sup>4</sup> + 474.1002a<sup>4</sup>) + 0.5* <span style="white-space: nowrap; ">
+                    &radic;<span style="text-decoration:overline;">
+                        &nbsp;(150.8634a<sup>4</sup>-474.1002a<sup>4</sup>)<sup>2</sup>
+                        + 4*(-49.3671a<sup>4</sup>)<sup>2</sup>&nbsp;
+                    </span>
+                </span>
+            </mrow>
+        </math>
+        =143.4918 a<sup>4</sup>
+    </span>
+    <br>
 
-<br>
-<span>a&#8805;
-<math>
-    <mrow style="white-space: nowrap; ">1.9247  
-        &#x221B;
-        <span style="text-decoration:overline;">
-        <mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>/kc</mi>
-        </mfrac>
-             </span>
-    </mrow>
-</math>
-</span>
+    <span>
+        J<sub>2</sub>
+        =
+        <math>
+            <mrow>
+                0.5*(150.8634a<sup>4</sup> + 474.1002a<sup>4</sup>) -  0.5*<span style="white-space: nowrap; ">
+                    &radic;<span style="text-decoration:overline;">
+                        &nbsp;(150.8634a<sup>4</sup>-474.1002a<sup>4</sup>)<sup>2</sup>
+                        + 4*(-49.3671a<sup>4</sup>)<sup>2</sup>&nbsp;
+                    </span>
+                </span>
+            </mrow>
+        </math>
+        =481.4718a<sup>4</sup>
+    </span>
+    <br>
+    <br>
 
-<br>
-<span>a&#8805;
-<math>
-    <mrow style="white-space: nowrap; ">1.4559   
-            	&#x221B;
-        <span style="text-decoration:overline;">
- 
-        <mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>/kc</mi>
-        </mfrac>
-            </span>
-    </mrow>
-</math>
-</span>
-<br>
-<span>Odpowiedź:</span>
-<br>
-<span>a&#8805;
-<math>
-    <mrow style="white-space: nowrap; "> 1.9247
-            	&#x221B;
-        <span style="text-decoration:overline;">
-<mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>/kc</mi>
-        </mfrac>
-</span>
-     
-    </mrow>
-</math>
-</span>
+    <span>
+        tg2&#934; =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>-2J<sub>yczc</sub></mi>
+                    <mi>J<sub>yc</sub> - J<sub>zc</sub></mi>
+                </mfrac>
+            </mrow>
+        </math>
+    </span>
+    <br>
 
-    <script>var scale = 80;var offset = 500;var dimensionOffset = 5 * scale;var axisLength = 7 * scale;var rWidth = 5*scale;var rHigh = 5*scale;var tWidth = 7*scale;var tHigh = 5*scale;var totalWidth = rWidth*scale;var totalHeight = rHigh + tHigh ;var c = document.getElementById("myCanvas");var ctx = c.getContext("2d");ctx.beginPath();   ctx.translate(rWidth*1.65 + offset,offset);ctx.moveTo(-5,0);ctx.lineTo(5,0);ctx.moveTo(0,0);ctx.lineTo(0,rHigh);ctx.font = '20px Arial';ctx.fillText('5a',5,rHigh/2);ctx.moveTo(-5,rHigh);ctx.lineTo(5,rHigh);ctx.moveTo(0,rHigh);ctx.lineTo(0,rHigh + tHigh);ctx.moveTo(-5,rHigh + tHigh);ctx.lineTo(5,rHigh + tHigh);ctx.moveTo(0,rHigh + tHigh);ctx.fillText('5a',5,(rHigh) + tHigh/2);ctx.lineWidth = 1.5;ctx.stroke();ctx.translate(-rWidth*1.65 -offset,-offset);ctx.beginPath();ctx.translate(offset,totalHeight*1.35+offset);ctx.moveTo(0,0);ctx.moveTo(0,-5);ctx.lineTo(0,5);ctx.moveTo(0,0);ctx.lineTo(rWidth,0);ctx.moveTo(rWidth,-5);ctx.lineTo(rWidth,5);ctx.moveTo(rWidth,0);ctx.lineTo(tWidth,0);ctx.moveTo(tWidth,0);ctx.moveTo(tWidth,-5);ctx.lineTo(tWidth,5);ctx.fillText('5a',rWidth/2,-10);ctx.fillText('2a',(tWidth-rWidth)/2+rWidth,-10);ctx.stroke();ctx.translate(-offset,-(totalHeight*1.35+offset));ctx.translate(offset,(totalHeight*1.2+offset));ctx.beginPath();ctx.moveTo(0,0);ctx.moveTo(0,-5);ctx.lineTo(0,5);ctx.moveTo(0,0);ctx.lineTo(2.4312*scale,0);ctx.moveTo(2.4312*scale,-5);ctx.lineTo(2.4312*scale,5);ctx.fillText('2.4312a',scale*0.97248 ,-10);ctx.lineWidth = 1.5;ctx.stroke();ctx.translate(-offset,-(totalHeight*1.2+offset));ctx.beginPath();ctx.translate(tWidth*1.3 + offset,offset+rHigh);ctx.moveTo(-5,0);ctx.lineTo(5,0);ctx.moveTo(0,0);ctx.lineTo(0,-0.7842*scale);ctx.moveTo(-5,-0.7842*scale);ctx.lineTo(5,-0.7842*scale);ctx.moveTo(0,-0.7842*scale);ctx.fillText('0.7842a',5,-0.3921*scale);ctx.stroke();ctx.translate(-tWidth*1.3 - offset,-offset-rHigh);ctx.beginPath();ctx.translate(offset,offset);ctx.rect(0,0,rWidth,rHigh);ctx.moveTo(0,rHigh);ctx.lineTo(tWidth,rHigh);ctx.lineTo(0,rHigh+tHigh);ctx.lineTo(0,rHigh);ctx.lineWidth = 2.5;ctx.stroke();ctx.lineWidth = 1;ctx.beginPath();ctx.lineWidth = 1;ctx.moveTo(rWidth,0);ctx.lineTo(rWidth,axisLength*1.25);ctx.lineTo(rWidth-10,axisLength*1.25-10);ctx.moveTo(rWidth,axisLength*1.25);ctx.lineTo(rWidth+10,axisLength*1.25-10);ctx.font = '25px serif';ctx.fillText('y',rWidth+10,axisLength*1.25);ctx.moveTo(rWidth,0);ctx.lineTo(axisLength*1.85,0);ctx.lineTo(axisLength*1.85-10,-10);ctx.moveTo(axisLength*1.85,0);ctx.lineTo(axisLength*1.85-10,10);ctx.font = '25px serif';ctx.fillText('z',axisLength*1.85,-10);ctx.stroke();ctx.beginPath();ctx.moveTo(2.4312*scale,0);ctx.lineTo(2.4312*scale,axisLength*1.25);ctx.lineTo(2.4312*scale-10,axisLength*1.25-10);ctx.moveTo(2.4312*scale,axisLength*1.25);ctx.lineTo(2.4312*scale+10,axisLength*1.25-10);ctx.font = '25px serif';ctx.fillText('yc',2.4312*scale+10,axisLength*1.25);ctx.moveTo(0,4.2158*scale);ctx.lineTo(axisLength*1.85,4.2158*scale);ctx.lineTo(axisLength*1.85-10,4.2158*scale-10);ctx.moveTo(axisLength*1.85,4.2158*scale);ctx.lineTo(axisLength*1.85-10,4.2158*scale+10);ctx.fillText('zc',axisLength*1.85,4.2158*scale-10);ctx.strokeStyle='green';ctx.stroke();ctx.beginPath();ctx.lineWidth = 1.5;ctx.strokeStyle='blue';ctx.moveTo(2.4312*scale,4.2158*scale);ctx.lineTo(2.4312*scale + 148,4.2158*scale);ctx.lineTo(2.4312*scale + 148-10,4.2158*scale-10);ctx.moveTo(2.4312*scale + 148,4.2158*scale);ctx.lineTo(2.4312*scale + 148-10,4.2158*scale+10);ctx.moveTo(2.4312*scale + 148-10,4.2158*scale);ctx.lineTo(2.4312*scale + 148-20,4.2158*scale-10);ctx.moveTo(2.4312*scale + 148-10,4.2158*scale);ctx.lineTo(2.4312*scale + 148-20,4.2158*scale+10);ctx.fillText('M',2.4312*scale + 148 -10,4.2158*scale-10);ctx.stroke();ctx.beginPath();ctx.strokeStyle='orange';ctx.translate(2.4312*scale,4.2158*scale);ctx.rotate(8.6614 * Math.PI / 180);ctx.moveTo(-rWidth,0.4091*rWidth);ctx.lineTo(rWidth,-0.4091*rWidth);ctx.fillStyle = 'black';ctx.fillText('oś obojętna',-rWidth,0.4091*rWidth+20);ctx.stroke();ctx.rotate(-8.6614 * Math.PI / 180);ctx.translate(-2.4312*scale,-4.2158*scale);ctx.fillStyle = 'black';ctx.beginPath();ctx.strokeStyle='red';ctx.translate(2.4312*scale,4.2158*scale);ctx.rotate(8.6614 * Math.PI / 180);ctx.moveTo(-axisLength,0);ctx.lineTo(axisLength,0);ctx.lineTo(axisLength-10,-10);ctx.moveTo(axisLength,0);ctx.lineTo(axisLength-10,10);ctx.fillText('ξ',axisLength,-10);ctx.stroke();ctx.beginPath();ctx.lineWidth = 1.5;ctx.strokeStyle='blue';ctx.moveTo(0,0);ctx.lineTo(146.3121,0);ctx.lineTo(146.3121-10,-10);ctx.moveTo(146.3121,0);ctx.lineTo(146.3121-10,10);ctx.moveTo(146.3121-10,0);ctx.lineTo(146.3121-20,-10);ctx.moveTo(146.3121-10,0);ctx.lineTo(146.3121-20,10);ctx.fillText('Mξ',146.3121-50,30);ctx.translate(-2.4312*scale,-4.2158*scale);ctx.setTransform(1,0,0,1,0,0);ctx.stroke();ctx.beginPath();ctx.strokeStyle='red';ctx.translate(offset,offset);ctx.translate(2.4312*scale,4.2158*scale);ctx.rotate(8.6614 * Math.PI / 180);ctx.moveTo(0,-axisLength);ctx.lineTo(0,axisLength);ctx.lineTo(-10,axisLength-10);ctx.moveTo(0,axisLength);ctx.lineTo(10,axisLength-10);ctx.fillText('η',10,axisLength-10);ctx.stroke();ctx.beginPath();ctx.lineWidth = 1.5;ctx.strokeStyle='blue';ctx.moveTo(0,0);ctx.lineTo(0,-22.288);ctx.lineTo(-10,-22.288+10);ctx.moveTo(0,-22.288);ctx.lineTo(10,-22.288+10);ctx.moveTo(0,-22.288+10);ctx.lineTo(-10,-22.288+20);ctx.moveTo(0,-22.288+10);ctx.lineTo(10,-22.288+20);ctx.fillText('Mη',-50,-22.288);ctx.stroke();ctx.beginPath();ctx.rotate(-8.6614 * Math.PI / 180);ctx.moveTo(0,0);ctx.arc(0, 0, 5, 0, Math.PI * 2, true);ctx.fillText('C',5,20);ctx.stroke();ctx.beginPath();ctx.strokeStyle='black';ctx.translate(-2.4312*scale,5.7842*scale);ctx.arc(0, 0, 5, 0, Math.PI * 2, false);ctx.fillText('C (-2.4312a; 5.7842a)',5,20);ctx.stroke();ctx.beginPath();ctx.translate(2.4312*scale,-5.7842*scale);ctx.translate(-2.4312*scale,-4.2158*scale);ctx.arc(0, 0, 5, 0, Math.PI * 2, false);ctx.fillText('A (-2.4312a; -4.2158a)',5,-20);ctx.stroke();</script>
-<!--<script>-->
-<!--    var width = 5;-->
-<!--    var high = 5;-->
-<!--    var c = document.getElementById("myCanvas");-->
-<!--    var ctx = c.getContext("2d");-->
-<!--    ctx.beginPath();    -->
-<!--    ctx.rect(0,0,width,high);-->
-<!--    ctx.moveTo(50,0);-->
-<!--    ctx.lineTo(70,0);-->
-<!--    ctx.moveTo(70,0);-->
-<!--    ctx.lineTo(50,50);-->
-<!--    ctx.moveTo(50,0);-->
-<!--    ctx.lineTo(50,150);-->
-<!--    ctx.moveTo(0,155/33);-->
-<!--    ctx.lineTo(150,155/33);-->
-<!--    ctx.stroke();-->
-<!--    // c.rect(100, 20, 150, 100)-->
-<!--    // ctx.stroke();-->
-<!--</script>-->
+    <span>
+        tg2&#934; =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>-2-49.3671a<sup>4</sup></mi>
+                    <mi>150.8634a<sup>4</sup> - 474.1002a<sup>4</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+    </span>
+    =-0.3055
+    <br>
+
+    <span>
+        <math>
+            <mrow>
+                <sub>2&#934;</sub>=
+                -16.9879
+                &#176;
+            </mrow>
+        </math>
+    </span>
+    <br>
+
+    <span>
+        <math>
+            <mrow>
+                <sub>&#934;</sub>=
+                -8.494
+                &#176;
+            </mrow>
+        </math>
+    </span>
+    <br>
+    <br>
+
+
+    <span>
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>M<sub>&#958;</sub></mi>
+                    <mi>M</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        = cos&#934;
+    </span>
+    <br>
+    <span>
+        <math>
+            <mrow>
+                M<sub>&#958;</sub> = M*cos&#934;
+            </mrow>
+        </math>
+    </span>
+    <br>
+    <span>
+        <math>
+            <mrow>
+                M<sub>&#958;</sub> = 148ql<sup>2</sup>*cos(-8.494&#176;)
+            </mrow>
+        </math>
+        =146.3766ql<sup>2</sup>
+    </span>
+    <br>
+    <br>
+
+
+    <span>
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>M<sub>&#951;</sub></mi>
+                    <mi>M</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        = sin&#934;
+    </span>
+    <br>
+    <span>
+        <math>
+            <mrow>
+                M<sub>&#951;</sub> = M*sin&#934;
+            </mrow>
+        </math>
+    </span>
+    <br>
+    <span>
+        <math>
+            <mrow>
+                M<sub>&#951;</sub> = 148ql<sup>2</sup>*sin(-8.494&#176;)
+            </mrow>
+        </math>
+        =-21.8605ql<sup>2</sup>
+    </span>
+    <br>
+    <br>
+
+    <span>
+        &#1004;<sub>x</sub> =
+        <math>
+            <mrow>
+                -
+                <mfrac>
+                    <mi>M<sub>&#958;</sub></mi>
+                    <mi>J<sub>&#958;</sub></mi>
+                </mfrac>&#951;+
+                <mfrac>
+                    <mi>M<sub>&#951;</sub></mi>
+                    <mi>J<sub>&#951;</sub></mi>
+                </mfrac>
+                &#958;
+            </mrow>
+        </math>
+    </span>
+
+    <br>
+    <span>
+        &#1004;<sub>x</sub> =
+        <math>
+            <mrow>
+                -
+                <mfrac>
+                    <mi>146.3766ql<sup>2</sup></mi>
+                    <mi>481.4718<sup>4</sup></mi>
+                </mfrac>&#951;+
+                <mfrac>
+                    <mi>-21.8605ql<sup>2</sup></mi>
+                    <mi>143.4918<sup>4</sup></mi>
+                </mfrac>
+                &#958;
+            </mrow>
+        </math>
+    </span>
+
+    <br>
+    <span>
+        &#1004;<sub>x</sub> =
+        <math>
+            <mrow>
+                (-0.304)
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>&#951;+
+                (-0.1523)
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+                &#958;
+            </mrow>
+        </math>
+    </span>
+    <br>
+    <span>
+        Oś obojętna: &#1004;<sub>x</sub> = 0
+        <br>
+        <math>
+            <mrow>
+                (0.304)&#951;
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+                =
+                (-0.1523)&#958;
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+    </span>
+    <br>
+    <span>
+        <math>
+            <mrow>
+                &#951;
+                =
+                -0.501&#958;
+            </mrow>
+        </math>
+    </span>
+    <br>
+
+    <span>
+        <math>
+            <mrow>
+                &#958; = -y<sub>c</sub> * sin&#934; + z<sub>c</sub> * cos&#934;
+            </mrow>
+        </math>
+    </span>
+
+    <br>
+
+    <span>
+        <math>
+            &#951; = y
+            <sub>c</sub> * cos&#934; + z
+            <sub>c</sub> * sin&#934;
+        </math>
+    </span>
+    <br>
+    A(-2.7879a; -4.697a)
+    <br>
+    <span>
+        &#958;<sub>A</sub>
+        = -(-4.697a)*sin(-8.494&#176;) + (-2.7879a)*cos(-8.494&#176;) = -3.4511a
+    </span>
+    <br>
+    <span>
+        &#951;<sub>A</sub>
+        = (-4.697a)*cos(-8.494&#176;) + (-2.7879a)*sin(-8.494&#176;) = -4.2337a
+    </span>
+    <!--Point B-->
+    <br>
+    D(2.2121a; 5.303a)
+    <br>
+    <span>
+        &#958;<sub>D</sub>
+        = -(5.303a)*sin(-8.494&#176;) + (2.2121a)*cos(-8.494&#176;) = 2.9711a
+    </span>
+    <br>
+    <span>
+        &#951;<sub>D</sub>
+        = (5.303a)*cos(-8.494&#176;) + (2.2121a)*sin(-8.494&#176;) = 4.9181a
+    </span>
+
+    <br>
+
+    <span>
+        &#1004;<sub>x</sub><sup>A</sup>(-3.4511a,-4.2337a) =(-0.304)
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+                *(-4.2337a)
+                +
+                (-0.1523)
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+                *(-3.4511a )
+                = 1.8126
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>3</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+    </span>
+
+    <br>
+
+    <span>
+        &#1004;<sub>x</sub><sup>D</sup>(2.9711a,4.9181a) =(-0.304)
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+                *(4.9181a)
+                +
+                (-0.1523)
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+                *(2.9711a)
+                = -1.9476
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>3</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+    </span>
+
+    <br>
+    <span>
+        &#1004;<sub>max</sub>&#8804;kr
+    </span>
+    <br>
+    <span>
+        |&#1004;<sub>min</sub>|&#8804;kc
+    </span>
+    <br>
+
+
+    <span>
+        1.8126
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>3</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+        &#8804;
+        0.4kc
+    </span>
+    <br>
+    <span>
+        1.9476
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>3</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+        &#8804;
+        kc
+    </span>
+    <br>
+    <span>
+        1.8126
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>0.4kc</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        &#8804;
+        a<sup>3</sup>
+    </span>
+    <br>
+    <span>
+        1.9476
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>kc</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        &#8804;
+        a<sup>3</sup>
+    </span>
+
+    <br>
+    <span>
+        a&#8805;
+        <math>
+            <mrow style="white-space: nowrap; ">
+                1.6548
+                &#x221B;
+                <span style="text-decoration:overline;">
+                    <mfrac>
+                        <mi>ql<sup>2</sup></mi>
+                        <mi>/kc</mi>
+                    </mfrac>
+                </span>
+            </mrow>
+        </math>
+    </span>
+
+    <br>
+    <span>
+        a&#8805;
+        <math>
+            <mrow style="white-space: nowrap; ">
+                1.2488
+                &#x221B;
+                <span style="text-decoration:overline;">
+
+                    <mfrac>
+                        <mi>ql<sup>2</sup></mi>
+                        <mi>/kc</mi>
+                    </mfrac>
+                </span>
+            </mrow>
+        </math>
+    </span>
+    <br>
+    <span>Odpowiedź:</span>
+    <br>
+    <span>
+        a&#8805;
+        <math>
+            <mrow style="white-space: nowrap; ">
+                1.6548
+                &#x221B;
+                <span style="text-decoration:overline;">
+                    <mfrac>
+                        <mi>ql<sup>2</sup></mi>
+                        <mi>/kc</mi>
+                    </mfrac>
+                </span>
+
+            </mrow>
+        </math>
+    </span>
+
+    <script>var scale = 80;var offset = 500;var dimensionOffset = 10 * scale;var axisLength = 10 * scale;var rWidth = 5*scale;var rHigh = 10*scale;var tWidth = 2*scale;var tHigh = 5*scale;var totalWidth = rWidth + tWidth;var c = document.getElementById("myCanvas");var ctx = c.getContext("2d");ctx.beginPath();   ctx.translate(totalWidth*1.65 + offset,offset);ctx.moveTo(-5,0);ctx.lineTo(5,0);ctx.moveTo(0,0);ctx.lineTo(0,tHigh);ctx.font = '20px Arial';ctx.fillText('5a',5,tHigh/2);ctx.moveTo(-5,tHigh);ctx.lineTo(5,tHigh);ctx.moveTo(0,tHigh);ctx.lineTo(0,rHigh);ctx.moveTo(-5,rHigh);ctx.lineTo(5,rHigh);ctx.moveTo(0,rHigh);ctx.fillText('5a',5,rHigh*0.75);ctx.lineWidth = 1.5;ctx.stroke();ctx.beginPath();ctx.translate(-totalWidth*1.65 -offset,-offset);ctx.translate(offset,dimensionOffset+offset*1.2);ctx.moveTo(0,0);ctx.moveTo(0,-5);ctx.lineTo(0,5);ctx.moveTo(0,0);ctx.lineTo(rWidth,0);ctx.moveTo(rWidth,-5);ctx.lineTo(rWidth,5);ctx.moveTo(rWidth,0);ctx.lineTo(rWidth +tWidth,0);ctx.moveTo(rWidth +tWidth,0);ctx.moveTo(rWidth +tWidth,-5);ctx.lineTo(rWidth +tWidth,5);ctx.fillText('5a',rWidth/2,-10);ctx.fillText('2a',(rWidth) +tWidth*0.5,-10);ctx.stroke();ctx.translate(-offset,-(dimensionOffset+offset*1.2));ctx.translate(offset,(rHigh*1.3+offset));ctx.beginPath();ctx.moveTo(5*scale,0);ctx.moveTo(5*scale,-5);ctx.lineTo(5*scale,5);ctx.moveTo(5*scale,0);ctx.lineTo((5 + -2.2121)*scale,0);ctx.moveTo((5 + -2.2121)*scale,-5);ctx.lineTo((5 + -2.2121)*scale,5);ctx.fillText('2.2121a',scale*3.1197150000000002 ,-10);ctx.lineWidth = 1.5;ctx.stroke();ctx.translate(-offset,-(rHigh*1.3+offset));ctx.beginPath();ctx.translate(totalWidth*1.3 + offset,offset);ctx.moveTo(-5,0);ctx.lineTo(5,0);ctx.moveTo(0,0);ctx.lineTo(0,4.697*scale);ctx.moveTo(-5,4.697*scale);ctx.lineTo(5,4.697*scale);ctx.moveTo(0,4.697*scale);ctx.fillText('4.697a',5,2.3485*scale);ctx.stroke();ctx.translate(-totalWidth*1.3 - offset,-offset);ctx.beginPath();ctx.translate(offset,offset);ctx.rect(0,0,rWidth,rHigh);ctx.moveTo(rWidth,0);ctx.lineTo(rWidth+tWidth,0);ctx.lineTo(rWidth,tHigh);ctx.lineTo(rWidth,0);ctx.lineWidth = 2.5;ctx.stroke();ctx.lineWidth = 1;ctx.beginPath();ctx.lineWidth = 1;ctx.moveTo(rWidth,0);ctx.lineTo(rWidth,axisLength*1.5);ctx.lineTo(rWidth-10,axisLength*1.5-10);ctx.moveTo(rWidth,axisLength*1.5);ctx.lineTo(rWidth+10,axisLength*1.5-10);ctx.font = '25px serif';ctx.fillText('y',rWidth+10,axisLength*1.5);ctx.moveTo(0,0);ctx.lineTo(totalWidth+rHigh*0.5,0);ctx.lineTo(totalWidth+rHigh*0.5-10,-10);ctx.moveTo(totalWidth+rHigh*0.5,0);ctx.lineTo(totalWidth+rHigh*0.5-10,10);ctx.font = '25px serif';ctx.fillText('z',totalWidth+rHigh*0.5,-10);ctx.stroke();ctx.beginPath();ctx.moveTo(2.7879*scale,0);ctx.lineTo(2.7879*scale,axisLength*1.5);ctx.lineTo(2.7879*scale-10,axisLength*1.5-10);ctx.moveTo(2.7879*scale,axisLength*1.5);ctx.lineTo(2.7879*scale+10,axisLength*1.5-10);ctx.font = '25px serif';ctx.fillText('yc',2.7879*scale+10,axisLength*1.5);ctx.moveTo(0,4.697*scale);ctx.lineTo(axisLength*1.85,4.697*scale);ctx.lineTo(axisLength*1.85-10,4.697*scale-10);ctx.moveTo(axisLength*1.85,4.697*scale);ctx.lineTo(axisLength*1.85-10,4.697*scale+10);ctx.fillText('zc',axisLength*1.85,4.697*scale-10);ctx.strokeStyle='green';ctx.stroke();ctx.beginPath();ctx.lineWidth = 1.5;ctx.strokeStyle='blue';ctx.moveTo(2.7879*scale,4.697*scale);ctx.lineTo(2.7879*scale + 148,4.697*scale);ctx.lineTo(2.7879*scale + 148-10,4.697*scale-10);ctx.moveTo(2.7879*scale + 148,4.697*scale);ctx.lineTo(2.7879*scale + 148-10,4.697*scale+10);ctx.moveTo(2.7879*scale + 148-10,4.697*scale);ctx.lineTo(2.7879*scale + 148-20,4.697*scale-10);ctx.moveTo(2.7879*scale + 148-10,4.697*scale);ctx.lineTo(2.7879*scale + 148-20,4.697*scale+10);ctx.fillText('M',2.7879*scale + 148 -10,4.697*scale-10);ctx.stroke();ctx.beginPath();ctx.strokeStyle='orange';ctx.translate(2.7879*scale,4.697*scale);ctx.rotate(8.494 * Math.PI / 180);ctx.moveTo(-totalWidth,0.501*totalWidth);ctx.lineTo(totalWidth,-0.501*totalWidth);ctx.fillStyle = 'black';ctx.fillText('oś obojętna',-totalWidth,0.501*totalWidth+20);ctx.stroke();ctx.rotate(-8.494 * Math.PI / 180);ctx.translate(-2.7879*scale,-4.697*scale);ctx.fillStyle = 'black';ctx.beginPath();ctx.strokeStyle='red';ctx.translate(2.7879*scale,4.697*scale);ctx.rotate(8.494 * Math.PI / 180);ctx.moveTo(-axisLength,0);ctx.lineTo(axisLength,0);ctx.lineTo(axisLength-10,-10);ctx.moveTo(axisLength,0);ctx.lineTo(axisLength-10,10);ctx.fillText('ξ',axisLength,-10);ctx.stroke();ctx.beginPath();ctx.lineWidth = 1.5;ctx.strokeStyle='blue';ctx.moveTo(0,0);ctx.lineTo(146.3766,0);ctx.lineTo(146.3766-10,-10);ctx.moveTo(146.3766,0);ctx.lineTo(146.3766-10,10);ctx.moveTo(146.3766-10,0);ctx.lineTo(146.3766-20,-10);ctx.moveTo(146.3766-10,0);ctx.lineTo(146.3766-20,10);ctx.fillText('Mξ',146.3766-50,30);ctx.translate(-2.7879*scale,-4.697*scale);ctx.setTransform(1,0,0,1,0,0);ctx.stroke();ctx.beginPath();ctx.strokeStyle='red';ctx.translate(offset,offset);ctx.translate(2.7879*scale,4.697*scale);ctx.rotate(8.494 * Math.PI / 180);ctx.moveTo(0,-axisLength);ctx.lineTo(0,axisLength);ctx.lineTo(-10,axisLength-10);ctx.moveTo(0,axisLength);ctx.lineTo(10,axisLength-10);ctx.fillText('η',10,axisLength-10);ctx.stroke();ctx.beginPath();ctx.lineWidth = 1.5;ctx.strokeStyle='blue';ctx.moveTo(0,0);ctx.lineTo(0,-21.8605);ctx.lineTo(-10,-21.8605+10);ctx.moveTo(0,-21.8605);ctx.lineTo(10,-21.8605+10);ctx.moveTo(0,-21.8605+10);ctx.lineTo(-10,-21.8605+20);ctx.moveTo(0,-21.8605+10);ctx.lineTo(10,-21.8605+20);ctx.fillText('Mη',-50,-21.8605);ctx.stroke();ctx.beginPath();ctx.rotate(-8.494 * Math.PI / 180);ctx.moveTo(0,0);ctx.arc(0, 0, 5, 0, Math.PI * 2, true);ctx.fillText('C',5,20);ctx.stroke();ctx.beginPath();ctx.strokeStyle='black';ctx.translate(2.2121*scale,5.303*scale);ctx.arc(0, 0, 5, 0, Math.PI * 2, false);ctx.fillText('D (2.2121a; 5.303a)',5,20);ctx.stroke();ctx.beginPath();ctx.translate(-2.2121*scale,-5.303*scale);ctx.translate(-2.7879*scale,-4.697*scale);ctx.arc(0, 0, 5, 0, Math.PI * 2, false);ctx.fillText('A (-2.7879a; -4.697a)',5,-20);ctx.stroke();</script>
+    <script>var scale = 80;var offset = 500;var c = document.getElementById("myBeam");var ctx = c.getContext("2d");ctx.translate(offset,offset);ctx.beginPath();   ctx.moveTo(0,0);ctx.lineTo(6*scale,0);ctx.stroke();ctx.moveTo(0,0);ctx.moveTo(0,-20);ctx.lineTo(0,20);ctx.moveTo(0,-20);ctx.lineTo(-5,-15);ctx.moveTo(0,-15);ctx.lineTo(-5,-10);ctx.moveTo(0,-10);ctx.lineTo(-5,-5);ctx.moveTo(0,-5);ctx.lineTo(-5,0);ctx.moveTo(0,0);ctx.lineTo(-5,5);ctx.moveTo(0,5);ctx.lineTo(-5,10);ctx.moveTo(0,10);ctx.lineTo(-5,15);ctx.moveTo(0,15);ctx.lineTo(-5,20);ctx.moveTo(0,0);ctx.stroke();ctx.moveTo(0,1.2*scale);ctx.lineTo(6*scale,1.2*scale);ctx.moveTo(0,1.2*scale);ctx.moveTo(0,1.2*scale-5);ctx.lineTo(0,1.2*scale+5);ctx.moveTo(0,1.2*scale);ctx.font = '15px Arial';ctx.moveTo(2*scale,1.2*scale);ctx.moveTo(2*scale,1.2*scale-5);ctx.lineTo(2*scale,1.2*scale+5);ctx.moveTo(2*scale,1.2*scale);ctx.fillText('2a',scale*1 ,1.2*scale-5);ctx.moveTo(5*scale,1.2*scale);ctx.moveTo(5*scale,1.2*scale-5);ctx.lineTo(5*scale,1.2*scale+5);ctx.moveTo(5*scale,1.2*scale);ctx.fillText('3a',scale*3.5 ,1.2*scale-5);ctx.moveTo(6*scale,1.2*scale);ctx.moveTo(6*scale,1.2*scale-5);ctx.lineTo(6*scale,1.2*scale+5);ctx.moveTo(6*scale,1.2*scale);ctx.fillText('1a',scale*5.5 ,1.2*scale-5);ctx.stroke();ctx.moveTo(0,25);ctx.lineTo(0,65);ctx.moveTo(0,25);ctx.lineTo(-5,35);ctx.moveTo(0,25);ctx.lineTo(5,35);ctx.fillText('Va',5 ,55);ctx.moveTo(-10,0);ctx.lineTo(-45,0);ctx.moveTo(-10,0);ctx.lineTo(-20,-5);ctx.moveTo(-10,0);ctx.lineTo(-20,5);ctx.fillText('Ha',-40 ,20);ctx.stroke();ctx.beginPath();   ctx.moveTo(-50,30);ctx.arc(-50,0, 30, (Math.PI) / 2, Math.PI + (Math.PI) / 2, false);ctx.moveTo(-50,-30);ctx.lineTo(-60,-25);ctx.moveTo(-50,-30);ctx.lineTo(-60,-35);ctx.fillText('Ma',-105,0);ctx.stroke();ctx.font = '20px Arial';</script>
 
 
 </body>

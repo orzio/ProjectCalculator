@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjectCalculator.Infrastructure.DrawingScripts
 {
-   public interface IShapeScript
+    public interface IBeamScript
     {
         string GetScript();
     }

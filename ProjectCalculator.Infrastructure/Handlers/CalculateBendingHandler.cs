@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using ProjectCalculator.Infrastructure.Writer;
 using ProjectCalculator.Infrastructure.Factory.ContourPointsCalculator;
 using ProjectCalculator.Core.Domain;
+using ProjectCalculator.Infrastructure.Factory.DrawingScript;
+using ProjectCalculator.Infrastructure.DrawingScripts;
 
 namespace ProjectCalculator.Infrastructure.Commands
 {
@@ -64,7 +66,7 @@ namespace ProjectCalculator.Infrastructure.Commands
             contour.ContourPoints = contourPoointsCalculator.GetPoints();
 
 
-
+            #region Cooment
             //using (StreamWriter file =
             // new StreamWriter(@$"E:\Własne\Projekty\testFiles\{command.ShapeType}_B1_{command.Shape.B1}_B2_{command.Shape.B2}_H1_{command.Shape.H1}_H2_{command.Shape.H2}.txt"))
             //{
@@ -76,6 +78,7 @@ namespace ProjectCalculator.Infrastructure.Commands
             //        }
             //    }
             //}
+            #endregion
 
             _bendingCalculator.Calculate(paramFiz, bendingMoment);
             _bendingCalculator.CalculateEthaRate();
@@ -98,8 +101,12 @@ namespace ProjectCalculator.Infrastructure.Commands
 
 
             #region HTML_OUTPUT
+            var shapeScriptFactory = new DrawingScriptFactory();
+            var shapeScriptCreator = shapeScriptFactory.GetShapeScript(command, paramFiz, bendingMoment, internalForces,
+                tensionData, contour.FurthestsPoints, contour);
+
             var writer = new ProjectWriter(paramFiz, bendingMoment, internalForces, 
-                tensionData, contour.FurthestsPoints, contour, command.YieldPoint);
+                tensionData, contour.FurthestsPoints, contour, command.YieldPoint, shapeScriptCreator, new BeamScriptTypeA(internalForces,command.Beam));
             var path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, $@"../../../Files/index.html"));
             writer.ReadHtmlTemplate(path);
             writer.ReplaceHtmlTemplateWithValues();

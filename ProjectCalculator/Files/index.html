@@ -9,607 +9,628 @@
 
 
     <canvas id="myCanvas" width="2000" height="2000" style="border:1px solid #000000;">
-        </canvas>
+    </canvas>
     <br>
 
-<span>z<sub>c</sub> = 
+
+    <canvas id="myBeam" width="2000" height="2000" style="border:1px solid #000000;">
+    </canvas>
+    <br>
+
+    <span>
+        z<sub>c</sub> =
         <math>
             <mrow>
-             <mfrac>
-              <mi>S<sub>y</sub></mi>
-              <mi>A</mi>
-             </mfrac>
-            </mrow>
-           </math>
-           =
-           <math>
-            <mrow>
-             <mfrac>
-              <mi>rectAreaa<sup>2</sup> * rectZCoorda + triangleAreaa<sup>2</sup> * triangleZCoorda</mi>
-              <mi>rectAreaa<sup>2</sup> + triangleAreaa<sup>2</sup></mi>
-             </mfrac>
-            </mrow>
-           </math>
-           =ZCoordinatea
-        </span>
-<br>
-
-<span>y<sub>c</sub> = 
-    <math>
-        <mrow>
-         <mfrac>
-          <mi>S<sub>z</sub></mi>
-          <mi>A</mi>
-         </mfrac>
-        </mrow>
-       </math>
-       =
-       <math>
-        <mrow>
-         <mfrac>
-          <mi>rectAreaa<sup>2</sup> * rectYCoorda + triangleAreaa<sup>2</sup> * triangleYCoorda</mi>
-          <mi>rectAreaa<sup>2</sup> + triangleAreaa<sup>2</sup></mi>
-         </mfrac>
-        </mrow>
-       </math>
-       =YCoordinatea
-    </span>
-<br>
-<br>
-<span>J<sub>z</sub> = 
-           =
-           <math>
-            <mrow>
-             <mfrac>
-              <mi>rectWidtha * (rectHeighta)<sup>3</sup></mi>
-              <mi>3</mi>
-             </mfrac>+
-             <mfrac>
-                <mi>triangleWidtha * (triangleHeighta)<sup>3</sup></mi>
-                <mi>12</mi>
-               </mfrac>
-            </mrow>
-           </math>
-           =JzResa<sup>4</sup>
-        </span>
-<br>
-<span>J<sub>y</sub>
-            =
-            <math>
-             <mrow>
-              <mfrac>
-                <mi>rectHeighta * (rectWidtha)<sup>3</sup></mi>
-                <mi>3</mi>
-              </mfrac>+
-              <mfrac>
-                <mi>triangleHeighta * (triangleWidtha)<sup>3</sup></mi>
-                <mi>12</mi>
+                <mfrac>
+                    <mi>S<sub>y</sub></mi>
+                    <mi>A</mi>
                 </mfrac>
-             </mrow>
-            </math>
-            =JyResa<sup>4</sup>
-         </span>
-<br>
-
-<span>J<sub>zy</sub> = 
-   =
-   <math>
-    <mrow>-
-     <mfrac>
-      <mi>rectWidtha<sup>2</sup> * rectHeighta<sup>2</sup></mi>
-      <mi>4</mi>
-     </mfrac>+
-     <mfrac>
-        <mi>triangleWidtha<sup>2</sup> * triangleHeighta<sup>2</sup></mi>
-        <mi>24</mi>
-       </mfrac>
-    </mrow>
-   </math>
-   =JzyResa<sup>4</sup>
-</span>
-<br>
-
-<span>J<sub>zcyc</sub> = 
-   =
-   <math>
-    <mrow>
-      <mi>JzyResa<sup>4</sup> - TotalAreaa<sup>2</sup> * (ZCoordinatea)*(YCoordinatea)</mi>
-    </mrow>
-   </math>
-   =JyczcResa<sup>4</sup>
-</span>
-<br>
-
-<span>J<sub>zc</sub>
-            =
-            <math>
-             <mrow>
-                JzResa<sup>4</sup> - TotalAreaa<sup>2</sup> * (YCoordinatea)<sup>2</sup>
-             </mrow>
-            </math>
-            =JzcResa<sup>4</sup>
-         </span>
-<br>
-
-<span>J<sub>yc</sub>
-            =
-            <math>
-             <mrow>
-                JyResa<sup>4</sup> - TotalAreaa<sup>2</sup> * (ZCoordinatea)<sup>2</sup>
-             </mrow>
-            </math>
-            =JycResa<sup>4</sup>
-         </span>
-<br>
-<br>
-<span>J<sub>1,2</sub>
-            =
-            <math>
-             <mrow>
-                0.5*<span>(J<sub>yc</sub> + J<sub>zc</sub>) &#177;</span>0.5* <span
-                     style="white-space: nowrap; ">
-                    &radic;<span style="text-decoration:overline;">&nbsp;(J<sub>yc</sub>-J<sub>zc</sub>)<sup>2</sup>
-                          + 4(J<sub>yczc</sub>)<sup>2</sup>&nbsp;</span>
-                    </span>
-             </mrow>
-            </math>
-         </span>
-
-<br>
-
-
-<span>J<sub>1</sub>
-            =
-            <math>
-             <mrow>
-                0.5*(JycResa<sup>4</sup> + JzcResa<sup>4</sup>) + 0.5* <span
-                     style="white-space: nowrap; ">
-                    &radic;<span
-                     style="text-decoration:overline;">&nbsp;(JycResa<sup>4</sup>-JzcResa<sup>4</sup>)<sup>2</sup>
-                          + 4*(JyczcResa<sup>4</sup>)<sup>2</sup>&nbsp;</span>
-                    </span>
-             </mrow>
-            </math>
-            =JethaRes a<sup>4</sup>
-         </span>
-<br>
-
-<span>J<sub>2</sub>
-            =
-            <math>
-             <mrow>
-                0.5*(JycResa<sup>4</sup> + JzcResa<sup>4</sup>) -  0.5*<span
-                     style="white-space: nowrap; ">
-                    &radic;<span
-                     style="text-decoration:overline;">&nbsp;(JycResa<sup>4</sup>-JzcResa<sup>4</sup>)<sup>2</sup>
-                          + 4*(JyczcResa<sup>4</sup>)<sup>2</sup>&nbsp;</span>
-                    </span>
-             </mrow>
-            </math>
-            =JksiResa<sup>4</sup>
-         </span>
-<br>
-<br>
-
-<span>tg2&#934; = 
-            <math>
-                <mrow>
-                 <mfrac>
-                  <mi>-2J<sub>yczc</sub></mi>
-                  <mi>J<sub>yc</sub> - J<sub>zc</sub></mi>
-                 </mfrac>
-                </mrow>
-               </math>
-            </span>
-<br>
-
-<span>tg2&#934; = 
-            <math>
-                <mrow>
-                 <mfrac>
-                  <mi>-2JyczcResa<sup>4</sup></mi>
-                  <mi>JycResa<sup>4</sup> - JzcResa<sup>4</sup></mi>
-                 </mfrac>
-                </mrow>
-               </math>
-            </span>
-=tg2FiRes
-<br>
-
-<span>
-         <math>
-             <mrow>
-         <sub>2&#934;</sub>=
-    2FiRes
-    &#176;
-                 </mrow>
-              </math>
-    </span>
-<br>
-
-<span>
-         <math>
-             <mrow>
-         <sub>&#934;</sub>=
-    FiRes
-    &#176;
-                 </mrow>
-              </math>
-    </span>
-<br>
-<br>
-
-
-<span>
-    <math>
-        <mrow>
-         <mfrac>
-             <mi>M<sub>&#958;</sub></mi>
-          <mi>M</mi>
-         </mfrac>
-        </mrow>
-       </math>
-       = cos&#934;
-    </span>
-<br>
-<span>
-    <math>
-        <mrow>
-          M<sub>&#958;</sub> = M*cos&#934;
-        </mrow>
-       </math>
-    </span>
-<br>
-<span>
-    <math>
-        <mrow>
-          M<sub>&#958;</sub> = MResql<sup>2</sup>*cos(FiRes&#176;)
-        </mrow>
-       </math>
-    =MksiResql<sup>2</sup>
-    </span>
-<br>
-<br>
-
-
-<span>
-    <math>
-        <mrow>
-         <mfrac>
-             <mi>M<sub>&#951;</sub></mi>
-          <mi>M</mi>
-         </mfrac>
-        </mrow>
-       </math>
-       = sin&#934;
-    </span>
-<br>
-<span>
-    <math>
-        <mrow>
-          M<sub>&#951;</sub> = M*sin&#934;
-        </mrow>
-       </math>
-    </span>
-<br>
-<span>
-    <math>
-        <mrow>
-          M<sub>&#951;</sub> = MResql<sup>2</sup>*sin(FiRes&#176;)
-        </mrow>
-       </math>
-    =MethaResql<sup>2</sup>
-    </span>
-<br>
-<br>
-
-<span>&#1004;<sub>x</sub> = 
-    <math>
-        <mrow>
-            -
-         <mfrac>
-          <mi>M<sub>&#958;</sub></mi>
-          <mi>J<sub>&#958;</sub></mi>
-         </mfrac>&#951;+
-         <mfrac>
-          <mi>M<sub>&#951;</sub></mi>
-          <mi>J<sub>&#951;</sub></mi>
-         </mfrac>
-            &#958;
-        </mrow>
-       </math>
-    </span>
-
-<br>
-<span>&#1004;<sub>x</sub> = 
-    <math>
-        <mrow>
-            -
-         <mfrac>
-          <mi>MksiResql<sup>2</sup></mi>
-          <mi>JksiRes<sup>4</sup></mi>
-         </mfrac>&#951;+
-         <mfrac>
-          <mi>MethaResql<sup>2</sup></mi>
-          <mi>JethaRes<sup>4</sup></mi>
-         </mfrac>
-            &#958;
-        </mrow>
-       </math>
-    </span>
-
-<br>
-<span>&#1004;<sub>x</sub> = 
-    <math>
-        <mrow>
-            (MksiJksiRslt)
-         <mfrac>
-          <mi>ql<sup>2</sup></mi>
-          <mi>a<sup>4</sup></mi>
-         </mfrac>&#951;+
-            (MethaJethaRslt)
-         <mfrac>
-          <mi>ql<sup>2</sup></mi>
-          <mi>a<sup>4</sup></mi>
-         </mfrac>
-            &#958;
-        </mrow>
-       </math>
-</span>
-<br>
-<span>
-Oś obojętna: &#1004;<sub>x</sub> = 0
-<br>
-<math>
-<mrow>
-(MeJeResOpposite)&#951;
-<mfrac>
-    <mi>ql<sup>2</sup></mi>
-    <mi>a<sup>4</sup></mi>
-</mfrac>
-=
-(MethaJethaRslt)&#958;
-<mfrac>
-    <mi>ql<sup>2</sup></mi>
-    <mi>a<sup>4</sup></mi>
-</mfrac>
-</mrow>
-</math>
-</span>
-<br>
-<span>
-<math>
-    <mrow>
-        &#951;
+            </mrow>
+        </math>
         =
-        rateRes&#958;
-    </mrow>
-</math>
-</span>
-<br>
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>rectAreaa<sup>2</sup> * rectZCoorda + triangleAreaa<sup>2</sup> * triangleZCoorda</mi>
+                    <mi>rectAreaa<sup>2</sup> + triangleAreaa<sup>2</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =ZCoordinatea
+    </span>
+    <br>
 
-<span>
-<math>
-    <mrow>
-&#958; = -y<sub>c</sub> * sin&#934; + z<sub>c</sub> * cos&#934;
-    </mrow>
-</math>
-</span>
+    <span>
+        y<sub>c</sub> =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>S<sub>z</sub></mi>
+                    <mi>A</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>rectAreaa<sup>2</sup> * rectYCoorda + triangleAreaa<sup>2</sup> * triangleYCoorda</mi>
+                    <mi>rectAreaa<sup>2</sup> + triangleAreaa<sup>2</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =YCoordinatea
+    </span>
+    <br>
+    <br>
+    <span>
+        J<sub>z</sub> =
+        =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>rectWidtha * (rectHeighta)<sup>3</sup></mi>
+                    <mi>3</mi>
+                </mfrac>+
+                <mfrac>
+                    <mi>triangleWidtha * (triangleHeighta)<sup>3</sup></mi>
+                    <mi>12</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =JzResa<sup>4</sup>
+    </span>
+    <br>
+    <span>
+        J<sub>y</sub>
+        =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>rectHeighta * (rectWidtha)<sup>3</sup></mi>
+                    <mi>3</mi>
+                </mfrac>+
+                <mfrac>
+                    <mi>triangleHeighta * (triangleWidtha)<sup>3</sup></mi>
+                    <mi>12</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =JyResa<sup>4</sup>
+    </span>
+    <br>
 
-<br>
+    <span>
+        J<sub>zy</sub> =
+        =
+        <math>
+            <mrow>
+                -
+                <mfrac>
+                    <mi>rectWidtha<sup>2</sup> * rectHeighta<sup>2</sup></mi>
+                    <mi>4</mi>
+                </mfrac>+
+                <mfrac>
+                    <mi>triangleWidtha<sup>2</sup> * triangleHeighta<sup>2</sup></mi>
+                    <mi>24</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        =JzyResa<sup>4</sup>
+    </span>
+    <br>
 
-<span>
-<math>
-        &#951; = y<sub>c</sub> * cos&#934; + z<sub>c</sub> * sin&#934;
-</math>
-</span>
-<br>
-FirstPointName(FPZCoorda; FPYCoorda)
-<br>
-<span>&#958;<sub>FirstPointName</sub>
-= -(FPYCoorda)*sin(FiRes&#176;) + (FPZCoorda)*cos(FiRes&#176;) = FirstksiCoordinateResa
-</span>
-<br>
-<span>&#951;<sub>FirstPointName</sub>
-= (FPYCoorda)*cos(FiRes&#176;) + (FPZCoorda)*sin(FiRes&#176;) = FirstethaCoordinateResa
-</span>
-<!--Point B-->
-<br>
-SecondPointName(SPZCoorda; SPYCoorda)
-<br>
-<span>&#958;<sub>SecondPointName</sub>
-= -(SPYCoorda)*sin(FiRes&#176;) + (SPZCoorda)*cos(FiRes&#176;) = SecondksiCoordinateResa
-</span>
-<br>
-<span>&#951;<sub>SecondPointName</sub>
-= (SPYCoorda)*cos(FiRes&#176;) + (SPZCoorda)*sin(FiRes&#176;) = SecondethaCoordinateResa
-</span>
+    <span>
+        J<sub>zcyc</sub> =
+        =
+        <math>
+            <mrow>
+                <mi>JzyResa<sup>4</sup> - TotalAreaa<sup>2</sup> * (ZCoordinatea)*(YCoordinatea)</mi>
+            </mrow>
+        </math>
+        =JyczcResa<sup>4</sup>
+    </span>
+    <br>
 
-<br>
+    <span>
+        J<sub>zc</sub>
+        =
+        <math>
+            <mrow>
+                JzResa<sup>4</sup> - TotalAreaa<sup>2</sup> * (YCoordinatea)<sup>2</sup>
+            </mrow>
+        </math>
+        =JzcResa<sup>4</sup>
+    </span>
+    <br>
 
-<span>
+    <span>
+        J<sub>yc</sub>
+        =
+        <math>
+            <mrow>
+                JyResa<sup>4</sup> - TotalAreaa<sup>2</sup> * (ZCoordinatea)<sup>2</sup>
+            </mrow>
+        </math>
+        =JycResa<sup>4</sup>
+    </span>
+    <br>
+    <br>
+    <span>
+        J<sub>1,2</sub>
+        =
+        <math>
+            <mrow>
+                0.5*<span>(J<sub>yc</sub> + J<sub>zc</sub>) &#177;</span>0.5* <span style="white-space: nowrap; ">
+                    &radic;<span style="text-decoration:overline;">
+                        &nbsp;(J<sub>yc</sub>-J<sub>zc</sub>)<sup>2</sup>
+                        + 4(J<sub>yczc</sub>)<sup>2</sup>&nbsp;
+                    </span>
+                </span>
+            </mrow>
+        </math>
+    </span>
+
+    <br>
+
+
+    <span>
+        J<sub>1</sub>
+        =
+        <math>
+            <mrow>
+                0.5*(JycResa<sup>4</sup> + JzcResa<sup>4</sup>) + 0.5* <span style="white-space: nowrap; ">
+                    &radic;<span style="text-decoration:overline;">
+                        &nbsp;(JycResa<sup>4</sup>-JzcResa<sup>4</sup>)<sup>2</sup>
+                        + 4*(JyczcResa<sup>4</sup>)<sup>2</sup>&nbsp;
+                    </span>
+                </span>
+            </mrow>
+        </math>
+        =JethaRes a<sup>4</sup>
+    </span>
+    <br>
+
+    <span>
+        J<sub>2</sub>
+        =
+        <math>
+            <mrow>
+                0.5*(JycResa<sup>4</sup> + JzcResa<sup>4</sup>) -  0.5*<span style="white-space: nowrap; ">
+                    &radic;<span style="text-decoration:overline;">
+                        &nbsp;(JycResa<sup>4</sup>-JzcResa<sup>4</sup>)<sup>2</sup>
+                        + 4*(JyczcResa<sup>4</sup>)<sup>2</sup>&nbsp;
+                    </span>
+                </span>
+            </mrow>
+        </math>
+        =JksiResa<sup>4</sup>
+    </span>
+    <br>
+    <br>
+
+    <span>
+        tg2&#934; =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>-2J<sub>yczc</sub></mi>
+                    <mi>J<sub>yc</sub> - J<sub>zc</sub></mi>
+                </mfrac>
+            </mrow>
+        </math>
+    </span>
+    <br>
+
+    <span>
+        tg2&#934; =
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>-2JyczcResa<sup>4</sup></mi>
+                    <mi>JycResa<sup>4</sup> - JzcResa<sup>4</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+    </span>
+    =tg2FiRes
+    <br>
+
+    <span>
+        <math>
+            <mrow>
+                <sub>2&#934;</sub>=
+                2FiRes
+                &#176;
+            </mrow>
+        </math>
+    </span>
+    <br>
+
+    <span>
+        <math>
+            <mrow>
+                <sub>&#934;</sub>=
+                FiRes
+                &#176;
+            </mrow>
+        </math>
+    </span>
+    <br>
+    <br>
+
+
+    <span>
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>M<sub>&#958;</sub></mi>
+                    <mi>M</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        = cos&#934;
+    </span>
+    <br>
+    <span>
+        <math>
+            <mrow>
+                M<sub>&#958;</sub> = M*cos&#934;
+            </mrow>
+        </math>
+    </span>
+    <br>
+    <span>
+        <math>
+            <mrow>
+                M<sub>&#958;</sub> = MResql<sup>2</sup>*cos(FiRes&#176;)
+            </mrow>
+        </math>
+        =MksiResql<sup>2</sup>
+    </span>
+    <br>
+    <br>
+
+
+    <span>
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>M<sub>&#951;</sub></mi>
+                    <mi>M</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        = sin&#934;
+    </span>
+    <br>
+    <span>
+        <math>
+            <mrow>
+                M<sub>&#951;</sub> = M*sin&#934;
+            </mrow>
+        </math>
+    </span>
+    <br>
+    <span>
+        <math>
+            <mrow>
+                M<sub>&#951;</sub> = MResql<sup>2</sup>*sin(FiRes&#176;)
+            </mrow>
+        </math>
+        =MethaResql<sup>2</sup>
+    </span>
+    <br>
+    <br>
+
+    <span>
+        &#1004;<sub>x</sub> =
+        <math>
+            <mrow>
+                -
+                <mfrac>
+                    <mi>M<sub>&#958;</sub></mi>
+                    <mi>J<sub>&#958;</sub></mi>
+                </mfrac>&#951;+
+                <mfrac>
+                    <mi>M<sub>&#951;</sub></mi>
+                    <mi>J<sub>&#951;</sub></mi>
+                </mfrac>
+                &#958;
+            </mrow>
+        </math>
+    </span>
+
+    <br>
+    <span>
+        &#1004;<sub>x</sub> =
+        <math>
+            <mrow>
+                -
+                <mfrac>
+                    <mi>MksiResql<sup>2</sup></mi>
+                    <mi>JksiRes<sup>4</sup></mi>
+                </mfrac>&#951;+
+                <mfrac>
+                    <mi>MethaResql<sup>2</sup></mi>
+                    <mi>JethaRes<sup>4</sup></mi>
+                </mfrac>
+                &#958;
+            </mrow>
+        </math>
+    </span>
+
+    <br>
+    <span>
+        &#1004;<sub>x</sub> =
+        <math>
+            <mrow>
+                (MksiJksiRslt)
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>&#951;+
+                (MethaJethaRslt)
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+                &#958;
+            </mrow>
+        </math>
+    </span>
+    <br>
+    <span>
+        Oś obojętna: &#1004;<sub>x</sub> = 0
+        <br>
+        <math>
+            <mrow>
+                (MeJeResOpposite)&#951;
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+                =
+                (MethaJethaRslt)&#958;
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+    </span>
+    <br>
+    <span>
+        <math>
+            <mrow>
+                &#951;
+                =
+                rateRes&#958;
+            </mrow>
+        </math>
+    </span>
+    <br>
+
+    <span>
+        <math>
+            <mrow>
+                &#958; = -y<sub>c</sub> * sin&#934; + z<sub>c</sub> * cos&#934;
+            </mrow>
+        </math>
+    </span>
+
+    <br>
+
+    <span>
+        <math>
+            &#951; = y
+            <sub>c</sub> * cos&#934; + z
+            <sub>c</sub> * sin&#934;
+        </math>
+    </span>
+    <br>
+    FirstPointName(FPZCoorda; FPYCoorda)
+    <br>
+    <span>
+        &#958;<sub>FirstPointName</sub>
+        = -(FPYCoorda)*sin(FiRes&#176;) + (FPZCoorda)*cos(FiRes&#176;) = FirstksiCoordinateResa
+    </span>
+    <br>
+    <span>
+        &#951;<sub>FirstPointName</sub>
+        = (FPYCoorda)*cos(FiRes&#176;) + (FPZCoorda)*sin(FiRes&#176;) = FirstethaCoordinateResa
+    </span>
+    <!--Point B-->
+    <br>
+    SecondPointName(SPZCoorda; SPYCoorda)
+    <br>
+    <span>
+        &#958;<sub>SecondPointName</sub>
+        = -(SPYCoorda)*sin(FiRes&#176;) + (SPZCoorda)*cos(FiRes&#176;) = SecondksiCoordinateResa
+    </span>
+    <br>
+    <span>
+        &#951;<sub>SecondPointName</sub>
+        = (SPYCoorda)*cos(FiRes&#176;) + (SPZCoorda)*sin(FiRes&#176;) = SecondethaCoordinateResa
+    </span>
+
+    <br>
+
+    <span>
         &#1004;<sub>x</sub><sup>FirstPointName</sup>(FirstksiCoordinateResa,FirstethaCoordinateResa) =(MksiJksiRslt)
-    <math>
-    <mrow>    
-    <mfrac>
-            <mi>ql<sup>2</sup></mi>
-            <mi>a<sup>4</sup></mi>
-    </mfrac>
-        *(FirstethaCoordinateResa)
-        +
-        (MethaJethaRslt)
-         <mfrac>
-            <mi>ql<sup>2</sup></mi>
-            <mi>a<sup>4</sup></mi>
-        </mfrac>
-        *(FirstksiCoordinateResa )
-        = FirstPSigmaResult
-        <mfrac>
-            <mi>ql<sup>2</sup></mi>
-            <mi>a<sup>3</sup></mi>
-    </mfrac>
-    </mrow>
-</math>
-</span>
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+                *(FirstethaCoordinateResa)
+                +
+                (MethaJethaRslt)
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+                *(FirstksiCoordinateResa )
+                = FirstPSigmaResult
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>3</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+    </span>
 
-<br>
+    <br>
 
-<span>
+    <span>
         &#1004;<sub>x</sub><sup>SecondPointName</sup>(SecondksiCoordinateResa,SecondethaCoordinateResa) =(MksiJksiRslt)
-    <math>
-    <mrow>    
-    <mfrac>
-            <mi>ql<sup>2</sup></mi>
-            <mi>a<sup>4</sup></mi>
-    </mfrac>
-        *(SecondethaCoordinateResa)
-        +
-        (MethaJethaRslt)
-         <mfrac>
-            <mi>ql<sup>2</sup></mi>
-            <mi>a<sup>4</sup></mi>
-        </mfrac>
-        *(SecondksiCoordinateResa)
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+                *(SecondethaCoordinateResa)
+                +
+                (MethaJethaRslt)
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>4</sup></mi>
+                </mfrac>
+                *(SecondksiCoordinateResa)
                 = SecondPSigmaResult
                 <mfrac>
-            <mi>ql<sup>2</sup></mi>
-            <mi>a<sup>3</sup></mi>
-    </mfrac>
-    </mrow>
-</math>
-</span>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>3</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+    </span>
 
-<br>
-<span>
-    &#1004;<sub>max</sub>&#8804;kr
-</span>
-<br>
-<span>
-    |&#1004;<sub>min</sub>|&#8804;kc
-</span>
-<br>
+    <br>
+    <span>
+        &#1004;<sub>max</sub>&#8804;kr
+    </span>
+    <br>
+    <span>
+        |&#1004;<sub>min</sub>|&#8804;kc
+    </span>
+    <br>
 
 
-<span>SigmaMaxRes
-<math>
-    <mrow>    
-        <mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>a<sup>3</sup></mi>
-        </mfrac>
-    </mrow>
-</math>
-         &#8804;
-    krReskckc
-</span>
-<br>
-<span>SigmaMinRes
-<math>
-    <mrow>    
-        <mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>a<sup>3</sup></mi>
-        </mfrac>
-    </mrow>
-</math>
-         &#8804;
-    kc
-</span>
-<br>
-<span>SigmaMaxRes
-<math>
-    <mrow>    
-        <mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>krReskckc</mi>
-        </mfrac>
-    </mrow>
-</math>
-         &#8804;
-    a<sup>3</sup>
-</span>
-<br>
-<span>SigmaMinRes
-<math>
-    <mrow>    
-        <mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>kc</mi>
-        </mfrac>
-    </mrow>
-</math>
-         &#8804;
-    a<sup>3</sup>
-</span>
+    <span>
+        SigmaMaxRes
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>3</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+        &#8804;
+        krReskckc
+    </span>
+    <br>
+    <span>
+        SigmaMinRes
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>a<sup>3</sup></mi>
+                </mfrac>
+            </mrow>
+        </math>
+        &#8804;
+        kc
+    </span>
+    <br>
+    <span>
+        SigmaMaxRes
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>krReskckc</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        &#8804;
+        a<sup>3</sup>
+    </span>
+    <br>
+    <span>
+        SigmaMinRes
+        <math>
+            <mrow>
+                <mfrac>
+                    <mi>ql<sup>2</sup></mi>
+                    <mi>kc</mi>
+                </mfrac>
+            </mrow>
+        </math>
+        &#8804;
+        a<sup>3</sup>
+    </span>
 
-<br>
-<span>a&#8805;
-<math>
-    <mrow style="white-space: nowrap; ">SMaxRes  
-        &#x221B;
-        <span style="text-decoration:overline;">
-        <mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>/kc</mi>
-        </mfrac>
-             </span>
-    </mrow>
-</math>
-</span>
+    <br>
+    <span>
+        a&#8805;
+        <math>
+            <mrow style="white-space: nowrap; ">
+                SMaxRes
+                &#x221B;
+                <span style="text-decoration:overline;">
+                    <mfrac>
+                        <mi>ql<sup>2</sup></mi>
+                        <mi>/kc</mi>
+                    </mfrac>
+                </span>
+            </mrow>
+        </math>
+    </span>
 
-<br>
-<span>a&#8805;
-<math>
-    <mrow style="white-space: nowrap; ">SMinRes   
-            	&#x221B;
-        <span style="text-decoration:overline;">
- 
-        <mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>/kc</mi>
-        </mfrac>
-            </span>
-    </mrow>
-</math>
-</span>
-<br>
-<span>Odpowiedź:</span>
-<br>
-<span>a&#8805;
-<math>
-    <mrow style="white-space: nowrap; "> ADimRes
-            	&#x221B;
-        <span style="text-decoration:overline;">
-<mfrac>
-                <mi>ql<sup>2</sup></mi>
-                <mi>/kc</mi>
-        </mfrac>
-</span>
-     
-    </mrow>
-</math>
-</span>
+    <br>
+    <span>
+        a&#8805;
+        <math>
+            <mrow style="white-space: nowrap; ">
+                SMinRes
+                &#x221B;
+                <span style="text-decoration:overline;">
+
+                    <mfrac>
+                        <mi>ql<sup>2</sup></mi>
+                        <mi>/kc</mi>
+                    </mfrac>
+                </span>
+            </mrow>
+        </math>
+    </span>
+    <br>
+    <span>Odpowiedź:</span>
+    <br>
+    <span>
+        a&#8805;
+        <math>
+            <mrow style="white-space: nowrap; ">
+                ADimRes
+                &#x221B;
+                <span style="text-decoration:overline;">
+                    <mfrac>
+                        <mi>ql<sup>2</sup></mi>
+                        <mi>/kc</mi>
+                    </mfrac>
+                </span>
+
+            </mrow>
+        </math>
+    </span>
 
     scriptPlace
-<!--<script>-->
-<!--    var width = rectWidth;-->
-<!--    var high = rectHeight;-->
-<!--    var c = document.getElementById("myCanvas");-->
-<!--    var ctx = c.getContext("2d");-->
-<!--    ctx.beginPath();    -->
-<!--    ctx.rect(0,0,width,high);-->
-<!--    ctx.moveTo(50,0);-->
-<!--    ctx.lineTo(70,0);-->
-<!--    ctx.moveTo(70,0);-->
-<!--    ctx.lineTo(50,50);-->
-<!--    ctx.moveTo(50,0);-->
-<!--    ctx.lineTo(50,150);-->
-<!--    ctx.moveTo(0,155/33);-->
-<!--    ctx.lineTo(150,155/33);-->
-<!--    ctx.stroke();-->
-<!--    // c.rect(100, 20, 150, 100)-->
-<!--    // ctx.stroke();-->
-<!--</script>-->
+    beamPlace
 
 
 </body>

@@ -10,6 +10,8 @@ namespace ProjectCalculator.Infrastructure.Writer
 {
     public class ProjectWriter : IWriter
     {
+        private IShapeScript _shapeScriptCreator;
+        private IBeamScript _beamScriptCreator;
         private ParamFiz _paramFiz;
         private BendingMoment _bendingMoment;
         private InternalForces _internalForces;
@@ -21,8 +23,9 @@ namespace ProjectCalculator.Infrastructure.Writer
 
         public ProjectWriter(ParamFiz paramFiz, BendingMoment bendingMoment, InternalForces internalForces,
             TensionData tensionData, Dictionary<Char, Point> furthestsPoints, Contour contour,
-            YieldPoint yieldPoint)
+            YieldPoint yieldPoint, IShapeScript shapeScriptCreator, IBeamScript beamScriptCreator)
         {
+            _shapeScriptCreator = shapeScriptCreator;
             _paramFiz = paramFiz;
             _bendingMoment = bendingMoment;
             _internalForces = internalForces;
@@ -30,6 +33,7 @@ namespace ProjectCalculator.Infrastructure.Writer
             _furthestsPoints = furthestsPoints;
             _contour = contour;
             _yieldPoint = yieldPoint;
+            _beamScriptCreator = beamScriptCreator;
         }
 
         public bool ReadHtmlTemplate(string path)
@@ -45,8 +49,8 @@ namespace ProjectCalculator.Infrastructure.Writer
 
         public string ReplaceHtmlTemplateWithValues()
         {
-            _resultPage = _resultPage.Replace("scriptPlace", new ShapeScriptTypeA( _paramFiz,  _bendingMoment,  _internalForces,
-             _tensionData, _furthestsPoints,  _contour).GetScript());
+            _resultPage = _resultPage.Replace("scriptPlace", _shapeScriptCreator.GetScript());
+            _resultPage = _resultPage.Replace("beamPlace", _beamScriptCreator.GetScript());
                
             _resultPage = _resultPage.Replace("rectArea", _paramFiz.Rectangle.GetArea().ToString());
             _resultPage = _resultPage.Replace("triangleArea", _paramFiz.Triangle.GetArea().ToString());
