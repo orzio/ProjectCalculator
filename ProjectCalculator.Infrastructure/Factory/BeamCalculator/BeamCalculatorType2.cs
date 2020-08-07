@@ -44,8 +44,13 @@ namespace ProjectCalculator.Infrastructure.Factory.BeamCalculator
             return _internalForces;
         }
 
+        public FixedSupport GetSupportForces()
+        {
+            return _fixedSupport;
+        }
 
 
-        
+
+
     }
 }

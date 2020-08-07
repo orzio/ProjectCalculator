@@ -21,7 +21,7 @@ namespace ProjectCalculator.Infrastructure.Factory.BeamCalculator
 
         public IBeamCalculator CalculateVa()
         {
-            _fixedSupport.V = _beam.Q1 * _beam.L2 + _beam.Q2 * _beam.L3 + _beam.P;
+            _fixedSupport.V = _beam.Q1 * _beam.L2 + _beam.Q2 * _beam.L1 + _beam.P;
             return this;
         }
 
@@ -42,6 +42,11 @@ namespace ProjectCalculator.Infrastructure.Factory.BeamCalculator
         public InternalForces GetInternalForces()
         {
             return _internalForces;
+        }
+
+                public FixedSupport GetSupportForces()
+        {
+            return _fixedSupport;
         }
     }
 }

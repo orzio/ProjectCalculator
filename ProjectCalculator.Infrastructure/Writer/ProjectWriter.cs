@@ -1,5 +1,6 @@
 ﻿using ProjectCalculator.Core.Domain;
 using ProjectCalculator.Infrastructure.DrawingScripts;
+using ProjectCalculator.Infrastructure.Factory.BeamScriptor;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,10 +21,12 @@ namespace ProjectCalculator.Infrastructure.Writer
         private Contour _contour;
         private string _resultPage;
         private YieldPoint _yieldPoint;
+        private readonly IBeamScriptorEquation _beamScriptorEquation;
+        private readonly FixedSupport _fixedSupport;
 
-        public ProjectWriter(ParamFiz paramFiz, BendingMoment bendingMoment, InternalForces internalForces,
+        public ProjectWriter(ParamFiz paramFiz, FixedSupport fixedSupport, BendingMoment bendingMoment, InternalForces internalForces,
             TensionData tensionData, Dictionary<Char, Point> furthestsPoints, Contour contour,
-            YieldPoint yieldPoint, IShapeScript shapeScriptCreator, IBeamScript beamScriptCreator)
+            YieldPoint yieldPoint, IShapeScript shapeScriptCreator, IBeamScript beamScriptCreator, IBeamScriptorEquation beamScriptorEquation)
         {
             _shapeScriptCreator = shapeScriptCreator;
             _paramFiz = paramFiz;
@@ -34,6 +37,9 @@ namespace ProjectCalculator.Infrastructure.Writer
             _contour = contour;
             _yieldPoint = yieldPoint;
             _beamScriptCreator = beamScriptCreator;
+            _beamScriptorEquation = beamScriptorEquation;
+            _fixedSupport = fixedSupport;
+            _beamScriptorEquation.SetValues();
         }
 
         public bool ReadHtmlTemplate(string path)
@@ -132,6 +138,15 @@ namespace ProjectCalculator.Infrastructure.Writer
             _resultPage = _resultPage.Replace("SMaxRes", _tensionData.ASigmaMax.ToString());
             _resultPage = _resultPage.Replace("SMinRes", _tensionData.ASigmaMin.ToString());
             _resultPage = _resultPage.Replace("ADimRes", _tensionData.CrossDimention.ToString());
+            _resultPage = _resultPage.Replace("VResult", _fixedSupport.V.ToString());
+            _resultPage = _resultPage.Replace("Q1Force", _beamScriptorEquation.Q1.ToString());
+            _resultPage = _resultPage.Replace("Q2Force", _beamScriptorEquation.Q2.ToString());
+            _resultPage = _resultPage.Replace("Q1L", _beamScriptorEquation.Q1L.ToString());
+            _resultPage = _resultPage.Replace("Q2L", _beamScriptorEquation.Q2L.ToString());
+            _resultPage = _resultPage.Replace("Q1SumL", _beamScriptorEquation.Q1SumL.ToString());
+            _resultPage = _resultPage.Replace("Q2SumL", _beamScriptorEquation.Q2SumL.ToString());
+            _resultPage = _resultPage.Replace("PForce", _beamScriptorEquation.P.ToString());
+            _resultPage = _resultPage.Replace("PSumL", _beamScriptorEquation.PSumL.ToString());
 
             return _resultPage;
         }

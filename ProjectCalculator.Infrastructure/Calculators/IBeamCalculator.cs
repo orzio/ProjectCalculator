@@ -12,6 +12,7 @@ namespace ProjectCalculator.Infrastructure.Calculators
         IBeamCalculator CalculateHa();
         IBeamCalculator CalculateMa();
         InternalForces GetInternalForces();
+        FixedSupport GetSupportForces();
 
     }
 }

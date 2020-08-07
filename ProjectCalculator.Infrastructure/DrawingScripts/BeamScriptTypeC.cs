@@ -1,17 +1,16 @@
 ﻿using ProjectCalculator.Core.Domain;
-using ProjectCalculator.Infrastructure.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ProjectCalculator.Infrastructure.DrawingScripts
 {
-    public class BeamScriptTypeA : IBeamScript
+   public class BeamScriptTypeC : IBeamScript
     {
         private InternalForces _internalForces;
         private Beam _beam;
 
-        public BeamScriptTypeA(InternalForces internalForces, Beam beam)
+        public BeamScriptTypeC(InternalForces internalForces, Beam beam)
         {
             _internalForces = internalForces;
             _beam = beam;
@@ -21,7 +20,7 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
             var script =
               "<scr" + "ipt>" +
                  "var scale = 80;" +
-                 "var offset = 120;" +
+                  "var offset = 120;" +
                  "var c = document.getElementById(\"myBeam\");" +
                  "var ctx = c.getContext(\"2d\");" +
                   $"ctx.translate(offset,offset);" +
@@ -32,9 +31,9 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
                   DrawSupport() +
                   DrawHorizontalDimensions() +
                   DrawSupportForces() +
-                  DrawQForce(_beam.L1, _beam.L2,_beam.Q1) +
-                  DrawQForce(_beam.L1+_beam.L2, _beam.L3,_beam.Q2) +
-                  DrawPForce(_beam.L1,_beam.P)+
+                  DrawQForce(_beam.L1, _beam.L2, _beam.Q1) +
+                  DrawQForce(_beam.L1 + _beam.L2, _beam.L3, _beam.Q2) +
+                  DrawPForce(_beam.L1 + _beam.L2+ _beam.L3, _beam.P) +
 
                   "ctx.font = '20px Arial';" +
             //$"ctx.fillText('{_paramFiz.Rectangle.Height}a',5,rHigh/2);";
@@ -54,8 +53,8 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
             var scale = 80;
             var forceLength = 45;
             return
-                DrawPArrow(forcePoint*scale, forceLength) +
-                $"ctx.fillText('{forceValue}q',{forcePoint*scale}+5,{forceLength});";
+                DrawPArrow(forcePoint * scale, forceLength) +
+                $"ctx.fillText('{forceValue}qL',{forcePoint * scale}+5,{forceLength});";
 
         }
 
@@ -70,16 +69,16 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
             $"ctx.moveTo({startPoint},{-forceHeight});" +
             $"ctx.lineTo({endPoint},{-forceHeight});");
 
-            
+
 
             var distance = startPoint;
 
-            while(distance <= endPoint)
+            while (distance <= endPoint)
             {
                 stringBuilder.Append(DrawArrow(distance, forceHeight));
-                distance += 0.5*scale;
+                distance += 0.5 * scale;
             }
-            stringBuilder.Append($"ctx.fillText('{qForce}qL',{endPoint}+5,{-forceHeight});");
+            stringBuilder.Append($"ctx.fillText('{qForce}q',{endPoint}+5,{-forceHeight});");
             stringBuilder.Append("ctx.stroke();");
             return stringBuilder.ToString();
         }
@@ -129,7 +128,7 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
                 "ctx.moveTo(-50,30);" +
                 "ctx.arc(-50,0, 30, (Math.PI) / 2, Math.PI + (Math.PI) / 2, false);" +
 
-                 "ctx.moveTo(-50,30);" +
+                "ctx.moveTo(-50,30);" +
                 "ctx.lineTo(-60,20);" +
                 "ctx.moveTo(-50,30);" +
                 "ctx.lineTo(-60,35);" +

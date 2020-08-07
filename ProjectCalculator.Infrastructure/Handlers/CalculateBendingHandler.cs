@@ -13,6 +13,7 @@ using ProjectCalculator.Infrastructure.Factory.ContourPointsCalculator;
 using ProjectCalculator.Core.Domain;
 using ProjectCalculator.Infrastructure.Factory.DrawingScript;
 using ProjectCalculator.Infrastructure.DrawingScripts;
+using ProjectCalculator.Infrastructure.Factory.BeamScriptor;
 
 namespace ProjectCalculator.Infrastructure.Commands
 {
@@ -53,6 +54,7 @@ namespace ProjectCalculator.Infrastructure.Commands
                 .CalculateMa()
                 .GetInternalForces();
             #endregion
+            var supportForces = beamCalculator.GetSupportForces();
 
             var bendingMomentCalculator = new BendingMomentsCalculator(internalForces.Moment);
             var bendingMoment = bendingMomentCalculator
@@ -105,8 +107,9 @@ namespace ProjectCalculator.Infrastructure.Commands
             var shapeScriptCreator = shapeScriptFactory.GetShapeScript(command, paramFiz, bendingMoment, internalForces,
                 tensionData, contour.FurthestsPoints, contour);
 
-            var writer = new ProjectWriter(paramFiz, bendingMoment, internalForces, 
-                tensionData, contour.FurthestsPoints, contour, command.YieldPoint, shapeScriptCreator, new BeamScriptTypeA(internalForces,command.Beam));
+            var writer = new ProjectWriter(paramFiz, supportForces, bendingMoment, internalForces,
+                tensionData, contour.FurthestsPoints, contour, command.YieldPoint, shapeScriptCreator, new BeamScriptFactory().GetShapeScript(command, internalForces),
+                new BeamEquationScriptorFactory().GetBeamScriptor(command)) ;
             var path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, $@"../../../Files/index.html"));
             writer.ReadHtmlTemplate(path);
             writer.ReplaceHtmlTemplateWithValues();
