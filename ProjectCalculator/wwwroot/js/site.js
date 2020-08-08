@@ -1,4 +1,4 @@
-﻿const uri = 'bending';
+﻿const uri = 'bending/';
 let todos = [];
 
 function getItems() {
@@ -9,12 +9,43 @@ function getItems() {
 }
 
 function addItem() {
-    const addNameTextbox = document.getElementById('add-name');
 
-    const item = {
-        isComplete: false,
-        name: addNameTextbox.value.trim()
-    };
+    const beam = {
+        L1: parseFloat(document.getElementById('beam-l1').value),
+        L2: parseFloat(document.getElementById('beam-l2').value),
+        L3: parseFloat(document.getElementById('beam-l3').value),
+        Q1: parseFloat(document.getElementById('beam-q1').value),
+        Q2: parseFloat(document.getElementById('beam-q2').value)
+    }
+
+    const shape = {
+        B1: parseFloat(document.getElementById('shape-b1').value),
+        B2: parseFloat(document.getElementById('shape-b2').value),
+        H1: parseFloat(document.getElementById('shape-h1').value),
+        H2: parseFloat(document.getElementById('shape-h2').value)
+    }      
+
+    const yieldPoint = {
+        kr: parseFloat(document.getElementById('task-kr').value)
+    }
+
+    const shapeType = parseInt(document.querySelector("input[name=shape]:checked").value);
+    const beamType = parseInt(document.querySelector("input[name=beam]:checked").value);
+
+    console.log(shapeType);
+    console.log(beamType);
+
+    const command = {
+        BeamType: beamType,
+        ShapeType: shapeType,
+        Beam: beam,
+        Shape: shape,
+        YieldPoint: yieldPoint
+    }
+
+    console.log(command);
+
+    console.log(uri);
 
     fetch(uri, {
         method: 'POST',
@@ -22,13 +53,13 @@ function addItem() {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(item)
+        body: JSON.stringify(command)
     })
         .then(response => response.json())
-        .then(() => {
-            getItems();
-            addNameTextbox.value = '';
-        })
+        //.then(() => {
+        //    getItems();
+        //    addNameTextbox.value = '';
+        //})
         .catch(error => console.error('Unable to add item.', error));
 }
 

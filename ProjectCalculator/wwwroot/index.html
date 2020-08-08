@@ -1,19 +1,125 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">-->
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>-->
     <meta charset="UTF-8">
     <title>To-do CRUD</title>
     <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
-    <!--<h1>To-do CRUD</h1>
+
+    <h1>To-do CRUD</h1>
     <h3>Add</h3>
+
+
+
+
+
     <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
-        <input type="text" id="add-name" placeholder="New to-do">
-        <input type="submit" value="Add">
+        <div>
+            <label for="shape-b1">b1:</label>
+            <input type="text" id="shape-b1" value="2" placeholder="">
+        </div>
+        <div>
+            <label for="shape-b2">b2:</label>
+            <input type="text" id="shape-b2" value="5" placeholder="">
+        </div>
+        <div>
+            <label for="shape-h1">h1:</label>
+            <input type="text" id="shape-h1" value="5" placeholder="">
+        </div>
+
+        <div>
+            <label for="shape-h2">h2:</label>
+            <input type="text" id="shape-h2" value="5" placeholder="">
+        </div>
+
+        <div>
+            <label for="shape-l1">l1:</label>
+            <input type="text" id="beam-l1" value="2" placeholder="">
+        </div>
+        <div>
+            <label for="shape-l2">l2:</label>
+            <input type="text" id="beam-l2" value="3" placeholder="">
+        </div>
+        <div>
+            <label for="shape-l3">l3:</label>
+            <input type="text" id="beam-l3" value="1" placeholder="">
+        </div>
+        <div>
+            <label for="beam-q1">q1:</label>
+            <input type="text" id="beam-q1" value="5" placeholder="">
+        </div>
+        <div>
+            <label for="beam-q2">q2:</label>
+            <input type="text" id="beam-q2" value="8" placeholder="">
+        </div>
+        <div>
+            <label for="task-kr">kr:</label>
+            <input type="text" id="task-kr" value="0.4" placeholder="">
+        </div>
+
+
+
+        <div class="shape-type" style=" background-color: antiquewhite">
+            <div style="display:flex; flex-direction:row;">
+
+                <div>
+                    <img src="http://lorempixel.com/160/120/" alt="">
+                    <input type="radio" id="shape-1" name="shape" value="1">
+                </div>
+
+                <div>
+                    <img src="http://lorempixel.com/160/120/" alt="">
+                    <input type="radio" id="shape-2" name="shape" value="2">
+                </div>
+            </div>
+
+            <div style="display:flex; flex-direction:row;">
+                <div>
+                    <img src="http://lorempixel.com/160/120/" alt="">
+                    <input type="radio" id="shape-3" name="shape" value="3">
+                </div>
+                <div>
+                    <img src="http://lorempixel.com/160/120/" alt="">
+                    <input type="radio" id="shape-4" name="shape" value="4">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="beam-type" style="background-color:aquamarine">
+            <div style="display:flex; flex-direction:row;">
+
+                <div>
+                    <img src="http://lorempixel.com/160/120/" alt="">
+                    <input type="radio" id="beam-1" name="beam" value="1">
+                </div>
+
+                <div>
+                    <img src="http://lorempixel.com/160/120/" alt="">
+                    <input type="radio" id="beam-2" name="beam" value="2">
+                </div>
+            </div>
+
+            <div style="display:flex; flex-direction:row;">
+                <div>
+                    <img src="http://lorempixel.com/160/120/" alt="">
+                    <input type="radio" id="beam-3" name="beam" value="3">
+                </div>
+                <div>
+                    <img src="http://lorempixel.com/160/120/" alt="">
+                    <input type="radio" id="beam-4" name="beam" value="4">
+                </div>
+            </div>
+        </div>
+
+        <input type="submit" value="Wyślij">
     </form>
 
-    <div id="editForm">
+    <!--<div id="editForm">
         <h3>Edit</h3>
         <form action="javascript:void(0);" onsubmit="updateItem()">
             <input type="hidden" id="edit-id">
@@ -22,9 +128,9 @@
             <input type="submit" value="Save">
             <a onclick="closeInput()" aria-label="Close">&#10006;</a>
         </form>
-    </div>-->
+    </div>
 
-    <button id="btnStart" onclick="getItems()">Start</button>
+    <button id="btnStart" onclick="getItems()">Start</button>-->
 
 
     <!--<p id="counter"></p>

@@ -93,7 +93,7 @@ namespace ProjectCalculator.Controllers
         }
 
         [HttpPost]
-        public Task<IActionResult> Post([FromBody] BendingCommand command)
+        public Task<IActionResult> Post(BendingCommand command)
         {
             _commandDispatcher.DispatchAsync(command);
             return null;

@@ -5,10 +5,11 @@ using System.Text;
 
 namespace ProjectCalculator.Infrastructure.DrawingScripts
 {
-   public class BeamScriptTypeD : IBeamScript
+    public class BeamScriptTypeD : IBeamScript
     {
         private InternalForces _internalForces;
         private Beam _beam;
+        private double forceOffset = 0.1d;
 
         public BeamScriptTypeD(InternalForces internalForces, Beam beam)
         {
@@ -17,7 +18,6 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
         }
         public string GetScript()
         {
-            var forceOffset = 0.1d;
             var script =
               "<scr" + "ipt>" +
                  "var scale = 80;" +
@@ -27,14 +27,14 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
                   $"ctx.translate(offset,offset);" +
                   "ctx.beginPath();   " +
 
-                  
+
                   DrawBeam() +
                   DrawSupport() +
                   DrawHorizontalDimensions() +
                   DrawSupportForces() +
                   DrawQForce(_beam.L1, _beam.L2, _beam.Q1) +
-                  DrawQForce(forceOffset, _beam.L1- forceOffset, _beam.Q2) +
-                  DrawPForce(_beam.L1 + _beam.L2 +_beam.L3, _beam.P) +
+                  DrawQForce(forceOffset, _beam.L1 - forceOffset, _beam.Q2) +
+                  DrawPForce(_beam.L1 + _beam.L2 + _beam.L3, _beam.P) +
 
                   "ctx.font = '20px Arial';" +
             //$"ctx.fillText('{_paramFiz.Rectangle.Height}a',5,rHigh/2);";
@@ -79,6 +79,9 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
                 stringBuilder.Append(DrawArrow(distance, forceHeight));
                 distance += 0.5 * scale;
             }
+            if (firstPoint == forceOffset)
+                stringBuilder.Append(DrawArrow(_beam.L1 * scale, forceHeight));
+
             stringBuilder.Append($"ctx.fillText('{qForce}q',{endPoint}+5,{-forceHeight});");
             stringBuilder.Append("ctx.stroke();");
             return stringBuilder.ToString();
