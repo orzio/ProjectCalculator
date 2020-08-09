@@ -37,7 +37,6 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
                   DrawPForce(_beam.L1,_beam.P)+
 
                   "ctx.font = '20px Arial';" +
-            //$"ctx.fillText('{_paramFiz.Rectangle.Height}a',5,rHigh/2);";
             "</scr" + "ipt>";
             return script;
         }
@@ -79,7 +78,7 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
                 stringBuilder.Append(DrawArrow(distance, forceHeight));
                 distance += 0.5*scale;
             }
-            stringBuilder.Append($"ctx.fillText('{qForce}qL',{endPoint}+5,{-forceHeight});");
+            stringBuilder.Append($"ctx.fillText('{qForce}q',{endPoint}+5,{-forceHeight});");
             stringBuilder.Append("ctx.stroke();");
             return stringBuilder.ToString();
         }

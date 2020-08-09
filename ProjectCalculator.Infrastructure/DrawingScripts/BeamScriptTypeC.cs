@@ -36,7 +36,6 @@ namespace ProjectCalculator.Infrastructure.DrawingScripts
                   DrawPForce(_beam.L1 + _beam.L2+ _beam.L3, _beam.P) +
 
                   "ctx.font = '20px Arial';" +
-            //$"ctx.fillText('{_paramFiz.Rectangle.Height}a',5,rHigh/2);";
             "</scr" + "ipt>";
             return script;
         }
