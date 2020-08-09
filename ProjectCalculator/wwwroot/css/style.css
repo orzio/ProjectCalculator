@@ -1,0 +1,47 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.image {
+    display: block;
+   
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+}
+
+.image:hover .overlay {
+    opacity: 1;
+}
+
+.section-bar {
+    background-color: #1c8f6a;
+    color: #fcc500;
+    height: 20vh;
+
+    /*centers text vertically*/
+    display:flex;
+    align-items: center;
+
+    justify-content:center;
+    font-size:25px;
+}
+
+.submit-button {
+    background-color: #f7b4a9;
+    color: #fa5081;
+    height: 20vh;
+    width: 100%;
+    font-size: 25px;
+    font-family: 'Lato', sans-serif;
+}
