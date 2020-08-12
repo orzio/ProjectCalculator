@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/style.css" />
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4nyp46krjdleawbgd5tp8y7uzmla05om1iaeq17csudqnuk2+k9luxqofxjcj4i" crossorigin="anonymous">-->
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62holfzrys4lxrf63ojcxdxdipiywbnvtl9y9/trlw5xlkiehpnyvvdshgf/" crossorigin="anonymous"></script>-->
+    <link rel="stylesheet" href="css/site.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>To-do CRUD</title>
+</head>
+<body>
+    <section>
+        <div class="section-bar">Wprowadź dane</div>
+    </section>
+    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <div style="display:flex; flex-direction:row; justify-content:space-around; flex-wrap:wrap;align-items:center; height:20vh">
+            <div>
+                <label for="shape-b1">b1:</label>
+                <input type="text" id="shape-b1" value="2" placeholder="">
+            </div>
+            <div>
+                <label for="shape-b2">b2:</label>
+                <input type="text" id="shape-b2" value="5" placeholder="">
+            </div>
+            <div>
+                <label for="shape-h1">h1:</label>
+                <input type="text" id="shape-h1" value="5" placeholder="">
+            </div>
+
+            <div>
+                <label for="shape-h2">h2:</label>
+                <input type="text" id="shape-h2" value="5" placeholder="">
+            </div>
+
+            <div>
+                <label for="shape-l1">l1:</label>
+                <input type="text" id="beam-l1" value="2" placeholder="">
+            </div>
+            <div>
+                <label for="shape-l2">l2:</label>
+                <input type="text" id="beam-l2" value="3" placeholder="">
+            </div>
+            <div>
+                <label for="shape-l3">l3:</label>
+                <input type="text" id="beam-l3" value="1" placeholder="">
+            </div>
+            <div>
+                <label for="beam-q1">q1:</label>
+                <input type="text" id="beam-q1" value="5" placeholder="">
+            </div>
+            <div>
+                <label for="beam-q2">q2:</label>
+                <input type="text" id="beam-q2" value="8" placeholder="">
+            </div>
+            <div>
+                <label for="task-kr">kr:</label>
+                <input type="text" id="task-kr" value="0.4" placeholder="">
+            </div>
+        </div>
+
+
+        <section>
+            <div class="section-bar">Wybierz przekrój</div>
+        </section>
+
+
+        <div class="shape-type" style=" ">
+            <div style="display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-around">
+
+                <div style="display:flex; flex-direction:row">
+                    <input type="radio" id="shape-1" name="shape" value="1">
+                    <img src="/img/shape/shapeA_430_315_645_595.png" alt="">
+                </div>
+
+                <div style="display:flex; flex-direction:row">
+                    <input type="radio" id="shape-2" name="shape" value="2">
+                    <img src="/img/shape/shapeB_430_315_645_595.png" name="shape" value="2">
+                </div>
+            </div>
+
+            <div style="display:flex; flex-direction:row;flex-wrap:wrap; justify-content:space-around">
+                <div style="display:flex; flex-direction:row">
+                    <input type="radio" id="shape-3" name="shape" value="3">
+                    <img src="/img/shape/shapeC_430_315_645_595.png" alt="">
+                </div>
+                <div style="display:flex; flex-direction:row">
+                    <input type="radio" id="shape-4" name="shape" value="4">
+                    <img src="/img/shape/shapeD_430_315_645_595.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <div class="section-bar">Wybierz belkę</div>
+        </section>
+
+        <div class="beam-type" style="">
+            <div style="display:flex; flex-direction:row;flex-wrap:wrap; justify-content:space-around">
+
+                <div style="display:flex; flex-direction:row">
+                    <input type="radio" id="beam-1" name="beam" value="1">
+                    <img src="/img/beam/beam_A.png" alt="">
+                </div>
+
+                <div style="display:flex; flex-direction:row">
+                    <input type="radio" id="beam-2" name="beam" value="2">
+                    <img src="/img/beam/beam_B.png" alt="">
+                </div>
+            </div>
+
+            <div style="display:flex; flex-direction:row;flex-wrap:wrap; justify-content:space-around">
+                <div style="display:flex; flex-direction:row">
+                    <input type="radio" id="beam-3" name="beam" value="3">
+                    <img src="/img/beam/beam_C.png" alt="">
+                </div>
+                <div style="display:flex; flex-direction:row">
+                    <input type="radio" id="beam-4" name="beam" value="4">
+                    <img src="/img/beam/beam_D.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div style="justify-content:center; display:flex; flex-direction:row">
+            <input class="submit-button" type="submit" style="height:20vh; width:100%" value="Generuj Projekt!">
+        </div>
+    </form>
+
+    <!--<div id="editForm">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateItem()">
+            <input type="hidden" id="edit-id">
+            <input type="checkbox" id="edit-isComplete">
+            <input type="text" id="edit-name">
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <button id="btnStart" onclick="getItems()">Start</button>-->
+    <!--<p id="counter"></p>
+
+    <table>
+        <tr>
+            <th>Is Complete?</th>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="todos"></tbody>
+    </table>
+        -->
+    <script src="js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

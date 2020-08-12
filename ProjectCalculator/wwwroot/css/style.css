@@ -2,11 +2,12 @@
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+    z-index: 997;
 }
 
 .image {
     display: block;
-   
 }
 
 .overlay {
@@ -44,4 +45,115 @@
     width: 100%;
     font-size: 25px;
     font-family: 'Lato', sans-serif;
+}
+nav {
+    height: 54px;
+    background: rgba(255,255,255,0.95);
+    border-bottom: 1px solid #E7E7E7;
+
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-link{
+    text-decoration-style:none;
+    color:black;
+    font-size:16px;
+}
+
+.nav-link:hover{
+    text-decoration:underline;
+}
+
+.nav-link:hover{
+    color:black;
+}
+
+
+.hamburger {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    right: 5%;
+    top: 50%;
+    transform: translate(-5%, -50%);
+    z-index: 999;
+}
+
+@media screen and (max-width: 768px) {
+    body{
+        overflow-x:hidden;
+    }
+    .line {
+        width: 30px;
+        height: 3px;
+        background: black;
+        margin: 5px;
+    }
+
+    nav {
+        position: relative;
+        border-bottom: 1px solid #E7E7E7;
+        z-index:999;
+    }
+
+    .hamburger{
+        display:block;
+        position:absolute;
+        left:10%;
+    }
+
+    .nav-links {
+        position: absolute;
+        height: 100vh;
+        top:54px;
+        right: 100%;
+        flex-direction: column;
+        align-items:flex-start;
+        justify-content:start;
+        background: rgba(255,255,255,0.95);
+        align-content: start;
+        transition: transform 0.5s ease-in;
+        width: 50%;
+    }
+
+    .nav-active{
+        transform:translateX(100%)
+    }
+    .link{
+        border-bottom:solid 1px #E7E7E7;
+        width:100%;
+        position: relative;
+        margin:0;
+        padding:0;
+    }
+
+    .nav-links{
+      padding-left:0;  
+    }
+
+    .lock-scroll {
+        overflow: hidden;
+    }
+
+
+    .curtain {
+        position: fixed; /* Sit on top of the page content */
+        display: block; /* Hidden by default */
+        width: 100%; /* Full width (cover the whole page) */
+        height: 100%; /* Full height (cover the whole page) */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+        z-index: 998; /* Specify a stack order in case you're using a different order for other elements */
+    }
+
 }
