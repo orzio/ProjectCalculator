@@ -9,37 +9,34 @@ const rightListElements = document.querySelector('.right-list').querySelectorAll
 let isMenuOpened = false;
 
 hamburger.addEventListener('click', () => {
-    if (isMenuOpened) {
-        isMenuOpened = false
-    } else {
-        isMenuOpened = true;
-    }
+
+    isMenuOpened = isMenuOpened == true ? false : true;
+
     navLinks.classList.toggle('nav-active');
     document.body.classList.toggle('lock-scroll');
     content.classList.toggle('curtain');
 
-    console.log(isMenuOpened);
+    if (isMenuOpened)
+        addNavElements();
 
-    var movedElementsCount = rightList.length;
-    console.log(movedElementsCount);
-    if (isMenuOpened) {
-        for (var i = 0; i < rightListElements.length; i++) {
-            middleList.appendChild(rightListElements[i]);
-            console.log(rightListElements[i]);
-            console.log(middleList.length);
-        }
-    }
-
-    if (!isMenuOpened) {
-
-
-        for (var i = 0; i < rightListElements.length; i++) {
-            rightList.appendChild(rightListElements[i]);
-        }
-
-    }
+    if (!isMenuOpened)
+        deleteNavElements();
 
 });
+
+function addNavElements() {
+    for (var i = 0; i < rightListElements.length; i++) {
+        middleList.appendChild(rightListElements[i]);
+
+    }
+}
+
+function deleteNavElements() {
+
+    for (var i = 0; i < rightListElements.length; i++) {
+        rightList.appendChild(rightListElements[i]);
+    }
+}
 
 
 
