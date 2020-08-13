@@ -59,6 +59,7 @@ nav {
     justify-content: center;
     align-items: center;
     height: 100%;
+    margin-bottom:0px;
 }
 
 .nav-link{
@@ -119,12 +120,16 @@ nav {
         justify-content:start;
         background: rgba(255,255,255,0.95);
         align-content: start;
-        transition: transform 0.5s ease-in;
+/*        transition: transform 0.5s ease-in;*/
         width: 50%;
     }
+    .addtional{
+        margin-top:174px;
+        z-index:999;
+    }
 
-    .nav-active{
-        transform:translateX(100%)
+    .nav-active {
+        transform: translateX(100%)
     }
     .link{
         border-bottom:solid 1px #E7E7E7;
@@ -142,7 +147,7 @@ nav {
         overflow: hidden;
     }
 
-
+    background-image: url('file:///C:\Users\penguin\AppData\Local\Temp\aisy86st.bmp');
     .curtain {
         position: fixed; /* Sit on top of the page content */
         display: block; /* Hidden by default */
@@ -155,5 +160,11 @@ nav {
         background-color: rgba(0,0,0,0.5); /* Black background with opacity */
         z-index: 998; /* Specify a stack order in case you're using a different order for other elements */
     }
+
+    .logo{
+        position:absolute;
+        left:40%;
+    }
+
 
 }
