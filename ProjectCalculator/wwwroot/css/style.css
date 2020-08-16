@@ -29,13 +29,11 @@
     background-color: #1c8f6a;
     color: #fcc500;
     height: 20vh;
-
     /*centers text vertically*/
-    display:flex;
+    display: flex;
     align-items: center;
-
-    justify-content:center;
-    font-size:25px;
+    justify-content: center;
+    font-size: 25px;
 }
 
 .submit-button {
@@ -46,11 +44,11 @@
     font-size: 25px;
     font-family: 'Lato', sans-serif;
 }
+
 nav {
     height: 54px;
     background: rgba(255,255,255,0.95);
     border-bottom: 1px solid #E7E7E7;
-
 }
 
 .nav-links {
@@ -59,22 +57,22 @@ nav {
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin-bottom:0px;
+    margin-bottom: 0px;
 }
 
-.nav-link{
-    text-decoration-style:none;
-    color:black;
-    font-size:16px;
+.nav-link {
+    text-decoration-style: none;
+    color: black;
+    font-size: 16px;
 }
 
-.nav-link:hover{
-    text-decoration:underline;
-}
+    .nav-link:hover {
+        text-decoration: underline;
+    }
 
-.nav-link:hover{
-    color:black;
-}
+    .nav-link:hover {
+        color: black;
+    }
 
 
 .hamburger {
@@ -88,9 +86,10 @@ nav {
 }
 
 @media screen and (max-width: 768px) {
-    body{
-        overflow-x:hidden;
+    body {
+        overflow-x: hidden;
     }
+
     .line {
         width: 30px;
         height: 3px;
@@ -101,46 +100,48 @@ nav {
     nav {
         position: relative;
         border-bottom: 1px solid #E7E7E7;
-        z-index:999;
+        z-index: 999;
     }
 
-    .hamburger{
-        display:block;
-        position:absolute;
-        left:10%;
+    .hamburger {
+        display: block;
+        position: absolute;
+        left: 10%;
     }
 
     .nav-links {
         position: absolute;
         height: 100vh;
-        top:54px;
+        top: 54px;
         right: 100%;
         flex-direction: column;
-        align-items:flex-start;
-        justify-content:start;
+        align-items: flex-start;
+        justify-content: start;
         background: rgba(255,255,255,0.95);
         align-content: start;
-/*        transition: transform 0.5s ease-in;*/
+        /*        transition: transform 0.5s ease-in;*/
         width: 50%;
     }
-    .addtional{
-        margin-top:174px;
-        z-index:999;
+
+    .addtional {
+        margin-top: 174px;
+        z-index: 999;
     }
 
     .nav-active {
         transform: translateX(100%)
     }
-    .link{
-        border-bottom:solid 1px #E7E7E7;
-        width:100%;
+
+    .link {
+        border-bottom: solid 1px #E7E7E7;
+        width: 100%;
         position: relative;
-        margin:0;
-        padding:0;
+        margin: 0;
+        padding: 0;
     }
 
-    .nav-links{
-      padding-left:0;  
+    .nav-links {
+        padding-left: 0;
     }
 
     .lock-scroll {
@@ -161,10 +162,125 @@ nav {
         z-index: 998; /* Specify a stack order in case you're using a different order for other elements */
     }
 
-    .logo{
-        position:absolute;
-        left:40%;
+    .logo {
+        position: absolute;
+        left: 40%;
+    }
+}
+
+.img-ctr {
+    width: 603px;
+    display: grid;
+    grid-template-rows: repeat(4, 200px);
+    grid-template-columns: repeat(3, 2fr);
+    grid-gap: 1px;
+}
+
+img {
+    background: black;
+}
+
+.container-login {
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+.logo {
+    text-decoration-style: none;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+    .logo:hover {
+        color: black;
     }
 
+.page-account {
+    background-color: #f0f4f4;
+}
+
+
+.btn.btn-bordered {
+    display: inline-block;
+}
+
+.btn.btn-bordered {
+    color: #b4b4b4;
+    padding: 0 15px;
+    border: 1px solid #b4b4b4;
+    display: block;
+}
+
+.btn {
+    font-size: 1.2rem;
+    font-size: 12px;
+    line-height: 28px;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 3px;
+    text-align: center;
+    border: 0;
+    padding: 0;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    transition: .2s;
+}
+
+.loginWrapper {
+    background: white;
+    padding: 10%;
+    border: 1px solid #ddd;
+}
+
+h2 {
+    display: inline;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+}
+
+.form-input {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.account-action {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #ddd;
+}
+
+.account-link {
+    text-decoration: none;
+    color: rgba(28,31,39,.4);
+}
+
+    .account-link:hover {
+        color: rgba(28,31,39,.6);
+    }
+
+.checkbox {
+margin-top:5px;
+margin-left:5px;
+margin-right:5px;
+display:flex;
+flex-direction:row;
+align-items:start;
 
 }
+
+.checkbox-icon{
+    margin-top:5px;
+}
+
