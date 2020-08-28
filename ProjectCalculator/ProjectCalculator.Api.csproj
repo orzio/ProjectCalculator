@@ -7,9 +7,17 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="5.2.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.7" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProjectCalculator.Domain\ProjectCalculator.Core.csproj" />
     <ProjectReference Include="..\ProjectCalculator.Infrastructure\ProjectCalculator.Infrastructure.csproj" />
   </ItemGroup>
 

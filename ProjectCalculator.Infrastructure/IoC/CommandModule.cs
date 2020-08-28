@@ -18,9 +18,6 @@ namespace ProjectCalculator.Infrastructure.IoC
             builder.RegisterType<CommandDispatcher>()
                 .As<ICommandDispatcher>()
                 .InstancePerLifetimeScope();
-
-
-
         }
     }
 }

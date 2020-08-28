@@ -25,33 +25,34 @@
 
     </header>
 
-        <div class="container">
-            <div class="loginWrapper">
-                <div class="row">
-                    <div style="display:flex; justify-content:center">
-                        <h2>Zaloguj się</h2>
-                    </div>
-                    <div class="login-form col-md-4 offset-md-4 col-sm-6 offset-sm-3">
-                        <form>
-                            <div class="form-input">
-                                <input type="type" name="name" value="" placeholder="E-mail" />
-                            </div>
-                            <div class="form-input">
-                                <input type="type" name="name" value="" placeholder="Hasło"/>
-                            </div>
-                            <div class="form-input">
-                                <button >Zaloguj się</button>
-                            </div>
-                            <div class="account-action">
-                                <a class="account-link" href="#">Resetuj hasło</a>
-                                <a class="account-link" href="Rejestracja.html" >Stwórz konto</a>
-                            </div>
-                        </form>
-                    </div>
-
+    <div class="container">
+        <div class="loginWrapper">
+            <div class="row">
+                <div style="display:flex; justify-content:center">
+                    <h2>Zaloguj się</h2>
                 </div>
+                <div class="login-form col-md-4 offset-md-4 col-sm-6 offset-sm-3">
+                    <form action="javascript:void(0);" method="POST" onsubmit="Login()">
+                        <div class="form-input">
+                            <input type="text" name="emial" id ="email" placeholder="E-mail" />
+                        </div>
+                        <div class="form-input">
+                            <input type="password" name="passwd" id="passwd" placeholder="Hasło" />
+                        </div>
+                        <div class="form-input">
+                            <button>Zaloguj się</button>
+                        </div>
+                        <div class="account-action">
+                            <a class="account-link" href="#">Resetuj hasło</a>
+                            <a class="account-link" href="Rejestracja.html">Stwórz konto</a>
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </div>
-
+    </div>
+    <script src="js/Login.js" asp-append-version="true"></script>
+    <script type="text/javascript"></script>
 </body>
 </html>

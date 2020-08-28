@@ -23,7 +23,7 @@ function addItem() {
         B2: parseFloat(document.getElementById('shape-b2').value),
         H1: parseFloat(document.getElementById('shape-h1').value),
         H2: parseFloat(document.getElementById('shape-h2').value)
-    }      
+    }
 
     const yieldPoint = {
         kr: parseFloat(document.getElementById('task-kr').value)
@@ -55,13 +55,13 @@ function addItem() {
         },
         body: JSON.stringify(command)
     })
-        .then(response => response.json())
-        //.then(() => {
-        //    getItems();
-        //    addNameTextbox.value = '';
-        //})
         .catch(error => console.error('Unable to add item.', error));
 }
+
+
+
+
+
 
 function deleteItem(id) {
     fetch(`${uri}/${id}`, {

@@ -1,17 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using ProjectCalculator.Infrastructure.IoC;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using ProjectCalculator.Infrastructure.Data;
+using ProjectCalculator.Infrastructure.Settings;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+using ProjectCalculator.Infrastructure.Extensions;
 
 namespace ProjectCalculator
 {
@@ -27,10 +27,27 @@ namespace ProjectCalculator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            var jwtKey = Configuration.GetSettings<JwtSettings>().Key;
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+               .AddJwtBearer(options =>
+               {
+                   options.TokenValidationParameters = new TokenValidationParameters
+                   {
+                       ValidateIssuerSigningKey = true,
+                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSettings<JwtSettings>().Key)),
+                       ValidateIssuer = false,
+                       ValidateAudience = false
+                   };
+               });
             //services.AddCors();
-
-
+            services.AddAuthorization(x => x.AddPolicy("admin", p => p.RequireRole("admin")));
+            services.AddAuthorization(x => x.AddPolicy("user", p => p.RequireRole("user")));
+            services.AddDbContext<DataContext>(x =>
+            x.UseSqlite(Configuration
+                        .GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddMemoryCache();
 
         }
         public void ConfigureContainer(ContainerBuilder builder)
@@ -52,12 +69,13 @@ namespace ProjectCalculator
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            //app.UseCors(builder => builder
-            //            .AllowAnyOrigin()
-            //            .AllowAnyMethod()
-            //            .AllowAnyHeader());
-            //app.UseCors();
+            app.UseCors(builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            app.UseCors();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -25,45 +25,46 @@
 
     </header>
 
-        <div class="container">
-            <div class="loginWrapper">
-                <div class="row">
-                    <div style="display:flex; justify-content:center">
-                        <h2>Stwórz konto</h2>
-                    </div>
-                    <div class="login-form col-md-4 offset-md-4 col-sm-6 offset-sm-3">
-                        <form>
-                            <div class="form-input">
-                                <input type="type" name="name" value="" placeholder="Imię" />
-                            </div>
-                            <div class="form-input">
-                                <input type="type" name="name" value="" placeholder="Nazwisko" />
-                            </div>
-                            <div class="form-input">
-                                <input type="type" name="name" value="" placeholder="E-mail" />
-                            </div>
-                            <div class="form-input">
-                                <input type="type" name="name" value="" placeholder="Hasło" />
-                            </div>
-
-                            <div class="account-action">
-                                <a class="account-link" href="index.html">Główna</a>
-                                <a class="account-link" href="logowanie.html">Mam konto</a>
-                            </div>
-                            <div class="checkbox">
-                                <input type="checkbox" class="checkbox-icon" name="name" value="" />
-                                <label>Klikając "Stwórz konto" akceptujesz Politykę Prywatności i Regulamin sklepu.</label>
-                            </div>
-
-                            <div class="form-input">
-                                <button>Stwórz konto</button>
-                            </div>
-                        </form>
-                    </div>
-
+    <div class="container">
+        <div class="loginWrapper">
+            <div class="row">
+                <div style="display:flex; justify-content:center">
+                    <h2>Stwórz konto</h2>
                 </div>
+                <div class="login-form col-md-4 offset-md-4 col-sm-6 offset-sm-3">
+                    <form action="javascript:void(0);" method="POST" onsubmit="createUser()">
+                        <div class="form-input">
+                            <input type="text" id="first-name" name="name" placeholder="Imię" />
+                        </div>
+                        <div class="form-input">
+                            <input type="text" id="last-name" name="lastName" placeholder="Nazwisko" />
+                        </div>
+                        <div class="form-input">
+                            <input type="text" id="email" name="email" placeholder="E-mail" />
+                        </div>
+                        <div class="form-input">
+                            <input type="password" id="passwd" name="passwd" placeholder="Hasło" />
+                        </div>
+
+                        <div class="account-action">
+                            <a class="account-link" href="index.html">Główna</a>
+                            <a class="account-link" href="logowanie.html">Mam konto</a>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="checkbox-icon" id="checkbox" />
+                            <label id="policy-accept">Klikając "Stwórz konto" akceptujesz Politykę Prywatności i Regulamin sklepu.</label>
+                        </div>
+
+                        <div class="form-input">
+                            <button type="submit">Stwórz konto</button>
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </div>
-
-</body>
-</html>
+    </div>
+    <script src="js/Register.js" asp-append-version="true"></script>
+    <script type="text/javascript"></script>
+</body >
+</html >
