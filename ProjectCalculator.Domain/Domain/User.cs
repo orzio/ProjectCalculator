@@ -23,7 +23,7 @@ namespace ProjectCalculator.Core.Domain
         public DateTime CreatedAt { get; protected set; }
         public DateTime UpdatedAt { get; protected set; }
 
-
+        public Token Token { get; set; }
         protected User()
         {
         }

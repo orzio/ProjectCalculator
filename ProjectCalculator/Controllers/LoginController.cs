@@ -19,19 +19,23 @@ namespace ProjectCalculator.Api.Controllers
     {
         private readonly IMemoryCache _cache;
         private readonly ICommandDispatcher _commandDispatcher;
+        private readonly IRefreshService _refreshService;
+        private readonly IUserService _userService;
 
-        public LoginController(ICommandDispatcher commandDispatcher, IMemoryCache cache)
+        public LoginController(ICommandDispatcher commandDispatcher, IMemoryCache cache, IRefreshService refreshService, IUserService userService)
         {
             _commandDispatcher = commandDispatcher;
+            _refreshService = refreshService;
             _cache = cache;
+            _userService = userService;
         }
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] LoginCommand command)
         {
-            command.TokenId = Guid.NewGuid();
             await _commandDispatcher.DispatchAsync(command);
-            var jwt = _cache.GetJwt(command.TokenId);
-            return Ok(jwt);
+            var userId = (await _userService.GetAsync(command.Email)).Id;
+            var token = await _refreshService.GetToken(userId);
+            return Ok(token);
         }
     }
 }

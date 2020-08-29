@@ -70,7 +70,6 @@ namespace ProjectCalculator.Infrastructure.Services
             var salt = _encrypter.GetSalt();
             var hash = _encrypter.GetPassworHash();
 
-            //string hash="", salt ="";
             user = new User(userId, email, firstname, lastname, role, hash, salt);
             await _userRepository.AddAsync(user);
         }

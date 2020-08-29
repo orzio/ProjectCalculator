@@ -10,11 +10,11 @@ using System.Text;
 
 namespace ProjectCalculator.Infrastructure.Services
 {
-    public class JwtHandler : IJwtHandler
+    public class JwtService : IJwtService
     {
         private readonly JwtSettings _jwtSettings;
 
-        public JwtHandler(JwtSettings settings)
+        public JwtService(JwtSettings settings)
         {
             _jwtSettings = settings;
         }

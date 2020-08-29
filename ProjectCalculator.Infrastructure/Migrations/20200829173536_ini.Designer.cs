@@ -9,14 +9,37 @@ using ProjectCalculator.Infrastructure.Data;
 namespace ProjectCalculator.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200823152234_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20200829173536_ini")]
+    partial class ini
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.7");
+
+            modelBuilder.Entity("ProjectCalculator.Core.Domain.Token", b =>
+                {
+                    b.Property<Guid>("TokenId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("JwtToken")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("TokenId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Tokens");
+                });
 
             modelBuilder.Entity("ProjectCalculator.Core.Domain.User", b =>
                 {
@@ -54,6 +77,15 @@ namespace ProjectCalculator.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ProjectCalculator.Core.Domain.Token", b =>
+                {
+                    b.HasOne("ProjectCalculator.Core.Domain.User", "User")
+                        .WithOne("Token")
+                        .HasForeignKey("ProjectCalculator.Core.Domain.Token", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

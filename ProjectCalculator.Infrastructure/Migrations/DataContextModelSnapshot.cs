@@ -16,6 +16,29 @@ namespace ProjectCalculator.Infrastructure.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.7");
 
+            modelBuilder.Entity("ProjectCalculator.Core.Domain.Token", b =>
+                {
+                    b.Property<Guid>("TokenId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("JwtToken")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("TokenId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Tokens");
+                });
+
             modelBuilder.Entity("ProjectCalculator.Core.Domain.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -52,6 +75,15 @@ namespace ProjectCalculator.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ProjectCalculator.Core.Domain.Token", b =>
+                {
+                    b.HasOne("ProjectCalculator.Core.Domain.User", "User")
+                        .WithOne("Token")
+                        .HasForeignKey("ProjectCalculator.Core.Domain.Token", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

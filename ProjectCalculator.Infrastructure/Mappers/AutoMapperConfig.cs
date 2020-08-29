@@ -13,6 +13,7 @@ namespace ProjectCalculator.Infrastructure.Mappers
             => new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<User, UserDto>();
+                cfg.CreateMap<Token, TokenDto>();
             }).CreateMapper();
     }
 }

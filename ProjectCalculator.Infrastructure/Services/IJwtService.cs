@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProjectCalculator.Infrastructure.Services
 {
-    public interface IJwtHandler
+    public interface IJwtService
     {
         JwtDto CreateToken(Guid userId, string role);
     }

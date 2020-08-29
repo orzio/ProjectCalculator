@@ -35,6 +35,9 @@ function PostQuery(url, command) {
                 }
             }).then(resp => resp.json())
                 .then(data => console.log(data))
+                .then(() => {
+                    window.location.href = "index.html";
+                })
         })
         .catch(error => console.error('Unable to sign in.', error));
 }

@@ -25,8 +25,8 @@ namespace ProjectCalculator.Infrastructure.IoC
                 .SingleInstance();
 
 
-            builder.RegisterType<JwtHandler>()
-                .As<IJwtHandler>()
+            builder.RegisterType<JwtService>()
+                .As<IJwtService>()
                 .SingleInstance();
         }
     }
