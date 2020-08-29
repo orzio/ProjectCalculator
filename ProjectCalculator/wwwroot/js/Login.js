@@ -25,5 +25,16 @@ function PostQuery(url, command) {
         .then(data => {
             localStorage.setItem("token", data.token);
         })
+        .then(() => {
+            fetch("https://localhost:44310/users", {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            }).then(resp => resp.json())
+                .then(data => console.log(data))
+        })
         .catch(error => console.error('Unable to sign in.', error));
 }
