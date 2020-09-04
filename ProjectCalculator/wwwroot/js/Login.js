@@ -1,7 +1,7 @@
 ﻿function Login() {
     const command = GetCommand();
-    const registerUrl = "https://localhost:44310/login";
-        PostQuery(registerUrl, command);
+    const loginUrl = "https://localhost:44310/login";
+    PostQuery(loginUrl, command);
 }
 
 function GetCommand() {
@@ -13,7 +13,7 @@ function GetCommand() {
 }
 
 function PostQuery(url, command) {
-    console.log(command);
+    console.log(url);
     fetch(url, {
         method: 'POST',
         headers: {
@@ -23,21 +23,32 @@ function PostQuery(url, command) {
         body: JSON.stringify(command)
     }).then(response => response.json())
         .then(data => {
-            localStorage.setItem("token", data.token);
+            console.log(data.jwtToken);
+            console.log(data.refreshToken);
+            localStorage.setItem("jwtToken", data.jwtToken);
+            localStorage.setItem("refreshToken", data.refreshToken);
         })
-        .then(() => {
-            fetch("https://localhost:44310/users", {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
-                }
-            }).then(resp => resp.json())
-                .then(data => console.log(data))
-                .then(() => {
-                    window.location.href = "index.html";
-                })
-        })
+        //.then(() => {
+        //fetch("https://localhost:44310/users", {
+        //    method: 'GET',
+        //    headers: {
+        //        'Accept': 'application/json',
+        //        'Content-Type': 'application/json',
+        //        'Authorization': `Bearer ${localStorage.getItem("token")}`
+        //    }
+        //}).then(resp => resp.json())
+        .then (() =>  redirectMainPage())
+
+
         .catch(error => console.error('Unable to sign in.', error));
+}
+
+function redirectMainPage() {
+    window.location.href = "index.html";
+}
+
+function logOut() {
+    localStorage.removeItem("jwtToken");
+    localStorage.removeItem("refreshToken");
+    window.location.href = "index.html";
 }

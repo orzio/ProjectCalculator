@@ -20,9 +20,11 @@ namespace ProjectCalculator.Infrastructure.Services
             _refreshService = refreshService;
         }
 
-        public Task HandleAsync(RefreshToken command)
+        public async Task HandleAsync(RefreshToken command)
         {
-            return null;
+            var role = (await _userService.GetAsync(command.UserId)).Role;
+            _jwtService.CreateToken(command.UserId, role);
+           await _refreshService.UpdateTokenAsync(command.UserId, command.ExpiredToken, command.Refresh);
         }
     }
 }

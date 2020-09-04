@@ -9,6 +9,7 @@ namespace ProjectCalculator.Infrastructure.Services
     public interface IUserService:IService
     {
         Task<UserDto> GetAsync(string email);
+        Task<UserDto> GetAsync(Guid id);
         Task<IEnumerable<UserDto>> BrowseAsync();
         Task RegisterAsync(Guid userId, string email,
             string firstname, string lastname, string password, string role);

@@ -15,11 +15,13 @@ namespace ProjectCalculator.Infrastructure.Services
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly IEncrypter _encrypter;
-        public UserService(IUserRepository userRepository, IMapper mapper, IEncrypter encrypter)
+        private readonly IRefreshService _refreshService;
+        public UserService(IUserRepository userRepository, IMapper mapper, IEncrypter encrypter, IRefreshService refreshService)
         {
             _userRepository = userRepository;
             _mapper = mapper;
             _encrypter = encrypter;
+            _refreshService = refreshService;
         }
         public async Task<IEnumerable<UserDto>> BrowseAsync()
         {
@@ -28,9 +30,16 @@ namespace ProjectCalculator.Infrastructure.Services
             return _mapper.Map<IEnumerable<User>, IEnumerable<UserDto>>(users);
         }
 
+
         public async Task<UserDto> GetAsync(string email)
         {
             var user = await _userRepository.GetAsync(email);
+            return _mapper.Map<User, UserDto>(user);
+        }
+
+        public async Task<UserDto> GetAsync(Guid id)
+        {
+            var user = await _userRepository.GetAsync(id);
             return _mapper.Map<User, UserDto>(user);
         }
 
@@ -52,6 +61,7 @@ namespace ProjectCalculator.Infrastructure.Services
 
             if (isEqual)
             {
+                await _refreshService.DeleteTokens(user.Id);
                 return;
             }
             throw new Exception("Invalid credentials");

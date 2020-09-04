@@ -13,16 +13,19 @@ namespace ProjectCalculator.Api.Controllers
     {
         private readonly IUserService _userService;
         private readonly ICommandDispatcher _commandDispatcher;
-        public RefreshTokenController(IUserService userService, ICommandDispatcher commandDispatcher)
+        private readonly IRefreshService _refreshService;
+        public RefreshTokenController(IUserService userService, ICommandDispatcher commandDispatcher, IRefreshService refreshService)
         {
             _userService = userService;
             _commandDispatcher = commandDispatcher;
+            _refreshService = refreshService;
         }
 
         public async Task<IActionResult> RefreshToken(RefreshToken refreshTokenCommand)
         {
-            _commandDispatcher.DispatchAsync(refreshTokenCommand);
-            return Ok();
+            await _commandDispatcher.DispatchAsync(refreshTokenCommand);
+            var token = await _refreshService.GetToken(refreshTokenCommand.UserId);
+            return Ok(token);
         }
     }
 }

@@ -35,11 +35,16 @@ namespace ProjectCalculator.Infrastructure.Services
             }
         }
 
-        public async Task UpdateToken(Guid userId, string jwtToken, string refreshToken)
+        public async Task UpdateTokenAsync(Guid userId, string jwtToken, string refreshToken)
         {
             var token = await _tokenRepository.GetAsync(userId);
             if (token != null)
             {
+                if(token.RefreshToken != refreshToken)
+                {
+                    throw new Exception("Invalid refresh token!");
+                }
+
                 token.JwtToken = jwtToken;
                 token.RefreshToken = refreshToken;
                 await _tokenRepository.UpdateAsync(token);
@@ -62,6 +67,11 @@ namespace ProjectCalculator.Infrastructure.Services
         {
             var token =  await _tokenRepository.GetAsync(userId);
             return _mapper.Map<Token, TokenDto>(token);
+        }
+
+        public async Task DeleteTokens(Guid userId)
+        {
+            await _tokenRepository.RemoveAsync(userId);
         }
 
     }

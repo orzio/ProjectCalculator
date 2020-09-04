@@ -13,10 +13,12 @@ namespace ProjectCalculator.Infrastructure.Services
     public class JwtService : IJwtService
     {
         private readonly JwtSettings _jwtSettings;
+        private readonly IUserService _userService;
 
-        public JwtService(JwtSettings settings)
+        public JwtService(JwtSettings settings, IUserService userService)
         {
             _jwtSettings = settings;
+            _userService = userService;
         }
         public JwtDto CreateToken(Guid userId, string role)
         {

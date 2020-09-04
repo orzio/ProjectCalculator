@@ -286,3 +286,6 @@ align-items:start;
     margin-top:5px;
 }
 
+.item-visibility{
+    display:none;
+}

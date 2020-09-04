@@ -25,14 +25,17 @@ namespace ProjectCalculator.Infrastructure.Repositories
         }
 
         public async Task<Token> GetAsync(Guid userId)
-           => await _context.Tokens.SingleOrDefaultAsync(x => x.UserId== userId);
-        
+           => await _context.Tokens.SingleOrDefaultAsync(x => x.UserId == userId);
+
 
         public async Task RemoveAsync(Guid userId)
         {
-            var token =await GetAsync(userId);
-            _context.Tokens.Remove(token);
-            await _context.SaveChangesAsync();
+            var token = await GetAsync(userId);
+            if (token != null)
+            {
+                _context.Tokens.Remove(token);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task UpdateAsync(Token token)

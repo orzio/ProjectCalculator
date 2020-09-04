@@ -3,7 +3,7 @@
 <head>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
     <title></title>
     <meta charset="utf-8" />
@@ -14,11 +14,11 @@
         <div id="accountHeader" class="container container-login">
             <div class="row">
                 <div class="col-md-4 col-sm-6" style="display:flex; justify-content:left">
-                    <a class="btn btn-bordered" href="index.html">Wróć</a>
+                    <a class="btn btn-bordered" href="../">Wróć</a>
                 </div>
 
                 <div class="col-md-4 col-sm-6" style="display:flex; align-items:center; justify-content:center;">
-                    <p style="margin-bottom:0">Mechanika - statyka</p>
+                    <p style="margin-bottom:0">LOGOWANIE</p>
                 </div>
             </div>
         </div>
@@ -29,42 +29,32 @@
         <div class="loginWrapper">
             <div class="row">
                 <div style="display:flex; justify-content:center">
-                    <h2>Stwórz konto</h2>
+                    <h2>Zaloguj się</h2>
                 </div>
                 <div class="login-form col-md-4 offset-md-4 col-sm-6 offset-sm-3">
-                    <form action="javascript:void(0);" method="POST" onsubmit="createUser()">
+                    <form action="javascript:void(0);" method="POST" onsubmit="Login()">
                         <div class="form-input">
-                            <input type="text" id="first-name" name="name" placeholder="Imię" />
+                            <input type="text" name="emial" id ="email" placeholder="E-mail" />
                         </div>
                         <div class="form-input">
-                            <input type="text" id="last-name" name="lastName" placeholder="Nazwisko" />
+                            <input type="password" name="passwd" id="passwd" placeholder="Hasło" />
                         </div>
                         <div class="form-input">
-                            <input type="text" id="email" name="email" placeholder="E-mail" />
+                            <button>Zaloguj się</button>
                         </div>
-                        <div class="form-input">
-                            <input type="password" id="passwd" name="passwd" placeholder="Hasło" />
-                        </div>
-
                         <div class="account-action">
-                            <a class="account-link" href="index.html">Główna</a>
-                            <a class="account-link" href="logowanie.html">Mam konto</a>
-                        </div>
-                        <div class="checkbox">
-                            <input type="checkbox" class="checkbox-icon" id="checkbox" />
-                            <label id="policy-accept">Klikając "Stwórz konto" akceptujesz Politykę Prywatności i Regulamin sklepu.</label>
-                        </div>
-
-                        <div class="form-input">
-                            <button type="submit">Stwórz konto</button>
+                            <a class="account-link" href="#">Resetuj hasło</a>
+                            <a class="account-link" href="../rejestracja/">Stwórz konto</a>
                         </div>
                     </form>
                 </div>
 
             </div>
         </div>
+        <!--<button onclick="logOut()"></button>-->
+
     </div>
-    <script src="js/Register.js" asp-append-version="true"></script>
+    <script src="js/Login.js" asp-append-version="true"></script>
     <script type="text/javascript"></script>
-</body >
-</html >
+</body>
+</html>

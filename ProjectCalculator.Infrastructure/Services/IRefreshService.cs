@@ -10,7 +10,8 @@ namespace ProjectCalculator.Infrastructure.Services
     public interface IRefreshService:IService
     {
         string GenerateRefreshToken();
-        Task UpdateToken(Guid userId, string jwtToken, string refreshToken);
+        Task UpdateTokenAsync(Guid userId, string jwtToken, string refreshToken);
         Task<TokenDto> GetToken(Guid userId);
+        Task DeleteTokens(Guid userId);
     }
 }

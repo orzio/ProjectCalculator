@@ -15,24 +15,30 @@
             <div class="line"></div>
         </div>
         <div id="nav-div" style="display:grid; grid-template-columns:25% 50% 25%; align-items:center; height:100%">
-          <div class="logo">
-              <h1 style="margin-bottom:0;">LOGOGOGOGOGO</h1>
-          </div>
+            <div class="logo">
+                <h1 style="margin-bottom:0;">LOGOGOGOGOGO</h1>
+            </div>
 
             <ul class="nav-links middle-list">
                 <li class="link"><a href="/" class="nav-link">Główna</a></li>
-                <li class="link"><a href="kursy.html" class="nav-link">Kursy</a></li>
-                <li class="link"><a href="projekt.html" class="nav-link">Projekty</a></li>
+                <li class="link"><a href="kursy/" class="nav-link">Kursy</a></li>
+                <li class="link"><a href="/projekty/" class="nav-link">Projekty</a></li>
             </ul>
             <ul class="nav-links right-list">
-                <li class="link addtional login"><a href="logowanie.html" class="nav-link">Logowanie</a></li>
-                <li class="link addtional"><a href="Rejestracja.html" class="nav-link">Rejestracja</a></li>
+                <li class="link addtional login login-item"><a href="../logowanie/" class="nav-link">Logowanie</a></li>
+                <li class="link addtional register-item"><a href="../rejestracja/" class="nav-link">Rejestracja</a></li>
+                <li class="link addtional logout-item item-visibility"><a href="#" class="nav-link" onclick="logOut()">Wyloguj</a></li>
             </ul>
         </div>
         <ul class="test"></ul>
+
     </nav>
+
+
+
+
     <div class="content"></div>
-    <div class="img-ctr">                  
+    <div class="img-ctr">
         <img src="https://picsum.photos/200/200/?blur" />
         <img src="https://picsum.photos/200/200/?blur" />
         <img src="https://picsum.photos/200/200/?blur" />
@@ -48,6 +54,58 @@
     </div>
 
     <script src="js/stylejs.js"></script>
+    <script src="js/Login.js"></script>
+    <script>
+
+        window.onload = function () {
+            let authToken = this.GetTokens();
+            let authButton = this.GetAuthButtons();
+
+            if (authToken.jwtTken == null && authToken.refreshToken == null) {
+                RemoveLogoutButton(authButton);
+            } else {
+                AddLogOutButton(authButton);
+            }
+        }
+
+        function GetTokens() {
+            let jwtTken = localStorage.getItem("jwtToken");
+            let refreshToken = localStorage.getItem("refreshToken");
+            return {
+                jwtToken: jwtTken,
+                refreshToken: refreshToken
+            }
+        }
+
+
+        function GetAuthButtons() {
+            let loginButton = document.querySelector('.login-item');
+            let registerButton = document.querySelector('.register-item');
+            let logOutButton = document.querySelector('.logout-item');
+
+            return {
+                loginButton: loginButton,
+                logOutButton: logOutButton,
+                registerButton: registerButton
+            }
+        }
+
+
+        function RemoveLogoutButton(authButton) {
+            authButton.loginButton.class.remove('item-visibility');
+            authButton.registerButton.class.remove('item-visibility');
+            authButton.logOutButton.classList.add('item-visibility');
+        }
+
+        function AddLogOutButton(authButton) {
+            authButton.logOutButton.classList.remove('item-visibility');
+            authButton.loginButton.classList.add('item-visibility');
+            authButton.registerButton.classList.add('item-visibility');
+        }
+
+
+
+    </script>
 </body>
 </html>
 

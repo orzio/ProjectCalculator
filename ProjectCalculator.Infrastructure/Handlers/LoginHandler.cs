@@ -25,9 +25,9 @@ namespace ProjectCalculator.Infrastructure.Commands.AccountCommands
         {
             await _userService.LoginAsync(command.Email, command.Password);
             var user = await _userService.GetAsync(command.Email);
-            var jwt = _jwtService.CreateToken(Guid.NewGuid(), "user");
+            var jwt = _jwtService.CreateToken(Guid.NewGuid(), user.Role);
             var refreshToken = _refreshService.GenerateRefreshToken();
-            await _refreshService.UpdateToken(user.Id, jwt.Token, refreshToken);
+            await _refreshService.UpdateTokenAsync(user.Id, jwt.Token, refreshToken);
         }
     }
 }
