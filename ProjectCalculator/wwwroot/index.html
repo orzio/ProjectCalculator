@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/preloader.css" />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
     <title></title>
 </head>
 <body id="main_container">
@@ -57,7 +59,7 @@
     <script src="js/Login.js"></script>
     <script>
 
-        window.onload = function () {
+        let start = function () {
             let authToken = this.GetTokens();
             let authButton = this.GetAuthButtons();
 
@@ -66,7 +68,7 @@
             } else {
                 AddLogOutButton(authButton);
             }
-        }
+        }();
 
         function GetTokens() {
             let jwtTken = localStorage.getItem("jwtToken");
@@ -92,8 +94,8 @@
 
 
         function RemoveLogoutButton(authButton) {
-            authButton.loginButton.class.remove('item-visibility');
-            authButton.registerButton.class.remove('item-visibility');
+            authButton.loginButton.classList.remove('item-visibility');
+            authButton.registerButton.classList.remove('item-visibility');
             authButton.logOutButton.classList.add('item-visibility');
         }
 
@@ -104,11 +106,10 @@
         }
 
 
-
     </script>
+<script src="js/preloader.js"></script>
 </body>
 </html>
-
 
 <!--<nav>
     <div class="hamburger">

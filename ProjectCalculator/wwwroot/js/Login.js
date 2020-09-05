@@ -44,11 +44,11 @@ function PostQuery(url, command) {
 }
 
 function redirectMainPage() {
-    window.location.href = "index.html";
+    window.location.href = "../";
 }
 
 function logOut() {
     localStorage.removeItem("jwtToken");
     localStorage.removeItem("refreshToken");
-    window.location.href = "index.html";
+    window.location.href = "../";
 }
